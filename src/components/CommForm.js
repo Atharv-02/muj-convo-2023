@@ -43,80 +43,80 @@ const CommForm = ({ singleUser }) => {
   };
   return (
     <>
-      <div className='right-div'>
+      <div className="right-div">
         <form>
-          <div className='comm-div'>
+          <div className="comm-div">
             <h2>Communication Details</h2>
-            <div className='comm-inp-div'>
-              <div className='comm-inp'>
+            <div className="comm-inp-div">
+              <div className="comm-inp">
                 <input
-                  name='phone'
-                  type='number'
-                  class='form-control'
-                  placeholder='Phone Number'
-                  id='phone'
-                  min='1000000000'
-                  max='9999999999'
+                  name="phone"
+                  type="number"
+                  className="form-control"
+                  placeholder="Phone Number"
+                  id="phone"
+                  min="1000000000"
+                  max="9999999999"
                   value={formData.phone}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='comm-inp'>
+              <div className="comm-inp">
                 <input
-                  name='address'
-                  type='text'
-                  class='form-control'
-                  placeholder='Address'
-                  id='address'
+                  name="address"
+                  type="text"
+                  className="form-control"
+                  placeholder="Address"
+                  id="address"
                   value={formData.address}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='comm-inp'>
+              <div className="comm-inp">
                 <input
-                  name='city'
-                  type='text'
-                  class='form-control'
-                  placeholder='City'
-                  id='city'
+                  name="city"
+                  type="text"
+                  className="form-control"
+                  placeholder="City"
+                  id="city"
                   value={formData.city}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='comm-inp'>
+              <div className="comm-inp">
                 <input
-                  name='state'
-                  type='text'
-                  class='form-control'
-                  placeholder='State'
-                  id='state'
+                  name="state"
+                  type="text"
+                  className="form-control"
+                  placeholder="State"
+                  id="state"
                   value={formData.state}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='comm-inp'>
+              <div className="comm-inp">
                 <input
-                  name='pincode'
-                  type='number'
-                  class='form-control'
-                  placeholder='Pincode'
-                  id='pincode'
+                  name="pincode"
+                  type="number"
+                  className="form-control"
+                  placeholder="Pincode"
+                  id="pincode"
                   value={formData.pincode}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='comm-inp'>
+              <div className="comm-inp">
                 <input
-                  name='country'
-                  type='text'
-                  class='form-control'
-                  placeholder='Country'
-                  id='country'
+                  name="country"
+                  type="text"
+                  className="form-control"
+                  placeholder="Country"
+                  id="country"
                   value={formData.country}
                   onChange={handleChange}
                   required
@@ -124,123 +124,132 @@ const CommForm = ({ singleUser }) => {
               </div>
             </div>
           </div>
-          <div className='refund-div'>
+          <div className="refund-div">
             <h2>Refund Details</h2>
 
-            <div className='refund-inp-div'>
-              <div className='refund-inp'>
+            <div className="refund-inp-div">
+              <div className="refund-inp">
                 <input
-                  name='account_holder_name'
-                  type='text'
-                  class='form-control'
-                  placeholder='Account Holder Name'
-                  id='AccHolderName'
+                  name="account_holder_name"
+                  type="text"
+                  className="form-control"
+                  placeholder="Account Holder Name"
+                  id="AccHolderName"
                   value={formData.account_holder_name}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='refund-inp'>
+              <div className="refund-inp">
                 <input
-                  name='account_number'
-                  type='text'
-                  class='form-control'
-                  placeholder='Account Number'
-                  id='AccNum'
+                  name="account_number"
+                  type="text"
+                  className="form-control"
+                  placeholder="Account Number"
+                  id="AccNum"
                   value={formData.account_number}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='refund-inp'>
+              <div className="refund-inp">
                 <input
-                  name='bank_name'
-                  type='text'
-                  class='form-control'
-                  placeholder='Bank Name'
-                  id='bankName'
+                  name="bank_name"
+                  type="text"
+                  className="form-control"
+                  placeholder="Bank Name"
+                  id="bankName"
                   value={formData.bank_name}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='refund-inp'>
+              <div className="refund-inp">
                 <input
-                  name='branch_name'
-                  type='text'
-                  class='form-control'
-                  placeholder='Bank Branch'
-                  id='bankBranch'
+                  name="branch_name"
+                  type="text"
+                  className="form-control"
+                  placeholder="Bank Branch"
+                  id="bankBranch"
                   value={formData.branch_name}
                   onChange={handleChange}
                   required
                 />
               </div>
 
-              <div className='refund-inp'>
+              <div className="refund-inp">
                 <input
-                  name='bank_address'
-                  type='text'
-                  class='form-control'
-                  placeholder='Bank Address'
-                  id='bankAddress'
+                  name="bank_address"
+                  type="text"
+                  className="form-control"
+                  placeholder="Bank Address"
+                  id="bankAddress"
                   value={formData.bank_address}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className='refund-inp'>
+              <div className="refund-inp">
                 <input
-                  name='ifsc_code'
-                  type='text'
-                  class='form-control'
-                  placeholder='IFSC Code'
-                  id='IFSC'
+                  name="ifsc_code"
+                  type="text"
+                  className="form-control"
+                  placeholder="IFSC Code"
+                  id="IFSC"
                   value={formData.ifsc_code}
                   onChange={handleChange}
                   required
                 />
               </div>
 
-              <div class='refund-inp'>
-                <label class='input-group-text' for='aadhaar-front'>
-                  Aadhar Front Picture
+              <div className="refund-inp input-group">
+                <label className="input-group-text" for="aadhaar-front">
+                  <strong> Aadhar Front Picture</strong>
                 </label>
                 <input
-                  type='file'
-                  class='form-control'
-                  id='aadhaar-front'
-                  placeholder='Aadhaar Front Picture'
+                  className="form-control"
+                  id="aadhaar-front"
+                  placeholder="Aadhaar Front Picture"
                   required
+                  readOnly
                 />
+                <button className="btn btn-outline-secondary" type="button">
+                  Select Image
+                </button>
               </div>
-              <div class='refund-inp'>
-                <label class='input-group-text' for='aadhaar-back'>
-                  Aadhar Back Picture
+              <div className="refund-inp input-group">
+                <label className="input-group-text" for="aadhaar-back">
+                  <strong> Aadhar Back Picture</strong>
                 </label>
                 <input
-                  type='file'
-                  class='form-control'
-                  id='aadhaar-back'
-                  placeholder='Aadhaar Back Picture'
+                  className="form-control"
+                  id="aadhaar-back"
+                  placeholder="Aadhaar Back Picture"
                   required
+                  readOnly
                 />
+                <button className="btn btn-outline-secondary" type="button">
+                  Select Image
+                </button>
               </div>
-              <div class='refund-inp'>
-                <label class='input-group-text' for='canceled-cheque'>
-                  Canceled Cheque Picture
+              <div className="refund-inp input-group">
+                <label className="input-group-text" for="canceled-cheque">
+                  <strong>Canceled Cheque Picture</strong>
                 </label>
                 <input
-                  type='file'
-                  class='form-control'
-                  id='canceled-cheque'
-                  placeholder='Cancelled Cheque Picture'
+                  className="form-control"
+                  id="canceled-cheque"
+                  placeholder="Cancelled Cheque Picture"
                   required
+                  readOnly
                 />
+                <button className="btn btn-outline-secondary" type="button">
+                  Select Image
+                </button>
               </div>
             </div>
-            <div className='save-btn'>
-              <button className='btn btn-outline-dark' onClick={handleSubmit}>
+            <div className="save-btn">
+              <button className="btn btn-outline-dark" onClick={handleSubmit}>
                 Save Details
               </button>
             </div>

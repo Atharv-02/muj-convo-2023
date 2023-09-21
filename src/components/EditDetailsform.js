@@ -58,265 +58,273 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
 
   return (
     <>
-      <div className='dash-layer'>
-        <div className='dash-super'>
-          <div className='dash-mainy'>
-            <div className='formGroupDiv' style={{ width: "100%" }}>
+      <div className="dash-layer">
+        <div className="dash-super">
+          <div className="dash-mainy">
+            <div className="formGroupDiv" style={{ width: "100%" }}>
               <FormGroup>
                 <form>
                   <h2 style={{ textAlign: "center" }}>Communication Details</h2>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Phone Number
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='phone'
-                      variant='outlined'
+                      name="phone"
+                      variant="outlined"
                       // type={ques.type}
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Address
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='address'
-                      variant='outlined'
+                      name="address"
+                      variant="outlined"
                       // type={ques.type}
                       value={formData.address}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       City
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='city'
-                      variant='outlined'
+                      name="city"
+                      variant="outlined"
                       // type={ques.type}
                       value={formData.city}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       District
                     </p>
                     <TextField
                       fullWidth
-                      required
-                      name='district'
-                      variant='outlined'
+                      name="district"
+                      variant="outlined"
                       value={formData.district}
                       onChange={handleChange}
                       // type={ques.type}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Pincode
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='pincode'
-                      variant='outlined'
-                      type='number'
+                      name="pincode"
+                      variant="outlined"
+                      type="number"
                       value={formData.pincode}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       State
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='state'
-                      variant='outlined'
+                      name="state"
+                      variant="outlined"
                       //type='number'
                       value={formData.state}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Country
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='country'
-                      variant='outlined'
+                      name="country"
+                      variant="outlined"
                       //   type='number'
                       value={formData.country}
                       onChange={handleChange}
                       // onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
                   <h2 style={{ textAlign: "center" }}>Refund Details</h2>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Account Holder Name
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='account_holder_name'
-                      variant='outlined'
+                      name="account_holder_name"
+                      variant="outlined"
                       //type='number'
                       value={formData.account_holder_name}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Account Number
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='account_number'
-                      variant='outlined'
+                      name="account_number"
+                      variant="outlined"
                       //   type='number'
                       value={formData.account_number}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Bank Name
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='bank_name'
-                      variant='outlined'
+                      name="bank_name"
+                      variant="outlined"
                       //   type='number'
                       value={formData.bank_name}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Bank Branch Name
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='branch_name'
-                      variant='outlined'
+                      name="branch_name"
+                      variant="outlined"
                       //   type='number'
                       value={formData.branch_name}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       Bank Address
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='bank_address'
-                      variant='outlined'
+                      name="bank_address"
+                      variant="outlined"
                       //type='number'
                       value={formData.bank_address}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div className='ques-div'>
+                  <div className="ques-div">
                     <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                       IFSC Code
                     </p>
                     <TextField
                       fullWidth
                       required
-                      name='ifsc_code'
-                      variant='outlined'
+                      name="ifsc_code"
+                      variant="outlined"
                       //   type='number'
                       value={formData.ifsc_code}
                       onChange={handleChange}
                       // onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   </div>
-                  <div class='refund-inp'>
-                    <label class='input-group-text' for='aadhaar-front'>
+                  <div className="refund-inp input-group">
+                    <label className="input-group-text" for="aadhaar-front">
                       <strong> Aadhar Front Picture</strong>
                     </label>
                     <input
-                      type='file'
-                      class='form-control'
-                      id='aadhaar-front'
+                      className="form-control"
+                      id="aadhaar-front"
                       value={formData.aadhar_front_picture}
                       onChange={handleChange}
-                      placeholder='Aadhaar Front Picture'
+                      placeholder="Aadhaar Front Picture"
                       required
+                      readOnly
                     />
+                    <button className="btn btn-outline-secondary" type="button">
+                      Select Image
+                    </button>
                   </div>
-                  <div class='refund-inp'>
-                    <label class='input-group-text' for='aadhaar-back'>
+                  <div className="refund-inp input-group">
+                    <label className="input-group-text" for="aadhaar-back">
                       <strong> Aadhar Back Picture</strong>
                     </label>
                     <input
-                      type='file'
-                      class='form-control'
+                      className="form-control"
                       value={formData.aadhar_back_picture}
                       onChange={handleChange}
-                      id='aadhaar-back'
-                      placeholder='Aadhaar Back Picture'
+                      id="aadhaar-back"
+                      placeholder="Aadhaar Back Picture"
                       required
+                      readOnly
                     />
+                    <button className="btn btn-outline-secondary" type="button">
+                      Select Image
+                    </button>
                   </div>
-                  <div class='refund-inp'>
-                    <label class='input-group-text' for='canceled-cheque'>
+                  <div className="refund-inp input-group">
+                    <label className="input-group-text" for="canceled-cheque">
                       <strong>Canceled Cheque Picture</strong>
                     </label>
                     <input
-                      type='file'
-                      class='form-control'
+                      className="form-control"
                       value={formData.cancel_check}
                       onChange={handleChange}
-                      id='canceled-cheque'
-                      placeholder='Cancelled Cheque Picture'
+                      id="canceled-cheque"
+                      placeholder="Cancelled Cheque Picture"
                       required
+                      readOnly
                     />
+                    <button className="btn btn-outline-secondary" type="button">
+                      Select Image
+                    </button>
                   </div>
                   <div
                     style={{
@@ -331,8 +339,8 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
                         color: "#fff",
                         fontWeight: "bold",
                       }}
-                      variant='contained'
-                      type='submit'
+                      variant="contained"
+                      type="submit"
                       onClick={handleSubmit}
                     >
                       <span style={{ fontSize: "1.1rem" }}>Save Details</span>
@@ -343,7 +351,7 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
             </div>
           </div>
         </div>
-        <img src={vector} alt='' className='dash-vector' />
+        <img src={vector} alt="" className="dash-vector" />
       </div>
     </>
   );
