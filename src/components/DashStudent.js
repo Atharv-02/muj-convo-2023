@@ -7,17 +7,24 @@ import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import Feedback from "../pages/Feedback";
 import SavedDetails from "./SavedDetails";
-
+import EditDetailsForm from "./EditDetailsform";
 const DashStudent = ({ singleUser, setSingleUser }) => {
+  const [editForm, setEditForm] = useState(false);
   return (
     <>
       {!singleUser.feedbackGiven ? (
         <Feedback />
+      ) : editForm ? (
+        <EditDetailsForm
+          singleUser={singleUser}
+          editForm={editForm}
+          setEditForm={setEditForm}
+        />
       ) : (
         <>
-          <div className="dash-layer">
-            <div className="dash-super">
-              <div className="dash-mainy">
+          <div className='dash-layer'>
+            <div className='dash-super'>
+              <div className='dash-mainy'>
                 <Details
                   singleUser={singleUser}
                   setSingleUser={setSingleUser}
@@ -26,6 +33,8 @@ const DashStudent = ({ singleUser, setSingleUser }) => {
                   <SavedDetails
                     singleUser={singleUser}
                     setSingleUser={setSingleUser}
+                    editForm={editForm}
+                    setEditForm={setEditForm}
                   />
                 ) : (
                   <CommForm
@@ -35,7 +44,7 @@ const DashStudent = ({ singleUser, setSingleUser }) => {
                 )}
               </div>
             </div>
-            <img src={vector} alt="" className="dash-vector" />
+            <img src={vector} alt='' className='dash-vector' />
           </div>
         </>
       )}

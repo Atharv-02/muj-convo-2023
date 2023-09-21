@@ -1,24 +1,23 @@
 import React from "react";
 
-const SavedDetails = ({ singleUser, setSingleUser }) => {
+const SavedDetails = ({ singleUser, setSingleUser, editForm, setEditForm }) => {
   return (
-    <div className="table-responsive saved-table-div">
-      <div className="savedDeet-div ">
+    <div className='table-responsive saved-table-div'>
+      <div className='savedDeet-div '>
         <h2
           style={{ textAlign: "center", margin: "10px", marginBottom: "20px" }}
         >
           Communication & Refund Details
         </h2>
-        <table className="table table-striped table-borderless">
+        <table className='table table-striped table-borderless'>
           <tbody>
-            <tr className="table-dark">
-              <th scope="col">Field</th>
-              <th scope="col">Details</th>
+            <tr className='table-dark'>
+              <th scope='col'>Field</th>
+              <th scope='col'>Details</th>
             </tr>
             <tr>
-
               <th>Address</th>
-             <td>{singleUser.address}</td>
+              <td>{singleUser.address}</td>
             </tr>
             <tr>
               <th>Bank Address</th>
@@ -30,11 +29,11 @@ const SavedDetails = ({ singleUser, setSingleUser }) => {
             </tr>
             <tr>
               <th>Branch Name</th>
-             <td>{singleUser.branch_name}</td>
+              <td>{singleUser.branch_name}</td>
             </tr>
             <tr>
               <th>City</th>
-             <td>{singleUser.city}</td>
+              <td>{singleUser.city}</td>
             </tr>
             <tr>
               <th>Country</th>
@@ -46,26 +45,30 @@ const SavedDetails = ({ singleUser, setSingleUser }) => {
             </tr>
             <tr>
               <th>IFSC Code</th>
-               <td>{singleUser.ifsc_code}</td>
+              <td>{singleUser.ifsc_code}</td>
             </tr>
             <tr>
               <th>Phone</th>
-               <td>{singleUser.phone}</td>
+              <td>{singleUser.phone}</td>
             </tr>
             <tr>
               <th>Pincode</th>
-             <td>{singleUser.pincode}</td>
+              <td>{singleUser.pincode}</td>
             </tr>
             <tr>
               <th>State</th>
-               <td>{singleUser.state}</td>
-
-
+              <td>{singleUser.state}</td>
             </tr>
           </tbody>
         </table>
-        <div className="edit-details-btn">
-          <button className="btn btn-outline-dark">Edit Details</button>
+
+        <div className='edit-details-btn'>
+          <button
+            className='btn btn-outline-dark'
+            onClick={() => setEditForm(true)}
+          >
+            Edit Details
+          </button>
         </div>
       </div>
     </div>
