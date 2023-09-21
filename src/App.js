@@ -5,6 +5,7 @@ import Dash from "./pages/Dash";
 import Protected from "./components/Protected";
 import Feedback from "./pages/Feedback";
 import Contact from "../src/pages/Contact";
+import FAQPage from "./pages/FAQ";
 import "bootstrap/dist/css/bootstrap.css";
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           }
         />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/faq' element={<FAQPage />} />
       </Routes>
     </BrowserRouter>
   );

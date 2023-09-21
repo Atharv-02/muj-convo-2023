@@ -20,6 +20,7 @@ const Navbar = () => {
             {isuserloggedin ? "Dashboard" : "Home"}
           </li>
           <li onClick={() => navigate("/contact")}>Contact</li>
+          <li onClick={() => navigate("/faq")}>FAQ</li>
         </ul>
       </nav>
     </div>
