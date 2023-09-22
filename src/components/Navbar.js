@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isuserloggedin, setIsUserLoggedIn } = useAuth();
+  const { isuserloggedin, setIsuserloggedin } = useAuth();
 
   return (
     <div className='navbar-full'>
@@ -25,7 +25,7 @@ const Navbar = () => {
 
           <li
             onClick={() => {
-              setIsUserLoggedIn(false);
+              setIsuserloggedin(false);
             }}
           >
             {isuserloggedin ? "logout" : null}
