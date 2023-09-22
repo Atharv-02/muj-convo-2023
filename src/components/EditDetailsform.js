@@ -317,7 +317,6 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
                       className='form-control'
                       id='aadhaar-front'
                       value={formData.aadhar_front_picture}
-                      onChange={handleChange}
                       placeholder='Aadhaar Front Picture'
                       required
                       readOnly
@@ -337,7 +336,6 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
                     <input
                       className='form-control'
                       value={formData.aadhar_back_picture}
-                      onChange={handleChange}
                       id='aadhaar-back'
                       placeholder='Aadhaar Back Picture'
                       required
@@ -358,7 +356,6 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
                     <input
                       className='form-control'
                       value={formData.cancel_check}
-                      onChange={handleChange}
                       id='canceled-cheque'
                       placeholder='Cancelled Cheque Picture'
                       required
