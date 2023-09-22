@@ -322,7 +322,11 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
                       required
                       readOnly
                     />
-                    <button className='btn btn-outline-secondary' type='button'>
+                    <button
+                      className='btn btn-outline-secondary'
+                      type='button'
+                      onClick={() => openCloudWidget("aadhar_front_picture")}
+                    >
                       Select Image
                     </button>
                   </div>
@@ -338,9 +342,12 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
                       placeholder='Aadhaar Back Picture'
                       required
                       readOnly
-                      onClick={() => openCloudWidget("aadhar_back_picture")}
                     />
-                    <button className='btn btn-outline-secondary' type='button'>
+                    <button
+                      className='btn btn-outline-secondary'
+                      type='button'
+                      onClick={() => openCloudWidget("aadhar_back_picture")}
+                    >
                       Select Image
                     </button>
                   </div>
@@ -357,7 +364,11 @@ const EditDetailsform = ({ singleUser, editForm, setEditForm }) => {
                       required
                       readOnly
                     />
-                    <button className='btn btn-outline-secondary' type='button'>
+                    <button
+                      className='btn btn-outline-secondary'
+                      type='button'
+                      onClick={() => openCloudWidget("cancelled_check")}
+                    >
                       Select Image
                     </button>
                   </div>
