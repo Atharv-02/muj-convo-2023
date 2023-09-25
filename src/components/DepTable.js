@@ -1,19 +1,31 @@
 import React from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import Spinner from "react-bootstrap/Spinner";
 const DepTable = ({ dues, setDues }) => {
   const { token } = useAuth();
   const clearDue = async (id) => {
     try {
-      const result = await axios.put(
-        `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/clear-student-due/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(result);
+      // const result = await axios.put(
+      //   `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/clear-student-due/${id}`,
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
+      let config = {
+        method: "put",
+        maxBodyLength: Infinity,
+        url: `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/clear-student-due/${id}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      axios.request(config).then((response) => {
+        console.log(JSON.stringify(response.data));
+      });
     } catch (error) {
       console.log(error);
     }

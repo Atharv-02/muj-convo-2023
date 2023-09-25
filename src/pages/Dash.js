@@ -3,7 +3,8 @@ import DashStudent from "../components/DashStudent";
 import DepDash from "../components/DepDash";
 import { useAuth } from "../context/AuthContext";
 import { useLoading } from "../context/SideContext";
-import { Spinner } from "reactstrap";
+import Spinner from "react-bootstrap/Spinner";
+
 import axios from "axios";
 const Dash = () => {
   const [singleUser, setSingleUser] = useState([]);
@@ -36,7 +37,13 @@ const Dash = () => {
   console.log(role);
 
   if (loading) {
-    <Spinner>Loading...</Spinner>;
+    return (
+      <Spinner
+        animation='border'
+        role='status'
+        style={{ margin: "10rem auto" }}
+      ></Spinner>
+    );
   } else if (role == "student") {
     return (
       <DashStudent singleUser={singleUser} setSingleUser={setSingleUser} />
