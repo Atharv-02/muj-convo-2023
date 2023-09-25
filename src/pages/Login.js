@@ -10,7 +10,7 @@ import img4 from "../assets/image 5.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-
+import { useLoading } from "../context/SideContext";
 const Login = () => {
   const navigate = useNavigate();
   const [roles, setRoles] = useState("student");
@@ -40,6 +40,8 @@ const Login = () => {
   };
   const { token, setToken, isuserloggedin, setIsuserloggedin, role, setRole } =
     useAuth();
+  const { loading, setLoading } = useLoading();
+  // const { loading, setLoading } = useLoading();
   const handleSubmit = async (e) => {
     e.preventDefault();
     let params;

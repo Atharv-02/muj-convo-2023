@@ -1,6 +1,23 @@
 import React from "react";
-
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 const DepTable = ({ dues, setDues }) => {
+  const { token } = useAuth();
+  const clearDue = async (id) => {
+    try {
+      const result = await axios.put(
+        `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/clear-student-due/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div className='table'>
@@ -23,11 +40,25 @@ const DepTable = ({ dues, setDues }) => {
                       <td>{due.amount_due || "__"}</td>
                       <td>{due.details || "__"}</td>
                       <td>
-                        {due.is_clear === undefined
-                          ? "__"
-                          : due.is_clear
-                          ? "cleared"
-                          : "clear"}
+                        {due.is_clear === undefined ? (
+                          "__"
+                        ) : due.is_clear ? (
+                          "cleared"
+                        ) : (
+                          <button
+                            style={{
+                              cursor: "pointer",
+                              backgroundColor: "green",
+                              color: "white",
+                              border: "none",
+                              padding: "0.25rem 0.75rem",
+                              borderRadius: "7px",
+                            }}
+                            onClick={() => clearDue(due._id)}
+                          >
+                            clear
+                          </button>
+                        )}
                       </td>
                     </tr>
                   );

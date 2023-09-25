@@ -20,7 +20,7 @@ const DepDash = ({ singleUser, setSingleUser }) => {
           <div className='Form-outer'>
             <div className='Form-inner'>
               <div className='Form-Header'>
-                <h1>Admin</h1>
+                <h1>{singleUser.department}</h1>
               </div>
               <div className='Dash-Upper'>
                 <DepDetails student={student} setStudent={setStudent} />

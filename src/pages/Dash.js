@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import DashStudent from "../components/DashStudent";
 import DepDash from "../components/DepDash";
 import { useAuth } from "../context/AuthContext";
+import { useLoading } from "../context/SideContext";
+import { Spinner } from "reactstrap";
 import axios from "axios";
 const Dash = () => {
   const [singleUser, setSingleUser] = useState([]);
   const { token, setToken, isuserloggedin, setIsuserloggedin, role } =
     useAuth();
+  const { loading, setLoading } = useLoading();
   async function getUsers() {
     try {
+      setLoading(true);
       const response = await axios.get(
         "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/auth/getUser",
         {
@@ -19,6 +23,7 @@ const Dash = () => {
       );
       setSingleUser(response.data.data);
       console.log(response);
+      setLoading(false);
     } catch (e) {
       console.log(e);
       setIsuserloggedin(false);
@@ -29,11 +34,14 @@ const Dash = () => {
   }, []);
 
   console.log(role);
-  if (role == "student") {
+
+  if (loading) {
+    <Spinner>Loading...</Spinner>;
+  } else if (role == "student") {
     return (
       <DashStudent singleUser={singleUser} setSingleUser={setSingleUser} />
     );
-  } else {
+  } else if (role == "department") {
     console.log("department");
     return <DepDash singleUser={singleUser} setSingleUser={setSingleUser} />;
   }
