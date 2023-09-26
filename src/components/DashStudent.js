@@ -10,10 +10,11 @@ import SavedDetails from "./SavedDetails";
 import EditDetailsForm from "./EditDetailsform";
 const DashStudent = ({ singleUser, setSingleUser }) => {
   const [editForm, setEditForm] = useState(false);
+  const [feedback, setFeedback] = useState(singleUser.feedbackGiven);
   return (
     <>
       {!singleUser.feedbackGiven ? (
-        <Feedback />
+        <Feedback setFeedback={setFeedback} />
       ) : editForm ? (
         <EditDetailsForm
           singleUser={singleUser}
