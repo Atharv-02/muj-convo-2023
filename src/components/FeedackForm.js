@@ -12,7 +12,8 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
-const FeedBackForm = () => {
+import { Navigate } from "react-router-dom";
+const FeedBackForm = ({ setFeedback }) => {
   const { token, setToken, isuserloggedin, setIsuserloggedin, role, setRole } =
     useAuth();
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,7 @@ const FeedBackForm = () => {
         }
       );
       console.log(response);
+      setFeedback(true);
     } catch (e) {
       console.log(e);
     }

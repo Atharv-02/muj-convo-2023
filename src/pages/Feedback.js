@@ -2,13 +2,13 @@ import bigVector from "../assets/big-wave.png";
 import FeedBackForm from "../components/FeedackForm";
 import "../style/feedback.css";
 
-function App() {
+function Feedback({ setFeedback }) {
   return (
     <>
       <div className='feedback-layer'>
         <div className='feedback-super'>
           <div className='feedback-mainy'>
-            <FeedBackForm />
+            <FeedBackForm setFeedback={setFeedback} />
           </div>
         </div>
         <img src={bigVector} alt='' className='vector' />
@@ -17,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default Feedback;
