@@ -45,7 +45,7 @@ const DepForm = ({
       }
     );
     console.log(response2);
-    setDues(response2.data.data);
+    setDues(response2.data.data.length ? response2.data.data : [{}]);
   };
   const handleDueSubmit = async (e) => {
     e.preventDefault();
@@ -77,49 +77,50 @@ const DepForm = ({
     }
   };
   return (
-    <div className='form'>
-      <h3 className='form-heading'>REGISTER/CLEAR STUDENT DUE</h3>
+    <div className="form">
+      <h3 className="form-heading">REGISTER/CLEAR STUDENT DUE</h3>
       <div>
-        <form className='form-group'>
+        <form className="form-group">
+          {console.log(dues)}
           <input
-            className='inputs form-control'
-            placeholder='Enter Student Registration Number'
-            name='reg_no'
+            className="inputs form-control"
+            placeholder="Enter Student Registration Number"
+            name="reg_no"
             value={reg_no}
             onChange={(e) => setRegNo(e.target.value)}
-            inputmode='numeric'
+            inputmode="numeric"
           ></input>
           <br />
           <button
-            className='btn btn-secondary'
-            type='submit'
+            className="btn btn-secondary"
+            type="submit"
             onClick={handleRegNoSubmit}
           >
             Search Student
           </button>
         </form>
         {showDetails ? (
-          <form className='form-group'>
+          <form className="form-group">
             <input
-              className='inputs form-control'
-              placeholder='Enter Student Due Amount'
-              name='amount_due'
+              className="inputs form-control"
+              placeholder="Enter Student Due Amount"
+              name="amount_due"
               value={amountDue}
               onChange={(e) => setAmountDue(e.target.value)}
-              type='text'
+              type="text"
             ></input>
             <br />
             <textarea
-              className='inputs text-Box'
-              placeholder='Enter Student Due Details'
+              className="inputs text-Box"
+              placeholder="Enter Student Due Details"
               value={details}
               onChange={(e) => setDetails(e.target.value)}
-              name='details'
+              name="details"
             ></textarea>
             <br />
             <button
-              className='success-btn'
-              type='submit'
+              className="success-btn"
+              type="submit"
               onClick={handleDueSubmit}
             >
               REGISTER STUDENT DUE

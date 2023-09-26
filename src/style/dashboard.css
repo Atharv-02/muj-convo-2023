@@ -141,7 +141,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
 }
 .dash-details-head {
   padding: 10px;
@@ -272,7 +272,6 @@
 }
 
 .LOGONEW{
-  width: 50%;
-  height: auto;
-  margin: 10px 160px;
+  max-width: 50% !important;
+  margin: 10px 180px !important;
 }

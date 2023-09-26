@@ -18,17 +18,18 @@ const CommForm = ({ singleUser }) => {
     bank_name: singleUser.bank_name || "",
     branch_name: singleUser.branch_name || "",
     ifsc_code: singleUser.ifsc_code || "",
-    aadhar_front_picture: singleUser.aadhar_front_picture || "",
-    aadhar_back_picture: singleUser.aadhar_back_picture || "",
+    aadhar_front_picture: singleUser.adhar_front_picture || "",
+    aadhar_back_picture: singleUser.adhar_back_picture || "",
     cancel_check: singleUser.cancel_check || "",
   });
   const handleChange = (e) => {
     console.log(e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     try {
-      const response = axios.post(
+      console.log(formData);
+      const response = await axios.post(
         "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/auth/add-communication-data",
         formData,
         {
@@ -37,6 +38,7 @@ const CommForm = ({ singleUser }) => {
           },
         }
       );
+      console.log(response);
     } catch (e) {
       console.log(e);
     }
