@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
-import Spinner from "react-bootstrap/Spinner";
-const DepTable = ({ dues, setDues }) => {
+import { Spinner } from "reactstrap";
+const DepTable = ({ dues, setDues, loading, setLoading }) => {
   const { token } = useAuth();
   const clearDue = async (id) => {
     try {
@@ -46,35 +46,45 @@ const DepTable = ({ dues, setDues }) => {
                 </tr>
               </thead>
               <tbody>
-                {dues.map((due) => {
-                  return (
-                    <tr>
-                      <td>{due.amount_due || "__"}</td>
-                      <td>{due.details || "__"}</td>
-                      <td>
-                        {due.is_clear === undefined ? (
-                          "__"
-                        ) : due.is_clear ? (
-                          "cleared"
-                        ) : (
-                          <button
-                            style={{
-                              cursor: "pointer",
-                              backgroundColor: "green",
-                              color: "white",
-                              border: "none",
-                              padding: "0.25rem 0.75rem",
-                              borderRadius: "7px",
-                            }}
-                            onClick={() => clearDue(due._id)}
-                          >
-                            clear
-                          </button>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
+                {loading ? (
+                  <div style={{ width: "270%" }}>
+                    <Spinner
+                      animation='border'
+                      role='status'
+                      style={{ margin: "1rem auto" }}
+                    ></Spinner>
+                  </div>
+                ) : (
+                  dues.map((due) => {
+                    return (
+                      <tr>
+                        <td>{due.amount_due || "__"}</td>
+                        <td>{due.details || "__"}</td>
+                        <td>
+                          {due.is_clear === undefined ? (
+                            "__"
+                          ) : due.is_clear ? (
+                            "cleared"
+                          ) : (
+                            <button
+                              style={{
+                                cursor: "pointer",
+                                backgroundColor: "green",
+                                color: "white",
+                                border: "none",
+                                padding: "0.25rem 0.75rem",
+                                borderRadius: "7px",
+                              }}
+                              onClick={() => clearDue(due._id)}
+                            >
+                              clear
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
               </tbody>
             </table>
           </div>

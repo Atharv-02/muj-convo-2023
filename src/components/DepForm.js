@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useLoading } from "../context/SideContext";
 import { useAlert } from "../context/AlertMessageContext";
 import Alerts from "../components/Alert";
+import { Spinner } from "react-bootstrap";
 const DepForm = ({
   student,
   setStudent,
@@ -11,13 +12,14 @@ const DepForm = ({
   setDues,
   singleUser,
   setSingleUser,
+  loading,
+  setLoading,
 }) => {
   const [reg_no, setRegNo] = useState("");
 
   const [amountDue, setAmountDue] = useState("");
   const [showDetails, setShowDetails] = useState(false);
   const [details, setDetails] = useState("");
-  const { loading, setLoading } = useLoading();
   const { message, setMessage } = useAlert();
   const { token, setToken, isuserloggedin, setIsuserloggedin, role, setRole } =
     useAuth();
@@ -49,20 +51,27 @@ const DepForm = ({
     }
   };
   const getAllDues = async () => {
-    const response2 = await axios.get(
-      `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/get-student-dept-dues/${reg_no}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    console.log(response2);
-    setDues(response2.data.data.length ? response2.data.data : [{}]);
+    try {
+      setLoading(true);
+      const response2 = await axios.get(
+        `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/get-student-dept-dues/${reg_no}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response2);
+      setDues(response2.data.data.length ? response2.data.data : [{}]);
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
   const handleDueSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       console.log({
         reg_no: student.reg_no,
         amount_due: amountDue,
@@ -84,6 +93,7 @@ const DepForm = ({
         }
       );
       console.log(response);
+      setLoading(false);
       getAllDues();
     } catch (e) {
       console.log(e);

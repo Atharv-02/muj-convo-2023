@@ -6,6 +6,7 @@ import DepForm from "./DepForm";
 import DepTable from "./DepTable";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+import { Spinner } from "react-bootstrap";
 const DepDash = ({ singleUser, setSingleUser }) => {
   const [student, setStudent] = useState({
     student_name: "",
@@ -13,6 +14,7 @@ const DepDash = ({ singleUser, setSingleUser }) => {
     specialization: "",
   });
   const [dues, setDues] = useState([{}]);
+  const [loading, setLoading] = useState(false);
   return (
     <>
       <div className='home'>
@@ -31,9 +33,17 @@ const DepDash = ({ singleUser, setSingleUser }) => {
                   setDues={setDues}
                   singleUser={singleUser}
                   setSingleUser={setSingleUser}
+                  loading={loading}
+                  setLoading={setLoading}
                 />
               </div>
-              <DepTable dues={dues} setDues={setDues} />
+
+              <DepTable
+                dues={dues}
+                setDues={setDues}
+                loading={loading}
+                setLoading={setLoading}
+              />
             </div>
           </div>
         </div>
