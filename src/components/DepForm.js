@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useLoading } from "../context/SideContext";
+import { useAlert } from "../context/AlertMessageContext";
+import Alerts from "../components/Alert";
 const DepForm = ({
   student,
   setStudent,
@@ -10,12 +13,19 @@ const DepForm = ({
   setSingleUser,
 }) => {
   const [reg_no, setRegNo] = useState("");
+
   const [amountDue, setAmountDue] = useState("");
   const [showDetails, setShowDetails] = useState(false);
   const [details, setDetails] = useState("");
-
+  const { loading, setLoading } = useLoading();
+  const { message, setMessage } = useAlert();
   const { token, setToken, isuserloggedin, setIsuserloggedin, role, setRole } =
     useAuth();
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setOpen(false), 3000);
+  }, [open]);
+
   const handleRegNoSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -32,6 +42,9 @@ const DepForm = ({
       setStudent(response.data.student);
       console.log(response);
     } catch (e) {
+      console.log("HI");
+      setMessage("No Student Found");
+      setOpen(true);
       console.log(e);
     }
   };
@@ -77,58 +90,60 @@ const DepForm = ({
     }
   };
   return (
-    <div className="form">
-      <h3 className="form-heading">REGISTER/CLEAR STUDENT DUE</h3>
-      <div>
-        <form className="form-group">
-          {console.log(dues)}
-          <input
-            className="inputs form-control"
-            placeholder="Enter Student Registration Number"
-            name="reg_no"
-            value={reg_no}
-            onChange={(e) => setRegNo(e.target.value)}
-            inputmode="numeric"
-          ></input>
-          <br />
-          <button
-            className="btn btn-secondary"
-            type="submit"
-            onClick={handleRegNoSubmit}
-          >
-            Search Student
-          </button>
-        </form>
-        {showDetails ? (
-          <form className="form-group">
+    <>
+      {open ? <Alerts /> : null}
+      <div className='form'>
+        <h3 className='form-heading'>REGISTER/CLEAR STUDENT DUE</h3>
+        <div>
+          <form className='form-group'>
             <input
-              className="inputs form-control"
-              placeholder="Enter Student Due Amount"
-              name="amount_due"
-              value={amountDue}
-              onChange={(e) => setAmountDue(e.target.value)}
-              type="text"
+              className='inputs form-control'
+              placeholder='Enter Student Registration Number'
+              name='reg_no'
+              value={reg_no}
+              onChange={(e) => setRegNo(e.target.value)}
+              inputmode='numeric'
             ></input>
             <br />
-            <textarea
-              className="inputs text-Box"
-              placeholder="Enter Student Due Details"
-              value={details}
-              onChange={(e) => setDetails(e.target.value)}
-              name="details"
-            ></textarea>
-            <br />
             <button
-              className="success-btn"
-              type="submit"
-              onClick={handleDueSubmit}
+              className='btn btn-secondary'
+              type='submit'
+              onClick={handleRegNoSubmit}
             >
-              REGISTER STUDENT DUE
+              Search Student
             </button>
           </form>
-        ) : null}
+          {showDetails ? (
+            <form className='form-group'>
+              <input
+                className='inputs form-control'
+                placeholder='Enter Student Due Amount'
+                name='amount_due'
+                value={amountDue}
+                onChange={(e) => setAmountDue(e.target.value)}
+                type='text'
+              ></input>
+              <br />
+              <textarea
+                className='inputs text-Box'
+                placeholder='Enter Student Due Details'
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+                name='details'
+              ></textarea>
+              <br />
+              <button
+                className='success-btn'
+                type='submit'
+                onClick={handleDueSubmit}
+              >
+                REGISTER STUDENT DUE
+              </button>
+            </form>
+          ) : null}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

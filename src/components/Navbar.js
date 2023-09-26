@@ -28,7 +28,7 @@ const Navbar = () => {
               setIsuserloggedin(false);
             }}
           >
-            {isuserloggedin ? "logout" : null}
+            {isuserloggedin ? "Logout" : null}
           </li>
         </ul>
       </nav>

@@ -9,10 +9,11 @@ const Alerts = () => {
       <Alert
         variant='success'
         style={{
-          position: "absolute",
+          position: "fixed",
+          top: "80px",
           width: "300px",
           left: "30%",
-          marginTop: "5rem",
+          marginTop: "0rem",
         }}
       >
         {message}{" "}
