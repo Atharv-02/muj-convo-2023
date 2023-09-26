@@ -4,14 +4,14 @@ import { Accordion } from "react-bootstrap";
 const FAQDetails = () => {
   return (
     <div className="FAQBox">
-      <div>
+      <div className="FAQHeader">
         <h3>FAQ</h3>
       </div>
       <div className="AccordionBody">
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
-              <h6>
+              <h6 style={{fontSize:"1.5rem"}}>
                 Q. I am not having access to my outlook email id provided by
                 Manipal University.{" "}
               </h6>
@@ -30,7 +30,7 @@ const FAQDetails = () => {
 
           <Accordion.Item eventKey="1">
             <Accordion.Header>
-              <h6>
+              <h6 style={{fontSize:"1.5rem"}}>
                 Q. I have cleared my dues, but still, I am not able to login.
               </h6>
             </Accordion.Header>
@@ -47,7 +47,7 @@ const FAQDetails = () => {
 
           <Accordion.Item eventKey="2">
             <Accordion.Header>
-              <h6>
+              <h6 style={{fontSize:"1.5rem"}}>
                 Q. I haven’t received password for login after registering.
               </h6>
             </Accordion.Header>
@@ -64,7 +64,7 @@ const FAQDetails = () => {
 
           <Accordion.Item eventKey="3">
             <Accordion.Header>
-              <h6>Q. How many people can accompany me to the Convocation?</h6>
+              <h6 style={{fontSize:"1.5rem"}}>Q. How many people can accompany me to the Convocation?</h6>
             </Accordion.Header>
             <Accordion.Body>
               <span>Ans. Maximum two guests can accompany you.</span>
@@ -73,7 +73,7 @@ const FAQDetails = () => {
 
           <Accordion.Item eventKey="4">
             <Accordion.Header>
-              <h6>
+              <h6 style={{fontSize:"1.5rem"}}>
                 Q. I want to change the number of people accompanying me in
                 Convocation.
               </h6>
@@ -91,7 +91,7 @@ const FAQDetails = () => {
 
           <Accordion.Item eventKey="5">
             <Accordion.Header>
-              <h6>
+              <h6 style={{fontSize:"1.5rem"}}>
                 Q. Will the accommodation be provided by Manipal University?
               </h6>
             </Accordion.Header>
@@ -106,7 +106,7 @@ const FAQDetails = () => {
 
           <Accordion.Item eventKey="6">
             <Accordion.Header>
-              <h6>
+              <h6 style={{fontSize:"1.5rem"}}>
                 Q. What if I register myself but can no longer attend the
                 Convocation?
               </h6>
@@ -123,7 +123,7 @@ const FAQDetails = () => {
 
           <Accordion.Item eventKey="7">
             <Accordion.Header>
-              <h6>
+              <h6 style={{fontSize:"1.5rem"}}>
                 Q. How do I ensure that I have completed all necessary
                 requirements from my end.
               </h6>

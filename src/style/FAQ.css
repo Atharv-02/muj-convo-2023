@@ -4,6 +4,7 @@
     display: flex;
     background: rgba(225, 84, 20, 1);
     overflow: hidden;
+    
   }
   
   .vectorFAQDiv {
@@ -16,6 +17,15 @@
   .vector_rightFAQDiv {
     background-color: white;
     width: 75%;
+  }
+
+  .AccordionBody{
+    font-size: 1.2rem !important;
+  }
+
+  .FAQHeader{
+    text-align: center;
+    margin: 2%;
   }
   
   
@@ -39,7 +49,7 @@
   .AccordionBodyFAQDiv{
     margin: 20px;
     margin-right: 50px;
-  
+    
   }
   
   .mainFAQDiv{

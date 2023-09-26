@@ -76,3 +76,11 @@
   
 }
 
+.contactHeader{  
+    text-align: center;
+    margin: 2%;
+}
+
+.AccordionBody{
+  font-size: 1.8rem !important;
+}

@@ -5,14 +5,14 @@ import { BiMailSend } from "react-icons/bi";
 const ContactDetails = () => {
   return (
     <div className='contactBox'>
-      <div>
+      <div className="contactHeader">
         <h3>Contact</h3>
       </div>
       <div className='AccordionBody'>
         <Accordion>
           <Accordion.Item eventKey='0'>
             <Accordion.Header>
-              <h6>For Email Related Queries</h6>
+              <h6 style={{fontSize:"1.5rem"}}>For Email Related Queries</h6>
             </Accordion.Header>
 
             <Accordion.Body>
@@ -28,7 +28,7 @@ const ContactDetails = () => {
 
           <Accordion.Item eventKey='1'>
             <Accordion.Header>
-              <h6>For Library Dues</h6>
+              <h6 style={{fontSize:"1.5rem"}}>For Library Dues</h6>
             </Accordion.Header>
             <Accordion.Body>
               <strong>
@@ -47,7 +47,7 @@ const ContactDetails = () => {
 
           <Accordion.Item eventKey='2'>
             <Accordion.Header>
-              <h6>For Finance Dues</h6>
+              <h6 style={{fontSize:"1.5rem"}}>For Finance Dues</h6>
             </Accordion.Header>
             <Accordion.Body>
               <strong>
@@ -67,7 +67,7 @@ const ContactDetails = () => {
 
           <Accordion.Item eventKey='3'>
             <Accordion.Header>
-              <h6>For Mess Dues:</h6>
+              <h6 style={{fontSize:"1.5rem"}}>For Mess Dues:</h6>
             </Accordion.Header>
             <Accordion.Body>
               <BiMailSend />
@@ -82,7 +82,7 @@ const ContactDetails = () => {
 
           <Accordion.Item eventKey='4'>
             <Accordion.Header>
-              <h6>For Hostel Dues</h6>
+              <h6 style={{fontSize:"1.5rem"}}>For Hostel Dues</h6>
             </Accordion.Header>
             <Accordion.Body>
               <strong>
@@ -102,7 +102,7 @@ const ContactDetails = () => {
 
           <Accordion.Item eventKey='5'>
             <Accordion.Header>
-              <h6>For AMS/Academics Dues </h6>
+              <h6 style={{fontSize:"1.5rem"}}>For AMS/Academics Dues </h6>
             </Accordion.Header>
             <Accordion.Body>
               <strong>
@@ -122,7 +122,7 @@ const ContactDetails = () => {
 
           <Accordion.Item eventKey='6'>
             <Accordion.Header>
-              <h6>For Sports Dues</h6>
+              <h6 style={{fontSize:"1.5rem"}}>For Sports Dues</h6>
             </Accordion.Header>
             <Accordion.Body>
               <strong>
@@ -142,7 +142,7 @@ const ContactDetails = () => {
 
           <Accordion.Item eventKey='7'>
             <Accordion.Header>
-              <h6>For Exam cell related queries</h6>
+              <h6 style={{fontSize:"1.5rem"}}>For Exam cell related queries</h6>
             </Accordion.Header>
             <Accordion.Body>
               <strong>
