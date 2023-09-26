@@ -11,6 +11,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLoading } from "../context/SideContext";
+import { Alert } from "react-bootstrap";
+import { useAlert } from "../context/AlertMessageContext";
 const Login = () => {
   const navigate = useNavigate();
   const [roles, setRoles] = useState("student");
@@ -19,6 +21,8 @@ const Login = () => {
   const [newRegNo, setNewRegNo] = useState();
   const [password, setPassword] = useState();
   const [register, setRegister] = useState(false);
+  const [alert, setAlert] = useState();
+  const [showAlert, setShowAlert] = useState(false);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -40,6 +44,7 @@ const Login = () => {
   };
   const { token, setToken, isuserloggedin, setIsuserloggedin, role, setRole } =
     useAuth();
+  const { message, setMessage } = useAlert();
   const { loading, setLoading } = useLoading();
   // const { loading, setLoading } = useLoading();
   const handleSubmit = async (e) => {
@@ -67,6 +72,7 @@ const Login = () => {
       setToken(result.data.token);
       setIsuserloggedin(true);
       setRole(roles);
+      setMessage("Loggin In Successfully");
       navigate("/");
     } catch (e) {
       console.log(e);
@@ -90,6 +96,14 @@ const Login = () => {
     localStorage.clear();
     setIsuserloggedin(false);
   });
+
+  if (showAlert) {
+    return (
+      <Alert key='primary' variant='primary'>
+        This is a alert—check it out!
+      </Alert>
+    );
+  }
   return (
     <div className='login-full'>
       <div className='carousel-login'>

@@ -6,11 +6,17 @@ import { useLoading } from "../context/SideContext";
 import Spinner from "react-bootstrap/Spinner";
 
 import axios from "axios";
+import { Alert } from "react-bootstrap";
+import { useAlert } from "../context/AlertMessageContext";
 const Dash = () => {
+  const { message, setMessage } = useAlert();
   const [singleUser, setSingleUser] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [showMessage, setShowMessage] = useState(message);
   const { token, setToken, isuserloggedin, setIsuserloggedin, role } =
     useAuth();
   const { loading, setLoading } = useLoading();
+
   async function getUsers() {
     try {
       setLoading(true);
@@ -34,8 +40,15 @@ const Dash = () => {
     getUsers();
   }, []);
 
-  console.log(role);
+  useEffect(() => {
+    setTimeout(() => setOpen(false), 3000);
+  }, [open]);
 
+  useEffect(() => setOpen(true), []);
+  console.log(role);
+  if (open) {
+    return <Alert />;
+  }
   if (loading) {
     return (
       <Spinner

@@ -113,3 +113,7 @@ select {
 .login-p:hover::after {
   width: 100%;
 }
+.css-wnkddu-MuiPaper-root-MuiAlert-root {
+  position: absolute;
+  z-index: 100000;
+}
