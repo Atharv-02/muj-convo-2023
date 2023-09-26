@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 const CommForm = ({ singleUser }) => {
   const { token, setToken, isuserloggedin, setIsuserloggedin } = useAuth();
+  const [showBtn, setShowBtn] = useState(true);
   const [formData, setFormData] = useState({
     country: singleUser.country || "",
     phone: singleUser.phone || "",
@@ -22,11 +23,25 @@ const CommForm = ({ singleUser }) => {
     aadhar_back_picture: singleUser.adhar_back_picture || "",
     cancel_check: singleUser.cancel_check || "",
   });
+  useEffect(() => {
+    console.log(formData);
+    Object.keys(formData).map((data) => {
+      if (formData[data].length <= 0) {
+        setShowBtn(false);
+      }
+    });
+    Object.keys(formData).map((data) => {
+      if (formData[data].length > 0) {
+        setShowBtn(true);
+      }
+    });
+  }, [formData]);
   const handleChange = (e) => {
     console.log(e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       console.log(formData);
       const response = await axios.post(
@@ -136,6 +151,7 @@ const CommForm = ({ singleUser }) => {
                   required
                 />
               </div>
+
               <div className='comm-inp'>
                 <input
                   name='pincode'
@@ -307,14 +323,19 @@ const CommForm = ({ singleUser }) => {
                 <button
                   className='btn btn-outline-secondary'
                   type='button'
-                  onClick={() => openCloudWidget("cancelled_check")}
+                  onClick={() => openCloudWidget("cancel_check")}
                 >
                   Select Image
                 </button>
               </div>
             </div>
+
             <div className='save-btn'>
-              <button className='btn btn-outline-dark' onClick={handleSubmit}>
+              <button
+                className='btn btn-outline-dark'
+                disabled={!showBtn}
+                onClick={handleSubmit}
+              >
                 Save Details
               </button>
             </div>

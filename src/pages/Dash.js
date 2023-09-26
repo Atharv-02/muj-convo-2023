@@ -59,11 +59,21 @@ const Dash = () => {
     );
   } else if (role == "student") {
     return (
-      <DashStudent singleUser={singleUser} setSingleUser={setSingleUser} />
+      <DashStudent
+        singleUser={singleUser}
+        setSingleUser={setSingleUser}
+        getUsers={getUsers}
+      />
     );
   } else if (role == "department") {
     console.log("department");
-    return <DepDash singleUser={singleUser} setSingleUser={setSingleUser} />;
+    return (
+      <DepDash
+        singleUser={singleUser}
+        setSingleUser={setSingleUser}
+        getUsers={getUsers}
+      />
+    );
   }
 };
 

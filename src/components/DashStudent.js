@@ -8,9 +8,11 @@ import axios from "axios";
 import Feedback from "../pages/Feedback";
 import SavedDetails from "./SavedDetails";
 import EditDetailsForm from "./EditDetailsform";
-const DashStudent = ({ singleUser, setSingleUser }) => {
+const DashStudent = ({ singleUser, setSingleUser, getUsers }) => {
   const [editForm, setEditForm] = useState(false);
   const [feedback, setFeedback] = useState(singleUser.feedbackGiven);
+  const [detailsSubmitted] = useState(true);
+
   return (
     <>
       {!feedback ? (
@@ -20,6 +22,7 @@ const DashStudent = ({ singleUser, setSingleUser }) => {
           singleUser={singleUser}
           editForm={editForm}
           setEditForm={setEditForm}
+          setSingleUser={setSingleUser}
         />
       ) : (
         <>

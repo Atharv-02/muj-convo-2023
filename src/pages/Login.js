@@ -13,7 +13,10 @@ import { useAuth } from "../context/AuthContext";
 import { useLoading } from "../context/SideContext";
 import { Alert } from "react-bootstrap";
 import { useAlert } from "../context/AlertMessageContext";
+import Alerts from "../components/Alert";
 const Login = () => {
+  const { message, setMessage } = useAlert();
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const [roles, setRoles] = useState("student");
   const [email, setEmail] = useState("");
@@ -23,6 +26,7 @@ const Login = () => {
   const [register, setRegister] = useState(false);
   const [alert, setAlert] = useState();
   const [showAlert, setShowAlert] = useState(false);
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -44,7 +48,6 @@ const Login = () => {
   };
   const { token, setToken, isuserloggedin, setIsuserloggedin, role, setRole } =
     useAuth();
-  const { message, setMessage } = useAlert();
   const { loading, setLoading } = useLoading();
   // const { loading, setLoading } = useLoading();
   const handleSubmit = async (e) => {
@@ -75,6 +78,8 @@ const Login = () => {
       setRole(roles);
       navigate("/");
     } catch (e) {
+      setMessage(e.response.data.error);
+      setOpen(true);
       console.log(e);
     }
   };
@@ -97,132 +102,135 @@ const Login = () => {
     setIsuserloggedin(false);
   });
 
-  if (showAlert) {
-    return (
-      <Alert key='primary' variant='primary'>
-        This is a alert—check it out!
-      </Alert>
-    );
-  }
-  return (
-    <div className='login-full'>
-      <div className='carousel-login'>
-        <Carousel
-          responsive={responsive}
-          showDots
-          arrows={false}
-          autoPlay
-          autoPlaySpeed={3000}
-          infinite
-          pauseOnHover={false}
-        >
-          <div>
-            <img src={img4} alt='' />
-          </div>
-          <div>
-            <img src={img2} alt='' />
-          </div>
-          <div>
-            <img src={img1} alt='' />
-          </div>
-          <div>
-            <img src={img3} alt='' />
-          </div>
-        </Carousel>
-      </div>
+  useEffect(() => {
+    const timer1 = setTimeout(() => setOpen(false), 3000);
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [open]);
 
-      <div className='login-txt'>
-        <div className='all-txt'>
-          <h1>Registrations are now open!</h1>
-          <p>Your passwords will be sent on the official e-mail id. </p>
-          {!register ? (
-            <>
-              <form>
-                <div className='container'>
-                  <select
-                    name=''
-                    id=''
-                    value={roles}
-                    onChange={(e) => setRoles(e.target.value)}
-                  >
-                    <option value='student'>Student</option>
-                    <option value='department'>Department</option>
-                  </select>
-                </div>
-                <div className='container'>
-                  {roles == "student" ? (
+  return (
+    <>
+      {open ? <Alerts variant={"danger"} /> : null}
+      <div className='login-full'>
+        <div className='carousel-login'>
+          <Carousel
+            responsive={responsive}
+            showDots
+            arrows={false}
+            autoPlay
+            autoPlaySpeed={3000}
+            infinite
+            pauseOnHover={false}
+          >
+            <div>
+              <img src={img4} alt='' />
+            </div>
+            <div>
+              <img src={img2} alt='' />
+            </div>
+            <div>
+              <img src={img1} alt='' />
+            </div>
+            <div>
+              <img src={img3} alt='' />
+            </div>
+          </Carousel>
+        </div>
+
+        <div className='login-txt'>
+          <div className='all-txt'>
+            <h1>Registrations are now open!</h1>
+            <p>Your passwords will be sent on the official e-mail id. </p>
+            {!register ? (
+              <>
+                <form>
+                  <div className='container'>
+                    <select
+                      name=''
+                      id=''
+                      value={roles}
+                      onChange={(e) => setRoles(e.target.value)}
+                    >
+                      <option value='student'>Student</option>
+                      <option value='department'>Department</option>
+                    </select>
+                  </div>
+                  <div className='container'>
+                    {roles == "student" ? (
+                      <input
+                        type='number'
+                        placeholder='Registration No'
+                        value={regNo}
+                        onChange={(e) => setRegNo(e.target.value)}
+                      />
+                    ) : (
+                      <input
+                        type='email'
+                        placeholder='Email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    )}
+                  </div>
+                  <div className='container'>
+                    <input
+                      type='password'
+                      placeholder='Password'
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className='container sub-btn-container'>
+                    <button
+                      className='btn-all login-btn'
+                      type='submit'
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+                <p className='login-p' onClick={() => setRegister(true)}>
+                  Don’t have an account?
+                  <span> Register Now</span>
+                </p>
+              </>
+            ) : (
+              <>
+                <form>
+                  <div className='container'>
                     <input
                       type='number'
                       placeholder='Registration No'
-                      value={regNo}
-                      onChange={(e) => setRegNo(e.target.value)}
+                      value={newRegNo}
+                      onChange={(e) => setNewRegNo(e.target.value)}
                     />
-                  ) : (
-                    <input
-                      type='email'
-                      placeholder='Email'
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  )}
-                </div>
-                <div className='container'>
-                  <input
-                    type='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className='container sub-btn-container'>
-                  <button
-                    className='btn-all login-btn'
-                    type='submit'
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-              <p className='login-p' onClick={() => setRegister(true)}>
-                Don’t have an account?
-                <span> Register Now</span>
-              </p>
-            </>
-          ) : (
-            <>
-              <form>
-                <div className='container'>
-                  <input
-                    type='number'
-                    placeholder='Registration No'
-                    value={newRegNo}
-                    onChange={(e) => setNewRegNo(e.target.value)}
-                  />
-                </div>
+                  </div>
 
-                <div className='container sub-btn-container'>
-                  <button
-                    className='btn-all login-btn'
-                    type='submit'
-                    onClick={handleRegisterSubmit}
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-              <p className='login-p' onClick={() => setRegister(false)}>
-                Already have an account?
-                <span> Login Now</span>
-              </p>
-            </>
-          )}
+                  <div className='container sub-btn-container'>
+                    <button
+                      className='btn-all login-btn'
+                      type='submit'
+                      onClick={handleRegisterSubmit}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+                <p className='login-p' onClick={() => setRegister(false)}>
+                  Already have an account?
+                  <span> Login Now</span>
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+        <div className='wh-curve'>
+          <img src={curve} alt='' className='curve' />
         </div>
       </div>
-      <div className='wh-curve'>
-        <img src={curve} alt='' className='curve' />
-      </div>
-    </div>
+    </>
   );
 };
 
