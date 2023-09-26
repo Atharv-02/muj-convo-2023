@@ -114,6 +114,18 @@ const CommForm = ({ singleUser }) => {
               </div>
               <div className="comm-inp">
                 <input
+                  name="district"
+                  type="text"
+                  className="form-control"
+                  placeholder="District"
+                  id="district"
+                  value={formData.district}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="comm-inp">
+                <input
                   name="country"
                   type="text"
                   className="form-control"
