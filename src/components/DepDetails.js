@@ -1,14 +1,10 @@
 import React from "react";
-import graduationLogo from "../assets/Graduation_Logo.png";
+import LOGO from "../assets/LOGO.png";
 
 const DepDetails = ({ student, setStudent }) => {
   return (
     <div className='detailsPage'>
-      <img
-        src={graduationLogo}
-        alt='admin-img'
-        className='graduationLogo'
-      ></img>
+      <img src={LOGO} alt='' className='LOGONEW' />
 
       <div>
         <h5>Student Details</h5>

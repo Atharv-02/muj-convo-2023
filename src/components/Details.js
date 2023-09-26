@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import randomize from "randomatic";
+import LOGO from "../assets/LOGO.png"
 const PAYU_MERCHANT_KEY = "kqfd6O";
 const PAYU_SALT_KEY = "n0Qpybgx";
 
@@ -213,6 +214,10 @@ const Details = ({ singleUser }) => {
         </div>
         <br />
         <br />
+        <div>
+        <img src={LOGO} alt='' className='LOGONEW' />
+        </div>
+
 
         {inPerson && (
           <>
