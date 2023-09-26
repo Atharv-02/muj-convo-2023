@@ -69,10 +69,10 @@ const Login = () => {
         });
         localStorage.setItem("login", stringifieddata);
       }
+      setMessage("Loggin In Successfully");
       setToken(result.data.token);
       setIsuserloggedin(true);
       setRole(roles);
-      setMessage("Loggin In Successfully");
       navigate("/");
     } catch (e) {
       console.log(e);

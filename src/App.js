@@ -9,32 +9,43 @@ import FAQPage from "./pages/FAQ";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Alert } from "@mui/material";
+import { useEffect } from "react";
 function App() {
+  useEffect(() => {
+    {
+      // window.onbeforeunload = function () {
+      //   localStorage.clear();
+      //   return "";
+      // };
+    }
+  }, []);
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route
-          path='/'
-          element={
-            <Protected>
-              <Dash />
-            </Protected>
-          }
-        />
-        <Route
-          path='/feedback'
-          element={
-            <Protected>
-              <Feedback />
-            </Protected>
-          }
-        />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/faq' element={<FAQPage />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route
+            path='/'
+            element={
+              <Protected>
+                <Dash />
+              </Protected>
+            }
+          />
+          <Route
+            path='/feedback'
+            element={
+              <Protected>
+                <Feedback />
+              </Protected>
+            }
+          />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/faq' element={<FAQPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

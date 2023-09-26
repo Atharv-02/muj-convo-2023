@@ -6,7 +6,7 @@ import { useLoading } from "../context/SideContext";
 import Spinner from "react-bootstrap/Spinner";
 
 import axios from "axios";
-import Alert from "../components/Alert";
+import Alerts from "../components/Alert";
 import { useAlert } from "../context/AlertMessageContext";
 const Dash = () => {
   const { message, setMessage } = useAlert();
@@ -41,13 +41,13 @@ const Dash = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => setOpen(false), 10000);
+    setTimeout(() => setOpen(false), 3000);
   }, [open]);
 
   useEffect(() => setOpen(true), []);
   console.log(role);
   if (open) {
-    return <Alert />;
+    return <Alerts />;
   }
   if (loading) {
     return (
