@@ -13,7 +13,7 @@ const DashStudent = ({ singleUser, setSingleUser }) => {
   const [feedback, setFeedback] = useState(singleUser.feedbackGiven);
   return (
     <>
-      {!singleUser.feedbackGiven ? (
+      {!feedback ? (
         <Feedback setFeedback={setFeedback} />
       ) : editForm ? (
         <EditDetailsForm
