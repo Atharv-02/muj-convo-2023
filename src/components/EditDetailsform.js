@@ -40,13 +40,24 @@ const EditDetailsform = ({
     aadhar_back_picture: singleUser.aadhar_back_picture,
     cancel_check: singleUser.cancel_check,
   });
-  const [showBtnsetShowBtn] = useState(false);
 
   const handleChange = (e) => {
     console.log(e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  useEffect(() => {
+    console.log(formData);
+    Object.keys(formData).map((data) => {
+      if (formData[data].length <= 0) {
+        setShowBtn(false);
+      }
+    });
+    Object.keys(formData).map((data) => {
+      if (formData[data].length > 0) {
+        setShowBtn(true);
+      }
+    });
+  }, [formData]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -395,6 +406,7 @@ const EditDetailsform = ({
                       }}
                       variant='contained'
                       type='submit'
+                      disabled={!showBtn}
                       onClick={handleSubmit}
                     >
                       <span style={{ fontSize: "1.1rem" }}>Save Details</span>
