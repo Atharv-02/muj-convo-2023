@@ -12,6 +12,7 @@ const DepDash = ({ singleUser, setSingleUser }) => {
     student_name: "",
     faculty: "",
     specialization: "",
+    reg_no: "",
   });
   const [dues, setDues] = useState([{}]);
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,8 @@ const DepDash = ({ singleUser, setSingleUser }) => {
                 setDues={setDues}
                 loading={loading}
                 setLoading={setLoading}
+                student={student}
+                setStudent={setStudent}
               />
             </div>
           </div>
