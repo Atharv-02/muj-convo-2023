@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Snackbar } from "@mui/material";
+
+import { useAlert } from "../context/AlertMessageContext";
 const Alert = () => {
+  const { message, setMessage } = useAlert();
   return (
-    <Snackbar open={true} autoHideDuration={1000}>
-      <Alert onClose={handleClose} severity='success' sx={{ width: "100%" }}>
-        This is a success message!
-      </Alert>
-    </Snackbar>
+    <Alert severity='success' sx={{ width: "100%" }}>
+      {message} jcbjcdbjb
+    </Alert>
   );
 };
 
