@@ -29,7 +29,7 @@ const Dash = () => {
         }
       );
       setSingleUser(response.data.data);
-      // console.log(response);
+      console.log(response);
       setLoading(false);
     } catch (e) {
       // console.log(e);

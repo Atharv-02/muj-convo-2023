@@ -10,7 +10,7 @@ const Alerts = ({ variant }) => {
         variant={variant}
         style={{
           position: "fixed",
-          top: "80px",
+          top: "90px",
           width: "auto",
           left: "30%",
           zIndex: "1000000",

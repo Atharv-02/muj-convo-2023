@@ -3,16 +3,18 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import randomize from "randomatic";
 import LOGO from "../assets/LOGO.png";
+import Alerts from "./Alert";
+import { useAlert } from "../context/AlertMessageContext";
 const PAYU_MERCHANT_KEY = "kqfd6O";
 const PAYU_SALT_KEY = "n0Qpybgx";
-
 const Details = ({ singleUser }) => {
   const [companions, setCompanions] = useState("");
+  const [open, setOpen] = useState(false);
   const [attending, setAttending] = useState();
   const [selectTerms, setSelectTerms] = useState(false);
   const [inPerson, setInPerson] = useState(true);
   const [paid, setPaid] = useState(singleUser.is_paid);
-
+  const { message, setMessage } = useAlert();
   const handleChange = (e) => {
     e.target.value === "inPerson" ? setInPerson(true) : setInPerson(false);
     setAttending(e.target.value);
@@ -131,9 +133,9 @@ const Details = ({ singleUser }) => {
                     reg_no: singleUser.reg_no,
                     paymentId: response.response.payuMoneyId,
                     companions: companions,
+                    date: "25th November",
                   }
                 );
-                console.log(data1);
               } else {
                 const data1 = await axios.put(
                   `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
@@ -141,10 +143,13 @@ const Details = ({ singleUser }) => {
                     reg_no: singleUser.reg_no,
                     paymentId: response.response.payuMoneyId,
                     companions: 0,
+                    date: "",
                   }
                 );
-                console.log(data1);
               }
+              setMessage(
+                "Please check your mailbox fro registration confirmation"
+              );
               setPaid(true);
             } catch (err) {
               console.log(err);
@@ -158,8 +163,13 @@ const Details = ({ singleUser }) => {
     });
   };
 
+  useEffect(() => {
+    setTimeout(() => setOpen(false), 3000);
+  }, [open]);
+
   return (
     <div className='dash-main-left'>
+      {open ? <Alerts variant={"success"} /> : null}
       <div className='dash-left-div'>
         <h2 className='dash-details-head '>Student Details</h2>
         <div className='table-responsive dash-table-div'>
