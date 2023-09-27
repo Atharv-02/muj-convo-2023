@@ -1,5 +1,5 @@
 import bigVector from "../assets/big-wave.png";
-import testV from "../assets/VECTOR_t.svg"
+import testV from "../assets/v-big-wave.png"
 import FeedBackForm from "../components/FeedackForm";
 import "../style/feedback.css";
 
