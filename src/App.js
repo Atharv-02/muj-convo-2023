@@ -13,10 +13,10 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     {
-      // window.onbeforeunload = function () {
-      //   localStorage.clear();
-      //   return "";
-      // };
+      window.onbeforeunload = function () {
+        localStorage.clear();
+        return "";
+      };
     }
   }, []);
   return (
