@@ -24,7 +24,7 @@ const Details = ({ singleUser }) => {
   const pd_in = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1,
+    amount: 600,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -38,7 +38,7 @@ const Details = ({ singleUser }) => {
   const pd_out = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1,
+    amount: 1000,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -120,10 +120,11 @@ const Details = ({ singleUser }) => {
             body
           );
           console.log(res);
+          console.log(response.response.txnStatus);
           const data = res.data;
           const { success } = data;
           console.log(success);
-          if (success && response.response.txnStatus !== "CANCEL ") {
+          if (success && response.response.txnStatus !== "CANCEL") {
             try {
               console.log(attending);
               if (attending == "inPerson") {
@@ -148,7 +149,7 @@ const Details = ({ singleUser }) => {
                 );
               }
               setMessage(
-                "Please check your mailbox fro registration confirmation"
+                "Please check your mailbox for registration confirmation"
               );
               setOpen(true);
               setPaid(true);
