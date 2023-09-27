@@ -20,7 +20,7 @@ const questions = [
   {
     ques: "Graduate Year",
     ans: "",
-    type: "text",
+    type: "number",
     notEditable: true,
   },
   {
