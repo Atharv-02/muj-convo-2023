@@ -21,12 +21,12 @@ function App() {
   }, []);
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path='/login' element={<Login />} />
           <Route
-            path="/"
+            path='/'
             element={
               <Protected>
                 <Dash />
@@ -34,17 +34,18 @@ function App() {
             }
           />
           <Route
-            path="/feedback"
+            path='/feedback'
             element={
               <Protected>
                 <Feedback />
               </Protected>
             }
           />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<FAQPage />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/faq' element={<FAQPage />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      Site is down
     </>
   );
 }
