@@ -72,7 +72,7 @@ const Login = () => {
         });
         localStorage.setItem("login", stringifieddata);
       }
-      setMessage("Loggin In Successfully");
+      setMessage("Logged In Successfully");
       setToken(result.data.token);
       setIsuserloggedin(true);
       setRole(roles);

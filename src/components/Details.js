@@ -9,7 +9,7 @@ const PAYU_SALT_KEY = "n0Qpybgx";
 const Details = ({ singleUser }) => {
   const [companions, setCompanions] = useState("");
   const [attending, setAttending] = useState();
-
+  const [selectTerms, setSelectTerms] = useState(false);
   const [inPerson, setInPerson] = useState(true);
 
   const handleChange = (e) => {
@@ -305,8 +305,9 @@ const Details = ({ singleUser }) => {
           <input
             className='form-check-input'
             type='checkbox'
-            value=''
+            value='selected'
             id='infoCheck'
+            onChange={(e) => setSelectTerms(e.target.value)}
             style={{
               width: "30px",
               height: "30px",
@@ -330,8 +331,11 @@ const Details = ({ singleUser }) => {
               className='btn btn-dark dash-confirmBtn'
               onClick={handlePaymentClick}
               disabled={
-                (attending == "inPerson" && companions && singleUser.phone) ||
-                (attending == "courier" && singleUser.phone)
+                (attending == "inPerson" &&
+                  companions &&
+                  singleUser.phone &&
+                  selectTerms) ||
+                (attending == "courier" && singleUser.phone && selectTerms)
                   ? false
                   : true
               }

@@ -12,7 +12,9 @@ const ContactDetails = () => {
         <Accordion>
           <Accordion.Item eventKey='0'>
             <Accordion.Header>
-              <h6 style={{ fontSize: "1.5rem" }}>For Email Related Queries</h6>
+              <h6 style={{ fontSize: "1.5rem" }}>
+                For Email Id Related Queries
+              </h6>
             </Accordion.Header>
 
             <Accordion.Body>
@@ -70,11 +72,16 @@ const ContactDetails = () => {
               <h6 style={{ fontSize: "1.5rem" }}>For Mess Dues:</h6>
             </Accordion.Header>
             <Accordion.Body>
+              <strong>
+                Mr. Satish Adala, GHS <br />
+              </strong>
+              Mob: 6301683285
+              <br />
               <BiMailSend />
               <span>
                 Email:{" "}
                 <a href='' style={{ color: "red" }}>
-                  To be Updated Soon
+                  satish.adala@qmail.quesscorp.com
                 </a>
               </span>
             </Accordion.Body>
@@ -90,10 +97,6 @@ const ContactDetails = () => {
               </strong>
               Mob: 9467040958
               <br />
-              <BiMailSend />
-              <span>
-                Email: <a href='_'>_</a>
-              </span>
             </Accordion.Body>
           </Accordion.Item>
 
@@ -145,14 +148,35 @@ const ContactDetails = () => {
             </Accordion.Header>
             <Accordion.Body>
               <strong>
-                Mr. Bijendra Singhs
+                Mr. Bijendra Singh
                 <br />
               </strong>
               <BiMailSend />
               <span>
                 Email:{" "}
                 <a href='mailto:it.support@jaipur.manipal.edu'>
-                  it.support@jaipur.manipal.edu
+                  brijendra.singh@jaipur.manipal.edu
+                </a>
+              </span>
+            </Accordion.Body>
+          </Accordion.Item>
+
+          <Accordion.Item eventKey='8'>
+            <Accordion.Header>
+              <h6 style={{ fontSize: "1.5rem" }}>For Any Other Queries</h6>
+            </Accordion.Header>
+            <Accordion.Body>
+              <strong>
+                Dr. Vaishali Yadav
+                <br />
+              </strong>
+              Mob: 8386069007
+              <br />
+              <BiMailSend />
+              <span>
+                Email:{" "}
+                <a href='mailto:it.support@jaipur.manipal.edu'>
+                  vaishali.yadav@jaipur.manipal.edu
                 </a>
               </span>
             </Accordion.Body>

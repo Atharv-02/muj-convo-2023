@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
-const CommForm = ({ singleUser }) => {
+const CommForm = ({ singleUser, setSingleUser }) => {
   const { token, setToken, isuserloggedin, setIsuserloggedin } = useAuth();
-  const [showBtn, setShowBtn] = useState(true);
+  const [showBtn, setShowBtn] = useState(false);
   const [formData, setFormData] = useState({
     country: singleUser.country || "",
     phone: singleUser.phone || "",
@@ -24,17 +24,15 @@ const CommForm = ({ singleUser }) => {
     cancel_check: singleUser.cancel_check || "",
   });
   useEffect(() => {
-    console.log(formData);
-    Object.keys(formData).map((data) => {
-      if (formData[data].length <= 0) {
-        setShowBtn(false);
-      }
+    console.log("use effect runs");
+    const c = Object.keys(formData).find((element) => {
+      return formData[element].length <= 0;
     });
-    Object.keys(formData).map((data) => {
-      if (formData[data].length > 0) {
-        setShowBtn(true);
-      }
-    });
+    if (c) {
+      setShowBtn(false);
+    } else {
+      setShowBtn(true);
+    }
   }, [formData]);
   const handleChange = (e) => {
     console.log(e.target.name);
@@ -54,6 +52,7 @@ const CommForm = ({ singleUser }) => {
         }
       );
       console.log(response);
+      setSingleUser(response.data.data);
     } catch (e) {
       console.log(e);
     }
@@ -191,7 +190,7 @@ const CommForm = ({ singleUser }) => {
             </div>
           </div>
           <div className='refund-div'>
-            <h2>Refund Details</h2>
+            <h2>Details for Caution Money Refund</h2>
 
             <div className='refund-inp-div'>
               <div className='refund-inp'>
@@ -261,7 +260,7 @@ const CommForm = ({ singleUser }) => {
                   type='text'
                   className='form-control'
                   placeholder='IFSC Code'
-                  id='IFSC'
+                  id='ifsc_code'
                   value={formData.ifsc_code}
                   onChange={handleChange}
                   required
