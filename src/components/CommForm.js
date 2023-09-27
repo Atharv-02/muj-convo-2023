@@ -24,11 +24,18 @@ const CommForm = ({ singleUser, setSingleUser }) => {
     cancel_check: singleUser.cancel_check || "",
   });
   useEffect(() => {
+    let c = 0;
     console.log("use effect runs");
-    const c = Object.keys(formData).find((element) => {
-      return formData[element].length <= 0;
+    Object.keys(formData).map((element) => {
+      console.log(element);
+      if (formData[element].length <= 0) {
+        c = 1;
+      }
+      if (element === "phone" && formData[element].length !== 10) {
+        c = 1;
+      }
     });
-    if (c) {
+    if (c === 1) {
       setShowBtn(false);
     } else {
       setShowBtn(true);

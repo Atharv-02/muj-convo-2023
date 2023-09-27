@@ -58,7 +58,7 @@ const FeedBackForm = ({ setFeedback }) => {
           {questions.map((ques, index) => {
             return (
               <>
-                <div className='ques-div' key={index}>
+                <div className="ques-div" key={index}>
                   <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
                     {index + 1}
                     {". "}
@@ -67,13 +67,13 @@ const FeedBackForm = ({ setFeedback }) => {
                   {ques.type === "radio" ? (
                     <>
                       <FormControl>
-                        <FormLabel id='demo-row-radio-buttons-group-label'>
+                        <FormLabel id="demo-row-radio-buttons-group-label">
                           Answer
                         </FormLabel>
                         <RadioGroup
                           required
                           row
-                          aria-labelledby='demo-row-radio-buttons-group-label'
+                          aria-labelledby="demo-row-radio-buttons-group-label"
                           name={index}
                           value={data[index].ans}
                           onChange={handleChange}
@@ -98,12 +98,12 @@ const FeedBackForm = ({ setFeedback }) => {
                       fullWidth
                       required
                       name={index}
-                      variant='outlined'
+                      variant="outlined"
                       type={ques.type}
                       value={data[index].ans}
                       onChange={handleChange}
-                      placeholder='Answer'
-                      label='Required'
+                      placeholder="Answer"
+                      label="Required"
                     />
                   )}
                 </div>
@@ -118,8 +118,8 @@ const FeedBackForm = ({ setFeedback }) => {
               color: "#fff",
               fontWeight: "bold",
             }}
-            variant='contained'
-            type='submit'
+            variant="contained"
+            type="submit"
             onClick={handleSubmit}
           >
             <span style={{ fontSize: "1.1rem" }}>
