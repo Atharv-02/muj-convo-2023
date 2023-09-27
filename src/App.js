@@ -45,7 +45,7 @@ function App() {
           <Route path='/faq' element={<FAQPage />} />
         </Routes>
       </BrowserRouter> */}
-      Site is down
+      Site is down for maintainance
     </>
   );
 }
