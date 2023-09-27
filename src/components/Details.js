@@ -24,7 +24,7 @@ const Details = ({ singleUser }) => {
   const pd_in = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 600,
+    amount: 1,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -38,7 +38,7 @@ const Details = ({ singleUser }) => {
   const pd_out = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1000,
+    amount: 1,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -123,7 +123,7 @@ const Details = ({ singleUser }) => {
           const data = res.data;
           const { success } = data;
           console.log(success);
-          if (success) {
+          if (success && response.response.txnStatus !== "CANCEL ") {
             try {
               console.log(attending);
               if (attending == "inPerson") {
