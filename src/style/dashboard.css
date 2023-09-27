@@ -192,10 +192,19 @@
 }
 
 .right-div {
+  width: 50%;
   padding-top: 10px;
+  /* padding: 10px 100px; */
+  display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.comm-div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .comm-inp,
@@ -203,13 +212,27 @@
   margin-top: 35px;
 }
 .refund-div {
-  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
 }
 .refund-inp-div {
-  margin-top: 30px;
-  width: 100%;
+  /* margin-top: px; */
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.comm-inp-div {
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 30px; */
+  width: 75%;
 }
 .save-btn {
+  display: flex;
+  justify-content: center;
   margin: 15%;
 }
 
@@ -271,7 +294,7 @@
   }
 }
 
-.LOGONEW{
-  max-width: 50% ;
-  margin: 10px 180px ;
+.LOGONEW {
+  max-width: 50%;
+  margin: 10px 180px;
 }
