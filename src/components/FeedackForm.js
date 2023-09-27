@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import questions from "./questions";
 import {
   FormGroup,
@@ -16,11 +16,11 @@ import { Navigate } from "react-router-dom";
 const FeedBackForm = ({ setFeedback }) => {
   const { token, setToken, isuserloggedin, setIsuserloggedin, role, setRole } =
     useAuth();
-  const [loading, setLoading] = useState(false);
+  const [showBtn, setShowBtn] = useState(false);
   const [data, setData] = useState(questions);
-  console.log(data);
+  // console.log(data);
   const handleChange = (e) => {
-    console.log(e.target.name);
+    // console.log(e.target.name);
     const c = data.map((ques, index) => {
       if (index == e.target.name) {
         return { ...ques, ans: e.target.value };
@@ -28,9 +28,25 @@ const FeedBackForm = ({ setFeedback }) => {
         return { ...ques };
       }
     });
-    console.log(c);
+    // console.log(c);
     setData(c);
   };
+  useEffect(() => {
+    let c = 0;
+    data.map((element) => {
+      // console.log(element.ans.length);
+      if (element.ans.length <= 0) {
+        c = 1;
+      }
+    });
+
+    if (c === 1) {
+      setShowBtn(false);
+    } else {
+      setShowBtn(true);
+    }
+  }, [data]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -43,13 +59,13 @@ const FeedBackForm = ({ setFeedback }) => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       setFeedback(true);
     } catch (e) {
       console.log(e);
     }
   };
-  console.log(data);
+  // console.log(data);
   return (
     <FormGroup>
       <h2 style={{ textAlign: "center" }}>Feedback Form</h2>
@@ -121,10 +137,9 @@ const FeedBackForm = ({ setFeedback }) => {
             variant="contained"
             type="submit"
             onClick={handleSubmit}
+            disabled={!showBtn}
           >
-            <span style={{ fontSize: "1.1rem" }}>
-              {loading ? "Loading..." : "Submit"}
-            </span>
+            <span style={{ fontSize: "1.1rem" }}>Submit</span>
           </Button>
         </div>
       </form>

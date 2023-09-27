@@ -29,10 +29,10 @@ const Dash = () => {
         }
       );
       setSingleUser(response.data.data);
-      console.log(response);
+      // console.log(response);
       setLoading(false);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       setIsuserloggedin(false);
     }
   }
@@ -45,7 +45,7 @@ const Dash = () => {
   }, [open]);
 
   useEffect(() => setOpen(true), []);
-  console.log(role);
+  // console.log(role);
   if (open) {
     return <Alerts />;
   }
@@ -66,7 +66,7 @@ const Dash = () => {
       />
     );
   } else if (role == "department") {
-    console.log("department");
+    // console.log("department");
     return (
       <DepDash
         singleUser={singleUser}

@@ -42,14 +42,14 @@ const EditDetailsform = ({
   });
 
   const handleChange = (e) => {
-    console.log(e.target.name);
+    // console.log(e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   useEffect(() => {
     let i = 0;
     // console.log(formData);
     Object.keys(formData).map((data) => {
-      console.log(data);
+      // console.log(data);
       if (formData[data].length <= 0) {
         i = 1;
         // setShowBtn(false);
@@ -82,7 +82,7 @@ const EditDetailsform = ({
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       setSingleUser(response.data.data);
       setEditForm(false);
     } catch (e) {
@@ -117,7 +117,8 @@ const EditDetailsform = ({
                 cancel_check: result.info.secure_url,
               });
             }
-            console.log(formData);
+            // console.log(formData);
+
             // setFieldValue("photo", result.info.secure_url);
           }
         }
