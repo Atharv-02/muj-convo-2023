@@ -21,7 +21,7 @@ function App() {
   }, []);
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path='/login' element={<Login />} />
@@ -44,7 +44,8 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/faq' element={<FAQPage />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      Site is down for maintainance
     </>
   );
 }
