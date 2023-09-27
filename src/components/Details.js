@@ -24,7 +24,7 @@ const Details = ({ singleUser }) => {
   const pd_in = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1,
+    amount: 600,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -38,7 +38,7 @@ const Details = ({ singleUser }) => {
   const pd_out = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1,
+    amount: 1000,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -133,7 +133,7 @@ const Details = ({ singleUser }) => {
                     reg_no: singleUser.reg_no,
                     paymentId: response.response.payuMoneyId,
                     companions: companions,
-                    date: "25th November",
+                    day: "25th November",
                   }
                 );
               } else {
@@ -143,13 +143,14 @@ const Details = ({ singleUser }) => {
                     reg_no: singleUser.reg_no,
                     paymentId: response.response.payuMoneyId,
                     companions: 0,
-                    date: "",
+                    day: "",
                   }
                 );
               }
               setMessage(
                 "Please check your mailbox fro registration confirmation"
               );
+              setOpen(true);
               setPaid(true);
             } catch (err) {
               console.log(err);
