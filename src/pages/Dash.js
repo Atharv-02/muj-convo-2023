@@ -47,7 +47,7 @@ const Dash = () => {
   useEffect(() => setOpen(true), []);
   // console.log(role);
   if (open) {
-    return <Alerts />;
+    return <Alerts variant={"success"} />;
   }
   if (loading) {
     return (
