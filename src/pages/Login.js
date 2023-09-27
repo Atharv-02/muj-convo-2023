@@ -17,6 +17,7 @@ import Alerts from "../components/Alert";
 const Login = () => {
   const { message, setMessage } = useAlert();
   const [open, setOpen] = useState(false);
+  const [variant, setVariant] = useState("danger");
   const navigate = useNavigate();
   const [roles, setRoles] = useState("student");
   const [email, setEmail] = useState("");
@@ -79,6 +80,7 @@ const Login = () => {
       navigate("/");
     } catch (e) {
       setMessage(e.response.data.error);
+      setVariant("danger");
       setOpen(true);
       console.log(e);
     }
@@ -93,7 +95,14 @@ const Login = () => {
       );
       console.log(result);
       setRegister(false);
+      setOpen(true);
+      setVariant("success");
+      setMessage("Registered Successfully");
+      setNewRegNo("");
     } catch (error) {
+      setOpen(true);
+      setVariant("danger");
+      setMessage(error.response.data.error);
       console.log(error);
     }
   };
@@ -111,7 +120,7 @@ const Login = () => {
 
   return (
     <>
-      {open ? <Alerts variant={"danger"} /> : null}
+      {open ? <Alerts variant={variant} /> : null}
       <div className='login-full'>
         <div className='carousel-login'>
           <Carousel
