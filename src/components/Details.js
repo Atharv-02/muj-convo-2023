@@ -21,7 +21,7 @@ const Details = ({ singleUser }) => {
   const pd_in = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1,
+    amount: 1000,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -35,7 +35,7 @@ const Details = ({ singleUser }) => {
   const pd_out = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 2,
+    amount: 600,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -151,15 +151,15 @@ const Details = ({ singleUser }) => {
   };
 
   return (
-    <div className='dash-main-left'>
-      <div className='dash-left-div'>
-        <h2 className='dash-details-head '>Student Details</h2>
-        <div className='table-responsive dash-table-div'>
-          <table className='dash-deet-table table table-striped table-borderless'>
+    <div className="dash-main-left">
+      <div className="dash-left-div">
+        <h2 className="dash-details-head ">Student Details</h2>
+        <div className="table-responsive dash-table-div">
+          <table className="dash-deet-table table table-striped table-borderless">
             <tbody>
-              <tr className='table-dark'>
-                <th scope='col'>Field</th>
-                <th scope='col'>Details</th>
+              <tr className="table-dark">
+                <th scope="col">Field</th>
+                <th scope="col">Details</th>
               </tr>
               {/* {Object.keys(user).forEach((key) => {
               return (
@@ -215,28 +215,28 @@ const Details = ({ singleUser }) => {
         <br />
         <br />
         <div>
-          <img src={LOGO} alt='' className='LOGONEW' />
+          <img src={LOGO} alt="" className="LOGONEW" />
         </div>
 
         {inPerson && (
           <>
-            <div className='dash-left-companions-div'>
-              <p className='dash-companions'>
+            <div className="dash-left-companions-div">
+              <p className="dash-companions">
                 <strong>Choose no. of companions attending with you</strong>
               </p>
               <select
-                name='companions'
-                id='companions'
+                name="companions"
+                id="companions"
                 value={companions}
-                className='form-select companions-select'
+                className="form-select companions-select"
                 onChange={(e) => setCompanions(e.target.value)}
               >
-                <option value='' disabled selected>
+                <option value="" disabled selected>
                   Select
                 </option>
-                <option value='0'>0</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
               </select>
             </div>
 
@@ -244,20 +244,20 @@ const Details = ({ singleUser }) => {
             <br />
           </>
         )}
-        <div className='dash-attendDiv'>
+        <div className="dash-attendDiv">
           <p>
             <strong>Will you be attending the convocation In-Person? </strong>
           </p>
           <div
-            className='form-check'
+            className="form-check"
             style={{ display: "flex", alignItems: "center", margin: "5px 0" }}
           >
             <input
-              className='form-check-input'
-              type='radio'
-              name='attend'
-              value='inPerson'
-              id='inPerson'
+              className="form-check-input"
+              type="radio"
+              name="attend"
+              value="inPerson"
+              id="inPerson"
               onChange={handleChange}
               style={{
                 width: "30px",
@@ -266,7 +266,7 @@ const Details = ({ singleUser }) => {
                 borderColor: "lightgray",
               }}
             />
-            <label className='form-check-label' htmlFor='inPerson'>
+            <label className="form-check-label" htmlFor="inPerson">
               I will collect degree certificate in Person.
             </label>
           </div>
@@ -274,15 +274,15 @@ const Details = ({ singleUser }) => {
         <label htmlFor="inPerson"> I will collect degree certificate in Person.</label> */}
 
           <div
-            className='form-check'
+            className="form-check"
             style={{ display: "flex", alignItems: "center", margin: "5px 0" }}
           >
             <input
-              className='form-check-input'
-              type='radio'
-              name='attend'
-              value='courier'
-              id='courier'
+              className="form-check-input"
+              type="radio"
+              name="attend"
+              value="courier"
+              id="courier"
               onChange={handleChange}
               style={{
                 width: "30px",
@@ -291,7 +291,7 @@ const Details = ({ singleUser }) => {
                 borderColor: "lightgray",
               }}
             />
-            <label className='form-check-label' htmlFor='courier'>
+            <label className="form-check-label" htmlFor="courier">
               I will collect degree certificates through courier service.
             </label>
           </div>
@@ -299,14 +299,14 @@ const Details = ({ singleUser }) => {
         <br />
         <br />
         <div
-          className='form-check dash-infoCheckDiv'
+          className="form-check dash-infoCheckDiv"
           style={{ display: "flex", alignItems: "center" }}
         >
           <input
-            className='form-check-input'
-            type='checkbox'
-            value=''
-            id='infoCheck'
+            className="form-check-input"
+            type="checkbox"
+            value=""
+            id="infoCheck"
             style={{
               width: "30px",
               height: "30px",
@@ -314,7 +314,7 @@ const Details = ({ singleUser }) => {
               borderColor: "lightgray",
             }}
           />
-          <label className='form-check-label' htmlForr='infoCheck'>
+          <label className="form-check-label" htmlForr="infoCheck">
             <strong>
               I hereby declare that the information above stated above is true
               to the best of my knowlegde.
@@ -327,7 +327,7 @@ const Details = ({ singleUser }) => {
         {!singleUser.is_paid ? (
           <div>
             <button
-              className='btn btn-dark dash-confirmBtn'
+              className="btn btn-dark dash-confirmBtn"
               onClick={handlePaymentClick}
               disabled={
                 (attending == "inPerson" && companions && singleUser.phone) ||
