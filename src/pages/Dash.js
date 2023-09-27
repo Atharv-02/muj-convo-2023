@@ -11,7 +11,7 @@ import { useAlert } from "../context/AlertMessageContext";
 const Dash = () => {
   const { message, setMessage } = useAlert();
   const [singleUser, setSingleUser] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [showMessage, setShowMessage] = useState(message);
   const { token, setToken, isuserloggedin, setIsuserloggedin, role } =
     useAuth();

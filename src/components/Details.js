@@ -11,6 +11,7 @@ const Details = ({ singleUser }) => {
   const [attending, setAttending] = useState();
   const [selectTerms, setSelectTerms] = useState(false);
   const [inPerson, setInPerson] = useState(true);
+  const [paid, setPaid] = useState(singleUser.is_paid);
 
   const handleChange = (e) => {
     e.target.value === "inPerson" ? setInPerson(true) : setInPerson(false);
@@ -21,7 +22,7 @@ const Details = ({ singleUser }) => {
   const pd_in = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1000,
+    amount: 1,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -35,7 +36,7 @@ const Details = ({ singleUser }) => {
   const pd_out = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 600,
+    amount: 1,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
@@ -116,28 +117,35 @@ const Details = ({ singleUser }) => {
             "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/paymentResponse",
             body
           );
+          console.log(res);
           const data = res.data;
-          const { success, status } = data;
-          if (status === "success") {
+          const { success } = data;
+          console.log(success);
+          if (success) {
             try {
-              let data;
-              if (attending) {
-                data = await axios.put(
+              console.log(attending);
+              if (attending == "inPerson") {
+                const data1 = await axios.put(
                   `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
-                  singleUser.reg_no,
-                  response.response.payuMoneyId,
-                  // outPersonDetails.day,
-                  companions
+                  {
+                    reg_no: singleUser.reg_no,
+                    paymentId: response.response.payuMoneyId,
+                    companions: companions,
+                  }
                 );
+                console.log(data1);
               } else {
-                data = await axios.put(
+                const data1 = await axios.put(
                   `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
-                  singleUser.reg_no,
-                  response.response.payuMoneyId,
-                  // inPersonDetails.day,
-                  0
+                  {
+                    reg_no: singleUser.reg_no,
+                    paymentId: response.response.payuMoneyId,
+                    companions: 0,
+                  }
                 );
+                console.log(data1);
               }
+              setPaid(true);
             } catch (err) {
               console.log(err);
             }
@@ -218,131 +226,145 @@ const Details = ({ singleUser }) => {
           <img src={LOGO} alt='' className='LOGONEW' />
         </div>
 
-        {inPerson && (
-          <>
-            <div className='dash-left-companions-div'>
-              <p className='dash-companions'>
-                <strong>Choose no. of companions attending with you</strong>
-              </p>
-              <select
-                name='companions'
-                id='companions'
-                value={companions}
-                className='form-select companions-select'
-                onChange={(e) => setCompanions(e.target.value)}
-              >
-                <option value='' disabled selected>
-                  Select
-                </option>
-                <option value='0'>0</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-              </select>
-            </div>
+        {!paid
+          ? inPerson && (
+              <>
+                <div className='dash-left-companions-div'>
+                  <p className='dash-companions'>
+                    <strong>Choose no. of companions attending with you</strong>
+                  </p>
+                  <select
+                    name='companions'
+                    id='companions'
+                    value={companions}
+                    className='form-select companions-select'
+                    onChange={(e) => setCompanions(e.target.value)}
+                  >
+                    <option value='' disabled selected>
+                      Select
+                    </option>
+                    <option value='0'>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                  </select>
+                </div>
 
-            <br />
-            <br />
-          </>
-        )}
-        <div className='dash-attendDiv'>
-          <p>
-            <strong>Will you be attending the convocation In-Person? </strong>
-          </p>
-          <div
-            className='form-check'
-            style={{ display: "flex", alignItems: "center", margin: "5px 0" }}
-          >
-            <input
-              className='form-check-input'
-              type='radio'
-              name='attend'
-              value='inPerson'
-              id='inPerson'
-              onChange={handleChange}
-              style={{
-                width: "30px",
-                height: "30px",
-                marginRight: "5px",
-                borderColor: "lightgray",
-              }}
-            />
-            <label className='form-check-label' htmlFor='inPerson'>
-              I will collect degree certificate in Person.
-            </label>
-          </div>
-          {/* <input type="radio" name="inPersonopt" id="inPerson" value='inPerson'/>
+                <br />
+                <br />
+              </>
+            )
+          : null}
+        {!paid ? (
+          <>
+            <div className='dash-attendDiv'>
+              <p>
+                <strong>
+                  Will you be attending the convocation In-Person?{" "}
+                </strong>
+              </p>
+              <div
+                className='form-check'
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  margin: "5px 0",
+                }}
+              >
+                <input
+                  className='form-check-input'
+                  type='radio'
+                  name='attend'
+                  value='inPerson'
+                  id='inPerson'
+                  onChange={handleChange}
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    marginRight: "5px",
+                    borderColor: "lightgray",
+                  }}
+                />
+                <label className='form-check-label' htmlFor='inPerson'>
+                  I will collect degree certificate in Person.
+                </label>
+              </div>
+              {/* <input type="radio" name="inPersonopt" id="inPerson" value='inPerson'/>
         <label htmlFor="inPerson"> I will collect degree certificate in Person.</label> */}
 
-          <div
-            className='form-check'
-            style={{ display: "flex", alignItems: "center", margin: "5px 0" }}
-          >
-            <input
-              className='form-check-input'
-              type='radio'
-              name='attend'
-              value='courier'
-              id='courier'
-              onChange={handleChange}
-              style={{
-                width: "30px",
-                height: "30px",
-                marginRight: "5px",
-                borderColor: "lightgray",
-              }}
-            />
-            <label className='form-check-label' htmlFor='courier'>
-              I will collect degree certificates through courier service.
-            </label>
-          </div>
-        </div>
-        <br />
-        <br />
-        <div
-          className='form-check dash-infoCheckDiv'
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <input
-            className='form-check-input'
-            type='checkbox'
-            value='selected'
-            id='infoCheck'
-            onChange={(e) => setSelectTerms(e.target.value)}
-            style={{
-              width: "30px",
-              height: "30px",
-              marginRight: "10px",
-              borderColor: "lightgray",
-            }}
-          />
-          <label className='form-check-label' htmlForr='infoCheck'>
-            <strong>
-              I hereby declare that the information above stated above is true
-              to the best of my knowlegde.
-            </strong>
-          </label>
-        </div>
-        <br />
-        <br />
-        {console.log(attending, companions, singleUser.phone)}
-        {!singleUser.is_paid ? (
-          <div>
-            <button
-              className='btn btn-dark dash-confirmBtn'
-              onClick={handlePaymentClick}
-              disabled={
-                (attending == "inPerson" &&
-                  companions &&
-                  singleUser.phone &&
-                  selectTerms) ||
-                (attending == "courier" && singleUser.phone && selectTerms)
-                  ? false
-                  : true
-              }
+              <div
+                className='form-check'
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  margin: "5px 0",
+                }}
+              >
+                <input
+                  className='form-check-input'
+                  type='radio'
+                  name='attend'
+                  value='courier'
+                  id='courier'
+                  onChange={handleChange}
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    marginRight: "5px",
+                    borderColor: "lightgray",
+                  }}
+                />
+                <label className='form-check-label' htmlFor='courier'>
+                  I will collect degree certificates through courier service.
+                </label>
+              </div>
+            </div>
+            <br />
+            <br />
+            <div
+              className='form-check dash-infoCheckDiv'
+              style={{ display: "flex", alignItems: "center" }}
             >
-              CONFIRM & PAY
-            </button>
-          </div>
+              <input
+                className='form-check-input'
+                type='checkbox'
+                value='selected'
+                id='infoCheck'
+                onChange={(e) => setSelectTerms(!selectTerms)}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginRight: "10px",
+                  borderColor: "lightgray",
+                }}
+              />
+              <label className='form-check-label' htmlForr='infoCheck'>
+                <strong>
+                  I hereby declare that the information above stated above is
+                  true to the best of my knowlegde.
+                </strong>
+              </label>
+            </div>
+            <br />
+            <br />
+
+            <div>
+              <button
+                className='btn btn-dark dash-confirmBtn'
+                onClick={handlePaymentClick}
+                disabled={
+                  (attending == "inPerson" &&
+                    companions &&
+                    singleUser.phone &&
+                    selectTerms) ||
+                  (attending == "courier" && singleUser.phone && selectTerms)
+                    ? false
+                    : true
+                }
+              >
+                CONFIRM & PAY
+              </button>
+            </div>
+          </>
         ) : (
           <div style={{ textAlign: "center", margin: "20px 0" }}>
             <h4>
