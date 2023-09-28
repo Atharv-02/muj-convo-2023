@@ -193,12 +193,15 @@
 
 .right-div {
   width: 50%;
-  padding-top: 10px;
+  padding-top: 20px;
   /* padding: 10px 100px; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border: solid 2px rgba(225, 84, 20, 1);
+  border-radius: 10px;
+  margin-left: 30px;
 }
 .comm-div {
   display: flex;
