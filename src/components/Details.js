@@ -223,7 +223,7 @@ const Details = ({ singleUser }) => {
               </tr>
               <tr>
                 <th>GPA</th>
-                <td>{singleUser.cgpa}</td>
+                <td>{singleUser.cgpa == 0 ? "NA" : singleUser.cgpa}</td>
               </tr>
               <tr>
                 <th>Email</th>
