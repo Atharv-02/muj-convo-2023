@@ -367,7 +367,7 @@ const EditDetailsform = ({
                     <input
                       className='form-control'
                       value={formData.aadhar_back_picture}
-                      id='aadhaar-back'
+                      id='aadhar_back_picture'
                       placeholder='Aadhaar Back Picture'
                       required
                       readOnly
@@ -395,7 +395,7 @@ const EditDetailsform = ({
                     <button
                       className='btn btn-outline-secondary'
                       type='button'
-                      onClick={() => openCloudWidget("cancelled_check")}
+                      onClick={() => openCloudWidget("cancel_check")}
                     >
                       Select Image
                     </button>
