@@ -25,7 +25,7 @@ const SavedDetails = ({ singleUser, setSingleUser, editForm, setEditForm }) => {
             </tr>
             <tr>
               <th>Bank Name</th>
-              <td>{singleUser.branch_name}</td>
+              <td>{singleUser.bank_name}</td>
             </tr>
             <tr>
               <th>Branch Name</th>

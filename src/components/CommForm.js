@@ -102,10 +102,10 @@ const CommForm = ({ singleUser, setSingleUser }) => {
 
   return (
     <>
-      <div className="right-div">
+      <div className='right-div'>
         <form>
           <div
-            className="comm-div"
+            className='comm-div'
             style={{
               display: "flex",
               flexDirection: "column",
@@ -114,89 +114,89 @@ const CommForm = ({ singleUser, setSingleUser }) => {
             }}
           >
             <h2 style={{ textAlign: "center" }}>Communication Details</h2>
-            <div className="comm-inp-div">
-              <div className="comm-inp">
+            <div className='comm-inp-div'>
+              <div className='comm-inp'>
                 <input
-                  name="phone"
-                  type="number"
-                  className="form-control"
-                  placeholder="Phone Number"
-                  id="phone"
-                  min="1000000000"
-                  max="9999999999"
+                  name='phone'
+                  type='number'
+                  className='form-control'
+                  placeholder='Phone Number'
+                  id='phone'
+                  min='1000000000'
+                  max='9999999999'
                   value={formData.phone}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="comm-inp">
+              <div className='comm-inp'>
                 <input
-                  name="address"
-                  type="text"
-                  className="form-control"
-                  placeholder="Address"
-                  id="address"
+                  name='address'
+                  type='text'
+                  className='form-control'
+                  placeholder='Address'
+                  id='address'
                   value={formData.address}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="comm-inp">
+              <div className='comm-inp'>
                 <input
-                  name="city"
-                  type="text"
-                  className="form-control"
-                  placeholder="City"
-                  id="city"
+                  name='city'
+                  type='text'
+                  className='form-control'
+                  placeholder='City'
+                  id='city'
                   value={formData.city}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="comm-inp">
+              <div className='comm-inp'>
                 <input
-                  name="state"
-                  type="text"
-                  className="form-control"
-                  placeholder="State"
-                  id="state"
+                  name='state'
+                  type='text'
+                  className='form-control'
+                  placeholder='State'
+                  id='state'
                   value={formData.state}
                   onChange={handleChange}
                   required
                 />
               </div>
 
-              <div className="comm-inp">
+              <div className='comm-inp'>
                 <input
-                  name="pincode"
-                  type="number"
-                  className="form-control"
-                  placeholder="Pincode"
-                  id="pincode"
+                  name='pincode'
+                  type='number'
+                  className='form-control'
+                  placeholder='Pincode'
+                  id='pincode'
                   value={formData.pincode}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="comm-inp">
+              <div className='comm-inp'>
                 <input
-                  name="district"
-                  type="text"
-                  className="form-control"
-                  placeholder="District"
-                  id="district"
+                  name='district'
+                  type='text'
+                  className='form-control'
+                  placeholder='District'
+                  id='district'
                   value={formData.district}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="comm-inp">
+              <div className='comm-inp'>
                 <input
-                  name="country"
-                  type="text"
-                  className="form-control"
-                  placeholder="Country"
-                  id="country"
+                  name='country'
+                  type='text'
+                  className='form-control'
+                  placeholder='Country'
+                  id='country'
                   value={formData.country}
                   onChange={handleChange}
                   required
@@ -204,141 +204,141 @@ const CommForm = ({ singleUser, setSingleUser }) => {
               </div>
             </div>
           </div>
-          <div className="refund-div">
+          <div className='refund-div'>
             <h2 style={{ textAlign: "center" }}>
               Details for Caution <br /> Money Refund
             </h2>
 
-            <div className="refund-inp-div">
-              <div className="refund-inp">
+            <div className='refund-inp-div'>
+              <div className='refund-inp'>
                 <input
-                  name="account_holder_name"
-                  type="text"
-                  className="form-control"
-                  placeholder="Account Holder Name"
-                  id="AccHolderName"
+                  name='account_holder_name'
+                  type='text'
+                  className='form-control'
+                  placeholder='Account Holder Name'
+                  id='AccHolderName'
                   value={formData.account_holder_name}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="refund-inp">
+              <div className='refund-inp'>
                 <input
-                  name="account_number"
-                  type="text"
-                  className="form-control"
-                  placeholder="Account Number"
-                  id="AccNum"
+                  name='account_number'
+                  type='text'
+                  className='form-control'
+                  placeholder='Account Number'
+                  id='AccNum'
                   value={formData.account_number}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="refund-inp">
+              <div className='refund-inp'>
                 <input
-                  name="bank_name"
-                  type="text"
-                  className="form-control"
-                  placeholder="Bank Name"
-                  id="bankName"
+                  name='bank_name'
+                  type='text'
+                  className='form-control'
+                  placeholder='Bank Name'
+                  id='bankName'
                   value={formData.bank_name}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="refund-inp">
+              <div className='refund-inp'>
                 <input
-                  name="branch_name"
-                  type="text"
-                  className="form-control"
-                  placeholder="Bank Branch"
-                  id="bankBranch"
+                  name='branch_name'
+                  type='text'
+                  className='form-control'
+                  placeholder='Bank Branch'
+                  id='bankBranch'
                   value={formData.branch_name}
                   onChange={handleChange}
                   required
                 />
               </div>
 
-              <div className="refund-inp">
+              <div className='refund-inp'>
                 <input
-                  name="bank_address"
-                  type="text"
-                  className="form-control"
-                  placeholder="Bank Address"
-                  id="bankAddress"
+                  name='bank_address'
+                  type='text'
+                  className='form-control'
+                  placeholder='Bank Address'
+                  id='bankAddress'
                   value={formData.bank_address}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div className="refund-inp">
+              <div className='refund-inp'>
                 <input
-                  name="ifsc_code"
-                  type="text"
-                  className="form-control"
-                  placeholder="IFSC Code"
-                  id="ifsc_code"
+                  name='ifsc_code'
+                  type='text'
+                  className='form-control'
+                  placeholder='IFSC Code'
+                  id='ifsc_code'
                   value={formData.ifsc_code}
                   onChange={handleChange}
                   required
                 />
               </div>
 
-              <div className="refund-inp input-group">
-                <label className="input-group-text" htmlFor="aadhaar-front">
+              <div className='refund-inp input-group'>
+                <label className='input-group-text' htmlFor='aadhaar-front'>
                   <strong> Aadhar Front Picture</strong>
                 </label>
                 <input
-                  className="form-control"
-                  id="aadhaar-front"
-                  placeholder="Aadhaar Front Picture"
+                  className='form-control'
+                  id='aadhaar-front'
+                  placeholder='Aadhaar Front Picture'
                   required
                   readOnly
                   value={formData.aadhar_front_picture}
                 />
                 <button
-                  className="btn btn-outline-secondary"
-                  type="button"
+                  className='btn btn-outline-secondary'
+                  type='button'
                   onClick={() => openCloudWidget("aadhar_front_picture")}
                 >
                   Select Image
                 </button>
               </div>
-              <div className="refund-inp input-group">
-                <label className="input-group-text" htmlFor="aadhaar-back">
+              <div className='refund-inp input-group'>
+                <label className='input-group-text' htmlFor='aadhaar-back'>
                   <strong> Aadhar Back Picture</strong>
                 </label>
                 <input
-                  className="form-control"
-                  id="aadhaar-back"
-                  placeholder="Aadhaar Back Picture"
+                  className='form-control'
+                  id='aadhaar-back'
+                  placeholder='Aadhaar Back Picture'
                   required
                   value={formData.aadhar_back_picture}
                   readOnly
                 />
                 <button
-                  className="btn btn-outline-secondary"
-                  type="button"
+                  className='btn btn-outline-secondary'
+                  type='button'
                   onClick={() => openCloudWidget("aadhar_back_picture")}
                 >
                   Select Image
                 </button>
               </div>
-              <div className="refund-inp input-group">
-                <label className="input-group-text" htmlFor="canceled-cheque">
+              <div className='refund-inp input-group'>
+                <label className='input-group-text' htmlFor='canceled-cheque'>
                   <strong>Canceled Cheque Picture</strong>
                 </label>
                 <input
-                  className="form-control"
-                  id="canceled-cheque"
+                  className='form-control'
+                  id='canceled-cheque'
                   value={formData.cancel_check}
-                  placeholder="Cancelled Cheque Picture"
+                  placeholder='Cancelled Cheque Picture'
                   required
                   readOnly
                 />
                 <button
-                  className="btn btn-outline-secondary"
-                  type="button"
+                  className='btn btn-outline-secondary'
+                  type='button'
                   onClick={() => openCloudWidget("cancel_check")}
                 >
                   Select Image
@@ -346,9 +346,9 @@ const CommForm = ({ singleUser, setSingleUser }) => {
               </div>
             </div>
 
-            <div className="save-btn">
+            <div className='save-btn'>
               <button
-                className="btn btn-outline-dark"
+                className='btn btn-outline-dark'
                 disabled={!showBtn}
                 onClick={handleSubmit}
               >
