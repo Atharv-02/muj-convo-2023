@@ -14,10 +14,12 @@ const Alumni = () => {
               <h6 style={{ fontSize: "1.5rem" }}>Mission </h6>
             </Accordion.Header>
 
-            <Accordion.Body>
+            <Accordion.Body style={{ textAlign: "justify" }}>
               <span>
+                <br />
                 Manipal University Jaipur Alumni Association registered under
                 the Rajasthan Society Act 1958 on 24 August 2023.
+                <br />
                 <br />
                 The mission of MUJAA is to create an association of the alumni
                 of Manipal University Jaipur, for bringing together all the
@@ -30,6 +32,8 @@ const Alumni = () => {
                 of its members in areas pertaining to academics, infrastructure,
                 industry interactions and any other area that the alumni and the
                 university feel appropriate.
+                <br />
+                <br />
               </span>
             </Accordion.Body>
           </Accordion.Item>
