@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Alert } from "@mui/material";
 import { useEffect } from "react";
+import AlumniReg from "./pages/AlumniReg";
 function App() {
   useEffect(() => {
     {
@@ -43,6 +44,7 @@ function App() {
           />
           <Route path='/contact' element={<Contact />} />
           <Route path='/faq' element={<FAQPage />} />
+          <Route path='/alumni-reg' element={<AlumniReg />} />
         </Routes>
       </BrowserRouter>
     </>

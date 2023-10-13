@@ -23,6 +23,8 @@ const Navbar = () => {
 
           <li onClick={() => navigate("/faq")}>FAQ</li>
 
+          <li onClick={() => navigate("/alumni-reg")}>Alumni</li>
+
           <li
             onClick={() => {
               setIsuserloggedin(false);
