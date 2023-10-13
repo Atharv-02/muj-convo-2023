@@ -11,22 +11,23 @@ const Alumni = () => {
         <Accordion>
           <Accordion.Item eventKey='0'>
             <Accordion.Header>
-              <h6 style={{ fontSize: "1.5rem" }}>Mission And Aim </h6>
+              <h6 style={{ fontSize: "1.5rem" }}>Mission </h6>
             </Accordion.Header>
 
             <Accordion.Body>
               <span>
                 Manipal University Jaipur Alumni Association registered under
-                the Rajasthan Society Act 1958 on 24 August 2023. The mission of
-                MUJAA is to create an association of the alumni of Manipal
-                University Jaipur, for bringing together all the alumni of the
-                Manipal University Jaipur so that it may create professional
-                networking for mutual benefit in academic and professional or
-                business areas. The mission of MUJAA is also to encourage alumni
-                to contribute to the university’s efforts for achieving
-                excellence in academics and research through allocating /
-                raising funds and/or sharing knowledge & expertise of its
-                members in areas pertaining to academics, infrastructure,
+                the Rajasthan Society Act 1958 on 24 August 2023.
+                <br />
+                The mission of MUJAA is to create an association of the alumni
+                of Manipal University Jaipur, for bringing together all the
+                alumni of the Manipal University Jaipur so that it may create
+                professional networking for mutual benefit in academic and
+                professional or business areas. The mission of MUJAA is also to
+                encourage alumni to contribute to the university’s efforts for
+                achieving excellence in academics and research through
+                allocating / raising funds and/or sharing knowledge & expertise
+                of its members in areas pertaining to academics, infrastructure,
                 industry interactions and any other area that the alumni and the
                 university feel appropriate.
               </span>
