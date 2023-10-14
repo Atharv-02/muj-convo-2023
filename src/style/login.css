@@ -57,9 +57,10 @@ select {
 }
 .wh-curve {
   position: absolute;
+  width: 330px;
 
   top: 0;
-  left: 39vw;
+  left: 38vw;
 }
 .all-txt {
   display: grid;

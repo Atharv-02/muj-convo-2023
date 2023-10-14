@@ -235,6 +235,18 @@ const Details = ({ singleUser }) => {
         <br />
         <br />
         <div>
+          <strong
+            style={{
+              color: "red",
+              margin: "0 2rem",
+              display: "block",
+              textAlign: "justify",
+            }}
+          >
+            The 10th Convocation of MUJ is being rescheduled due to the
+            Rajasthan Legislative Assembly Election scheduled on 25th November
+            2023. The revised date of Convocation will be announced soon.
+          </strong>
           <img src={LOGO} alt='' className='LOGONEW' />
         </div>
 
