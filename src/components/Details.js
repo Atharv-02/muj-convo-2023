@@ -134,7 +134,7 @@ const Details = ({ singleUser }) => {
                     reg_no: singleUser.reg_no,
                     paymentId: response.response.payuMoneyId,
                     companions: companions,
-                    day: "25th November",
+                    day: "2nd December",
                   }
                 );
               } else {
