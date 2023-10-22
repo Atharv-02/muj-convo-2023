@@ -243,9 +243,9 @@ const Details = ({ singleUser }) => {
               textAlign: "justify",
             }}
           >
-            The 10th Convocation of MUJ is being rescheduled due to the
-            Rajasthan Legislative Assembly Election scheduled on 25th November
-            2023. The revised date of Convocation will be announced soon.
+            The 10th Convocation of MUJ is being rescheduled to 2nd Decmber due
+            to the Rajasthan Legislative Assembly Election scheduled on 25th
+            November 2023.
           </strong>
           <img src={LOGO} alt='' className='LOGONEW' />
         </div>
