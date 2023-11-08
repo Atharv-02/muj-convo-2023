@@ -22,7 +22,8 @@ function App() {
   }, []);
   return (
     <>
-      <BrowserRouter>
+      <h1>Site is under maintainance</h1>
+      {/* <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path='/login' element={<Login />} />
@@ -46,7 +47,7 @@ function App() {
           <Route path='/faq' element={<FAQPage />} />
           <Route path='/alumni-reg' element={<AlumniReg />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   );
 }
