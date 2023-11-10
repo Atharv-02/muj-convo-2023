@@ -24,13 +24,13 @@ const Details = ({ singleUser }) => {
   const pd_in = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 600,
+    amount: 1000,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
     productinfo: "Convocation Fees",
-    surl: "http://localhost:3000/success",
-    furl: "http://localhost:3000/fail",
+    surl: "https://www.mujconvocation.in/",
+    furl: "https://www.mujconvocation.in/",
     hash: "",
   };
 
@@ -38,13 +38,13 @@ const Details = ({ singleUser }) => {
   const pd_out = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1,
+    amount: 600,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
     productinfo: "Convocation Fees",
-    surl: "http://localhost:3000/success",
-    furl: "http://localhost:3000/fail",
+    surl: "https://www.mujconvocation.in/",
+    furl: "https://www.mujconvocation.in/",
     hash: "",
   };
 
@@ -126,33 +126,46 @@ const Details = ({ singleUser }) => {
           console.log(success);
           if (success && response.response.txnStatus !== "CANCEL") {
             try {
-              console.log(attending);
-              if (attending == "inPerson") {
-                const data1 = await axios.put(
-                  `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
-                  {
-                    reg_no: singleUser.reg_no,
-                    paymentId: response.response.payuMoneyId,
-                    companions: companions,
-                    day: "2nd December",
-                  }
-                );
-              } else {
-                const data1 = await axios.put(
-                  `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
-                  {
-                    reg_no: singleUser.reg_no,
-                    paymentId: response.response.payuMoneyId,
-                    companions: 0,
-                    day: "",
-                  }
-                );
-              }
-              setMessage(
-                "Please check your mailbox for registration confirmation"
+              console.log(pd.txnid);
+              const res100 = await axios.post(
+                "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/getPaymentStatus",
+                { mId: pd.txnid }
               );
-              setOpen(true);
-              setPaid(true);
+              console.log(res100);
+              console.log(res100.data.message);
+              console.log(res100.data.message == "All txnIds are valid");
+              console.log(attending);
+              if (res100.data.message == "All txnIds are valid") {
+                if (attending == "inPerson") {
+                  const data1 = await axios.put(
+                    `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
+                    {
+                      reg_no: singleUser.reg_no,
+                      paymentId: response.response.payuMoneyId,
+                      companions: companions,
+                      day: "2nd December",
+                    }
+                  );
+                } else {
+                  const data1 = await axios.put(
+                    `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
+                    {
+                      reg_no: singleUser.reg_no,
+                      paymentId: response.response.payuMoneyId,
+                      companions: 0,
+                      day: "",
+                    }
+                  );
+                }
+                setMessage(
+                  "Please check your mailbox for registration confirmation"
+                );
+                setOpen(true);
+                setPaid(true);
+              } else {
+                setMessage("Payment Failed");
+                setOpen(true);
+              }
             } catch (err) {
               console.log(err);
             }
