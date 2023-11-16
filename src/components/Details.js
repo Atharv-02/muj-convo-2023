@@ -38,7 +38,7 @@ const Details = ({ singleUser }) => {
   const pd_out = {
     key: PAYU_MERCHANT_KEY,
     txnid: randomize("A0", 8),
-    amount: 1000,
+    amount: 1,
     firstname: singleUser.student_name,
     email: singleUser.email,
     phone: singleUser.phone,
