@@ -132,10 +132,20 @@ const Details = ({ singleUser }) => {
                 { mId: pd.txnid }
               );
               console.log(res100);
-              console.log(res100.data.message);
-              console.log(res100.data.message == "All txnIds are valid");
+              console.log(
+                res100.data.message,
+                res100.data.result[0].postBackParam["status"]
+                // res100.data.result[0].status !== "failiure"
+              );
+              console.log(
+                res100.data.message == "All txnIds are valid" &&
+                  res100.data.result[0].postBackParam["status"] !== "failure"
+              );
               console.log(attending);
-              if (res100.data.message == "All txnIds are valid") {
+              if (
+                res100.data.message == "All txnIds are valid" &&
+                res100.data.result[0].postBackParam["status"] !== "failure"
+              ) {
                 if (attending == "inPerson") {
                   const data1 = await axios.put(
                     `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
