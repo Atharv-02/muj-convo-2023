@@ -395,7 +395,7 @@ const Details = ({ singleUser }) => {
             <br />
 
             <div>
-              <button
+              {/* <button
                 className='btn btn-dark dash-confirmBtn'
                 onClick={handlePaymentClick}
                 disabled={
@@ -409,7 +409,10 @@ const Details = ({ singleUser }) => {
                 }
               >
                 CONFIRM & PAY
-              </button>
+              </button> */}
+              <h4 style={{ color: "red" }}>
+                Sorry You seem to have missed out the deadline
+              </h4>
             </div>
           </>
         ) : (

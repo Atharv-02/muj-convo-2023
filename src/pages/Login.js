@@ -202,10 +202,10 @@ const Login = () => {
                     </button>
                   </div>
                 </form>
-                <p className='login-p' onClick={() => setRegister(true)}>
+                {/* <p className='login-p' onClick={() => setRegister(true)}>
                   Don’t have an account?
                   <span> Register Now</span>
-                </p>
+                </p> */}
               </>
             ) : (
               <>
