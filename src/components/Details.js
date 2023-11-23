@@ -416,7 +416,7 @@ const Details = ({ singleUser }) => {
           <div style={{ textAlign: "center", margin: "20px 0" }}>
             <h4>
               CONGRATULATIONS! <br /> You have successfully registerd for <br />
-              MUJ 10th Convocation.
+              MUJ 10th Convocation .
             </h4>
           </div>
         )}
