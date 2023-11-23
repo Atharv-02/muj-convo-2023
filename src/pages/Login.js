@@ -149,7 +149,9 @@ const Login = () => {
 
         <div className='login-txt'>
           <div className='all-txt'>
-            <h1>Registrations are now open!</h1>
+            <h1 style={{ color: "red", fontSize: "1.4rem" }}>
+              Registrations are now Closed
+            </h1>
             <p>Your passwords will be sent on the official e-mail id. </p>
             {!register ? (
               <>
