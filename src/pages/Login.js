@@ -61,7 +61,7 @@ const Login = () => {
     }
     try {
       const result = await axios.post(
-        "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/auth/login",
+        "http://localhost:5001/auth/login",
         params
       );
       console.log(result);
@@ -89,10 +89,10 @@ const Login = () => {
     e.preventDefault();
     console.log("HI");
     try {
-      const result = await axios.post(
-        "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/auth/register",
-        { role: "student", reg_no: newRegNo }
-      );
+      const result = await axios.post("http://localhost:5001/auth/register", {
+        role: "student",
+        reg_no: newRegNo,
+      });
       console.log(result);
       setRegister(false);
       setOpen(true);
