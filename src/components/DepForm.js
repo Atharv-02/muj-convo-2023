@@ -32,7 +32,9 @@ const DepForm = ({
     e.preventDefault();
     try {
       const response = await axios.get(
-        `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/get-specific-student/${reg_no}`,
+        // `http://localhost:5001/student/get-specific-student/${reg_no}`,
+        `http://localhost:5001/student/get-specific-student/${reg_no}`,
+
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,7 +56,7 @@ const DepForm = ({
     try {
       setLoading(true);
       const response2 = await axios.get(
-        `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/get-student-dept-dues/${reg_no}`,
+        `http://localhost:5001/due/get-student-dept-dues/${reg_no}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -79,7 +81,7 @@ const DepForm = ({
         department: singleUser.department,
       });
       const response = await axios.post(
-        `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/due/create-student-dept-due`,
+        `http://localhost:5001/due/create-student-dept-due`,
         {
           reg_no: student.reg_no,
           amount_due: amountDue,

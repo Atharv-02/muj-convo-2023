@@ -76,7 +76,8 @@ const Details = ({ singleUser }) => {
   const handleClick_out = async () => {
     try {
       const res = await axios.post(
-        "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/payment/payumoney",
+        // "http://localhost:5001/student/payment/payumoney",
+        "http://localhost:5001/student/payment/payumoney",
         {
           ...paymentData_out,
         }
@@ -92,7 +93,8 @@ const Details = ({ singleUser }) => {
   const handleClick_in = async () => {
     try {
       const res = await axios.post(
-        "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/payment/payumoney",
+        // "http://localhost:5001/student/payment/payumoney",
+        "http://localhost:5001/student/payment/payumoney",
         {
           ...paymentData_in,
         }
@@ -116,7 +118,8 @@ const Details = ({ singleUser }) => {
           // your payment response Code goes here
 
           const res = await axios.post(
-            "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/paymentResponse",
+            "http://localhost:5001/student/paymentResponse",
+            // "http://localhost:5001/student/paymentResponse",
             body
           );
           console.log(res);
@@ -128,7 +131,8 @@ const Details = ({ singleUser }) => {
             try {
               console.log(pd.txnid);
               const res100 = await axios.post(
-                "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/getPaymentStatus",
+                "http://localhost:5001/student/getPaymentStatus",
+                // "http://localhost:5001/student/getPaymentStatus",
                 { mId: pd.txnid }
               );
               console.log(res100);
@@ -148,7 +152,7 @@ const Details = ({ singleUser }) => {
               ) {
                 if (attending == "inPerson") {
                   const data1 = await axios.put(
-                    `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
+                    `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
                     {
                       reg_no: singleUser.reg_no,
                       paymentId: response.response.payuMoneyId,
@@ -158,7 +162,7 @@ const Details = ({ singleUser }) => {
                   );
                 } else {
                   const data1 = await axios.put(
-                    `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
+                    `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
                     {
                       reg_no: singleUser.reg_no,
                       paymentId: response.response.payuMoneyId,

@@ -51,7 +51,7 @@ const FeedBackForm = ({ setFeedback }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://us-central1-muj-convocation-2023.cloudfunctions.net/app/feedback/submit-feedback",
+        "http://localhost:5001/feedback/submit-feedback",
         { details: data },
         {
           headers: {

@@ -71,7 +71,7 @@ const EditDetailsform = ({
     e.preventDefault();
     try {
       const response = await axios.post(
-        `https://us-central1-muj-convocation-2023.cloudfunctions.net/app/auth/add-communication-data`,
+        `http://localhost:5001/auth/add-communication-data`,
         formData,
         {
           headers: {

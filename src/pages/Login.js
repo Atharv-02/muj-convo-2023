@@ -109,7 +109,7 @@ const Login = () => {
   useEffect(() => {
     localStorage.clear();
     setIsuserloggedin(false);
-  });
+  },[]);
 
   useEffect(() => {
     const timer1 = setTimeout(() => setOpen(false), 3000);
