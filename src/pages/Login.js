@@ -3,10 +3,10 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../style/login.css";
 import curve from "../assets/Vector-curve.png";
-import img1 from "../assets/DSC_5584 1.png";
-import img2 from "../assets/DSC_5995 1.png";
-import img3 from "../assets/DSC_5580 1.png";
-import img4 from "../assets/image 5.png";
+import img1 from "../assets/Photo_for_portal/DSC_0215.JPG";
+import img2 from "../assets/Photo_for_portal/DSC_0223.JPG";
+import img3 from "../assets/Photo_for_portal/DSC_0215.JPG";
+import img4 from "../assets/Photo_for_portal/DSC_0215.JPG";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -109,7 +109,7 @@ const Login = () => {
   useEffect(() => {
     localStorage.clear();
     setIsuserloggedin(false);
-  },[]);
+  }, []);
 
   useEffect(() => {
     const timer1 = setTimeout(() => setOpen(false), 3000);

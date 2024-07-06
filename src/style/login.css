@@ -1,5 +1,5 @@
 .carousel-login {
-  width: 60vw;
+  width: 50vw;
 
   /* position: relative; */
   /* right: 0; */
@@ -10,6 +10,7 @@ img {
   height: 100vh;
   object-fit: cover;
   display: block;
+  object-position: top;
 }
 .login-txt {
   position: absolute;
