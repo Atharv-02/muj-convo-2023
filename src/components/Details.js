@@ -270,9 +270,7 @@ const Details = ({ singleUser }) => {
               textAlign: "justify",
             }}
           >
-            The 10th Convocation of MUJ is being rescheduled to 2nd Decmber due
-            to the Rajasthan Legislative Assembly Election scheduled on 25th
-            November 2023.
+            The 11th Convocation of MUJ is being held on <em>19th and 20th October 2024</em>.
           </strong>
           <img src={LOGO} alt='' className='LOGONEW' />
         </div>
@@ -414,9 +412,9 @@ const Details = ({ singleUser }) => {
               >
                 CONFIRM & PAY
               </button> */}
-              <h4 style={{ color: "red" }}>
+              {/* <h4 style={{ color: "red" }}>
                 Sorry You seem to have missed out the deadline
-              </h4>
+              </h4> */}
             </div>
           </>
         ) : (
