@@ -5,8 +5,13 @@ import "../style/login.css";
 import curve from "../assets/Vector-curve.png";
 import img1 from "../assets/Photo_for_portal/DSC_0215.JPG";
 import img2 from "../assets/Photo_for_portal/DSC_0223.JPG";
-import img3 from "../assets/Photo_for_portal/DSC_0215.JPG";
-import img4 from "../assets/Photo_for_portal/DSC_0215.JPG";
+import img3 from "../assets/Photo_for_portal/DSC_0272.JPG";
+import img4 from "../assets/Photo_for_portal/DSC_0278.JPG";
+import img5 from "../assets/Photo_for_portal/DSC_0384.JPG";
+import img6 from "../assets/Photo_for_portal/DSC_0697.JPG";
+import img7 from "../assets/Photo_for_portal/DSC_0698.JPG";
+import img8 from "../assets/Photo_for_portal/DSC_6841.JPG";
+import img9 from "../assets/Photo_for_portal/DSC_6900.JPG";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -133,16 +138,31 @@ const Login = () => {
             pauseOnHover={false}
           >
             <div>
-              <img src={img4} alt='' />
+              <img src={img1} alt='' />
             </div>
             <div>
               <img src={img2} alt='' />
             </div>
             <div>
-              <img src={img1} alt='' />
+              <img src={img3} alt='' />
             </div>
             <div>
-              <img src={img3} alt='' />
+              <img src={img4} alt='' />
+            </div>
+            <div>
+              <img src={img5} alt='' />
+            </div>
+            <div>
+              <img src={img6} alt='' />
+            </div>
+            <div>
+              <img src={img7} alt='' />
+            </div>
+            <div>
+              <img src={img8} alt='' />
+            </div>
+            <div>
+              <img src={img9} alt='' />
             </div>
           </Carousel>
         </div>
@@ -150,7 +170,7 @@ const Login = () => {
         <div className='login-txt'>
           <div className='all-txt'>
             <h1 style={{ color: "orange", fontSize: "2rem" }}>
-            {/* todo color change and font bigger */}
+              {/* todo color change and font bigger */}
               Registrations are now Open
             </h1>
             <p>Your passwords will be sent on the official e-mail id. </p>
