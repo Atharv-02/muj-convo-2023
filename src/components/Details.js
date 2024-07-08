@@ -278,7 +278,7 @@ const Details = ({ singleUser }) => {
         {!paid
           ? inPerson && (
               <>
-                <div className='dash-left-companions-div'>
+                {/* <div className='dash-left-companions-div'>
                   <p className='dash-companions'>
                     <strong>Choose no. of companions attending with you</strong>
                   </p>
@@ -296,22 +296,22 @@ const Details = ({ singleUser }) => {
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                   </select>
-                </div>
-
+                </div> */}
+{/* 
                 <br />
-                <br />
+                <br /> */}
               </>
             )
           : null}
         {!paid ? (
           <>
             <div className='dash-attendDiv'>
-              <p>
+              {/* <p>
                 <strong>
                   Will you be attending the convocation In-Person?{" "}
                 </strong>
-              </p>
-              <div
+              </p> */}
+              {/* <div
                 className='form-check'
                 style={{
                   display: "flex",
@@ -336,11 +336,11 @@ const Details = ({ singleUser }) => {
                 <label className='form-check-label' htmlFor='inPerson'>
                   I will collect degree certificate in Person.
                 </label>
-              </div>
+              </div> */}
               {/* <input type="radio" name="inPersonopt" id="inPerson" value='inPerson'/>
         <label htmlFor="inPerson"> I will collect degree certificate in Person.</label> */}
 
-              <div
+              {/* <div
                 className='form-check'
                 style={{
                   display: "flex",
@@ -365,10 +365,10 @@ const Details = ({ singleUser }) => {
                 <label className='form-check-label' htmlFor='courier'>
                   I will collect degree certificates through courier service.
                 </label>
-              </div>
+              </div> */}
             </div>
-            <br />
-            <br />
+            {/* <br />
+            <br /> */}
             <div
               className='form-check dash-infoCheckDiv'
               style={{ display: "flex", alignItems: "center" }}
