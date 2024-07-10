@@ -65,132 +65,132 @@ const Details = ({ singleUser }) => {
     firstname: pd_in.firstname,
   };
 
-  const handlePaymentClick = () => {
-    if (attending === "inPerson") {
-      handleClick_out();
-    } else {
-      handleClick_in();
-    }
-  };
+  // const handlePaymentClick = () => {
+  //   if (attending === "inPerson") {
+  //     handleClick_out();
+  //   } else {
+  //     handleClick_in();
+  //   }
+  // };
 
-  const handleClick_out = async () => {
-    try {
-      const res = await axios.post(
-        // "http://localhost:5001/student/payment/payumoney",
-        "http://localhost:5001/student/payment/payumoney",
-        {
-          ...paymentData_out,
-        }
-      );
-      const data = res.data;
-      pd_out.hash = data.hash;
-      redirectToPayU(pd_out);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleClick_out = async () => {
+  //   try {
+  //     const res = await axios.post(
+  //       // "http://localhost:5001/student/payment/payumoney",
+  //       "http://localhost:5001/student/payment/payumoney",
+  //       {
+  //         ...paymentData_out,
+  //       }
+  //     );
+  //     const data = res.data;
+  //     pd_out.hash = data.hash;
+  //     redirectToPayU(pd_out);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const handleClick_in = async () => {
-    try {
-      const res = await axios.post(
-        // "http://localhost:5001/student/payment/payumoney",
-        "http://localhost:5001/student/payment/payumoney",
-        {
-          ...paymentData_in,
-        }
-      );
-      const data = res.data;
-      pd_in.hash = data.hash;
-      redirectToPayU(pd_in);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleClick_in = async () => {
+  //   try {
+  //     const res = await axios.post(
+  //       // "http://localhost:5001/student/payment/payumoney",
+  //       "http://localhost:5001/student/payment/payumoney",
+  //       {
+  //         ...paymentData_in,
+  //       }
+  //     );
+  //     const data = res.data;
+  //     pd_in.hash = data.hash;
+  //     redirectToPayU(pd_in);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const redirectToPayU = (pd) => {
-    console.log(pd);
-    //use window.bolt.launch if you face an error in bolt.launch
-    window.bolt.launch(pd, {
-      responseHandler: async function (response) {
-        try {
-          console.log(response);
-          const body = JSON.stringify(response.response);
-          // your payment response Code goes here
+  // const redirectToPayU = (pd) => {
+  //   console.log(pd);
+  //   //use window.bolt.launch if you face an error in bolt.launch
+  //   window.bolt.launch(pd, {
+  //     responseHandler: async function (response) {
+  //       try {
+  //         console.log(response);
+  //         const body = JSON.stringify(response.response);
+  //         // your payment response Code goes here
 
-          const res = await axios.post(
-            "http://localhost:5001/student/paymentResponse",
-            // "http://localhost:5001/student/paymentResponse",
-            body
-          );
-          console.log(res);
-          console.log(response.response.txnStatus);
-          const data = res.data;
-          const { success } = data;
-          console.log(success);
-          if (success && response.response.txnStatus !== "CANCEL") {
-            try {
-              console.log(pd.txnid);
-              const res100 = await axios.post(
-                "http://localhost:5001/student/getPaymentStatus",
-                // "http://localhost:5001/student/getPaymentStatus",
-                { mId: pd.txnid }
-              );
-              console.log(res100);
-              console.log(
-                res100.data.message,
-                res100.data.result[0].postBackParam["status"]
-                // res100.data.result[0].status !== "failiure"
-              );
-              console.log(
-                res100.data.message == "All txnIds are valid" &&
-                  res100.data.result[0].postBackParam["status"] !== "failure"
-              );
-              console.log(attending);
-              if (
-                res100.data.message == "All txnIds are valid" &&
-                res100.data.result[0].postBackParam["status"] !== "failure"
-              ) {
-                if (attending == "inPerson") {
-                  const data1 = await axios.put(
-                    `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
-                    {
-                      reg_no: singleUser.reg_no,
-                      paymentId: response.response.payuMoneyId,
-                      companions: companions,
-                      day: "2nd December",
-                    }
-                  );
-                } else {
-                  const data1 = await axios.put(
-                    `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
-                    {
-                      reg_no: singleUser.reg_no,
-                      paymentId: response.response.payuMoneyId,
-                      companions: 0,
-                      day: "",
-                    }
-                  );
-                }
-                setMessage(
-                  "Please check your mailbox for registration confirmation"
-                );
-                setOpen(true);
-                setPaid(true);
-              } else {
-                setMessage("Payment Failed");
-                setOpen(true);
-              }
-            } catch (err) {
-              console.log(err);
-            }
-          }
-          console.log(data);
-        } catch (err) {
-          console.log(err);
-        }
-      },
-    });
-  };
+  //         const res = await axios.post(
+  //           "http://localhost:5001/student/paymentResponse",
+  //           // "http://localhost:5001/student/paymentResponse",
+  //           body
+  //         );
+  //         console.log(res);
+  //         console.log(response.response.txnStatus);
+  //         const data = res.data;
+  //         const { success } = data;
+  //         console.log(success);
+  //         if (success && response.response.txnStatus !== "CANCEL") {
+  //           try {
+  //             console.log(pd.txnid);
+  //             const res100 = await axios.post(
+  //               "http://localhost:5001/student/getPaymentStatus",
+  //               // "http://localhost:5001/student/getPaymentStatus",
+  //               { mId: pd.txnid }
+  //             );
+  //             console.log(res100);
+  //             console.log(
+  //               res100.data.message,
+  //               res100.data.result[0].postBackParam["status"]
+  //               // res100.data.result[0].status !== "failiure"
+  //             );
+  //             console.log(
+  //               res100.data.message == "All txnIds are valid" &&
+  //                 res100.data.result[0].postBackParam["status"] !== "failure"
+  //             );
+  //             console.log(attending);
+  //             if (
+  //               res100.data.message == "All txnIds are valid" &&
+  //               res100.data.result[0].postBackParam["status"] !== "failure"
+  //             ) {
+  //               if (attending == "inPerson") {
+  //                 const data1 = await axios.put(
+  //                   `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
+  //                   {
+  //                     reg_no: singleUser.reg_no,
+  //                     paymentId: response.response.payuMoneyId,
+  //                     companions: companions,
+  //                     day: "2nd December",
+  //                   }
+  //                 );
+  //               } else {
+  //                 const data1 = await axios.put(
+  //                   `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
+  //                   {
+  //                     reg_no: singleUser.reg_no,
+  //                     paymentId: response.response.payuMoneyId,
+  //                     companions: 0,
+  //                     day: "",
+  //                   }
+  //                 );
+  //               }
+  //               setMessage(
+  //                 "Please check your mailbox for registration confirmation"
+  //               );
+  //               setOpen(true);
+  //               setPaid(true);
+  //             } else {
+  //               setMessage("Payment Failed");
+  //               setOpen(true);
+  //             }
+  //           } catch (err) {
+  //             console.log(err);
+  //           }
+  //         }
+  //         console.log(data);
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     },
+  //   });
+  // };
 
   useEffect(() => {
     setTimeout(() => setOpen(false), 3000);
@@ -259,9 +259,9 @@ const Details = ({ singleUser }) => {
             </tbody>
           </table>
         </div>
-        <br />
-        <br />
         <div>
+          {/* <br />
+          <br />
           <strong
             style={{
               color: "red",
@@ -271,14 +271,14 @@ const Details = ({ singleUser }) => {
             }}
           >
             The 11th Convocation of MUJ is being held on <em>19th and 20th October 2024</em>.
-          </strong>
+          </strong> */}
           <img src={LOGO} alt='' className='LOGONEW' />
         </div>
 
         {!paid
           ? inPerson && (
               <>
-                {/* <div className='dash-left-companions-div'>
+                <div className='dash-left-companions-div'>
                   <p className='dash-companions'>
                     <strong>Choose no. of companions attending with you</strong>
                   </p>
@@ -296,22 +296,22 @@ const Details = ({ singleUser }) => {
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                   </select>
-                </div> */}
-{/* 
+                </div>
+
                 <br />
-                <br /> */}
+                <br />
               </>
             )
           : null}
         {!paid ? (
           <>
             <div className='dash-attendDiv'>
-              {/* <p>
+              <p>
                 <strong>
                   Will you be attending the convocation In-Person?{" "}
                 </strong>
-              </p> */}
-              {/* <div
+              </p>
+              <div
                 className='form-check'
                 style={{
                   display: "flex",
@@ -336,11 +336,11 @@ const Details = ({ singleUser }) => {
                 <label className='form-check-label' htmlFor='inPerson'>
                   I will collect degree certificate in Person.
                 </label>
-              </div> */}
+              </div>
               {/* <input type="radio" name="inPersonopt" id="inPerson" value='inPerson'/>
         <label htmlFor="inPerson"> I will collect degree certificate in Person.</label> */}
 
-              {/* <div
+              <div
                 className='form-check'
                 style={{
                   display: "flex",
@@ -365,10 +365,10 @@ const Details = ({ singleUser }) => {
                 <label className='form-check-label' htmlFor='courier'>
                   I will collect degree certificates through courier service.
                 </label>
-              </div> */}
+              </div>
             </div>
-            {/* <br />
-            <br /> */}
+            <br />
+            <br />
             <div
               className='form-check dash-infoCheckDiv'
               style={{ display: "flex", alignItems: "center" }}
