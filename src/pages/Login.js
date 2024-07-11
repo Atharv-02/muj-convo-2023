@@ -12,6 +12,27 @@ import img6 from "../assets/Photo_for_portal/DSC_0697.JPG";
 import img7 from "../assets/Photo_for_portal/DSC_0698.JPG";
 import img8 from "../assets/Photo_for_portal/DSC_6841.JPG";
 import img9 from "../assets/Photo_for_portal/DSC_6900.JPG";
+
+import img10 from "../assets/Photo_for_portal/DSC01587.JPG";
+import img11 from "../assets/Photo_for_portal/DSC01675.JPG";
+import img12 from "../assets/Photo_for_portal/DSC01695.JPG";
+import img13 from "../assets/Photo_for_portal/DSC01716.JPG";
+
+import img14 from "../assets/Photo_for_portal/IMG_8057.JPG";
+import img15 from "../assets/Photo_for_portal/IMG_8058.JPG";
+import img16 from "../assets/Photo_for_portal/IMG_8098.JPG";
+import img17 from "../assets/Photo_for_portal/IMG_8129.JPG";
+import img18 from "../assets/Photo_for_portal/IMG_8153.JPG";
+import img19 from "../assets/Photo_for_portal/IMG_8170.JPG";
+import img20 from "../assets/Photo_for_portal/IMG_8200.JPG";
+import img21 from "../assets/Photo_for_portal/IMG_8203.JPG";
+import img22 from "../assets/Photo_for_portal/IMG_8289.JPG";
+import img23 from "../assets/Photo_for_portal/IMG_8298.JPG";
+import img24 from "../assets/Photo_for_portal/IMG_8307.JPG";
+import img25 from "../assets/Photo_for_portal/IMG_8353.JPG";
+
+import img26 from "../assets/Photo_for_portal/KRN05336.JPG";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -159,10 +180,43 @@ const Login = () => {
               <img src={img7} alt='' />
             </div>
             <div>
-              <img src={img8} alt='' />
+              <img src={img10} alt='' />
             </div>
             <div>
-              <img src={img9} alt='' />
+              <img src={img11} alt='' />
+            </div>
+            <div>
+              <img src={img12} alt='' />
+            </div>
+            <div>
+              <img src={img13} alt='' />
+            </div>
+            <div>
+              <img src={img14} alt='' />
+            </div>
+            <div>
+              <img src={img17} alt='' />
+            </div>
+            <div>
+              <img src={img18} alt='' />
+            </div>
+            <div>
+              <img src={img19} alt='' />
+            </div>
+            <div>
+              <img src={img22} alt='' />
+            </div>
+            <div>
+              <img src={img23} alt='' />
+            </div>
+            <div>
+              <img src={img24} alt='' />
+            </div>
+            <div>
+              <img src={img25} alt='' />
+            </div>
+            <div>
+              <img src={img26} alt='' />
             </div>
           </Carousel>
         </div>
