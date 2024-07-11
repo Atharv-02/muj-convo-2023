@@ -207,9 +207,6 @@ const Login = () => {
               <img src={img22} alt='' />
             </div>
             <div>
-              <img src={img23} alt='' />
-            </div>
-            <div>
               <img src={img24} alt='' />
             </div>
             <div>
@@ -223,9 +220,9 @@ const Login = () => {
 
         <div className='login-txt'>
           <div className='all-txt'>
-            <h1 style={{ color: "orange", fontSize: "2rem" }}>
+            <h1 style={{ color: "red", fontSize: "2rem" }}>
               {/* todo color change and font bigger */}
-              Registrations are now Open
+              Registrations are now Closed
             </h1>
             <p>Your passwords will be sent on the official e-mail id. </p>
             {!register ? (
