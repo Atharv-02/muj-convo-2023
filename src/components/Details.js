@@ -289,7 +289,7 @@ const Details = ({ singleUser }) => {
                     className='form-select companions-select'
                     onChange={(e) => setCompanions(e.target.value)}
                   >
-                    <option value='' disabled selected>
+                    <option value='' disabled defaultValue>
                       Select
                     </option>
                     <option value='0'>0</option>
@@ -386,7 +386,7 @@ const Details = ({ singleUser }) => {
                   borderColor: "lightgray",
                 }}
               />
-              <label className='form-check-label' htmlForr='infoCheck'>
+              <label className='form-check-label' htmlFor='infoCheck'>
                 <strong>
                   I hereby declare that the information above stated above is
                   true to the best of my knowlegde.

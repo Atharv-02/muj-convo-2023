@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+
 const CommForm = ({ singleUser, setSingleUser }) => {
-  const { token, setToken, isuserloggedin, setIsuserloggedin } = useAuth();
+  const { token } = useAuth();
   const [showBtn, setShowBtn] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     country: singleUser.country || "",
     phone: singleUser.phone || "",
@@ -12,43 +14,77 @@ const CommForm = ({ singleUser, setSingleUser }) => {
     district: singleUser.district || "",
     address: singleUser.address || "",
     pincode: singleUser.pincode || "",
-    checked: false,
     account_holder_name: singleUser.account_holder_name || "",
     bank_address: singleUser.bank_address || "",
     account_number: singleUser.account_number || "",
     bank_name: singleUser.bank_name || "",
     branch_name: singleUser.branch_name || "",
     ifsc_code: singleUser.ifsc_code || "",
-    aadhar_front_picture: singleUser.adhar_front_picture || "",
-    aadhar_back_picture: singleUser.adhar_back_picture || "",
+    aadhar_front_picture: singleUser.aadhar_front_picture || "",
+    aadhar_back_picture: singleUser.aadhar_back_picture || "",
     cancel_check: singleUser.cancel_check || "",
   });
+
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
-    let c = 0;
-    console.log("use effect runs");
-    Object.keys(formData).map((element) => {
-      console.log(element);
-      if (formData[element].length <= 0) {
-        c = 1;
-      }
-      if (element === "phone" && formData[element].length !== 10) {
-        c = 1;
-      }
-    });
-    if (c === 1) {
-      setShowBtn(false);
-    } else {
-      setShowBtn(true);
+    let hasError = false;
+    const newErrors = {};
+
+    if (formSubmitted) {
+      Object.keys(formData).forEach((key) => {
+        if (!formData[key] && key !== "checked") {
+          newErrors[key] = "This field is required";
+          hasError = true;
+        }
+        if (key === "phone" && formData[key].length !== 10) {
+          newErrors[key] = "Phone number must be 10 digits";
+          hasError = true;
+        }
+      });
     }
-  }, [formData]);
+
+    setErrors(newErrors);
+    setShowBtn(!hasError);
+  }, [formData, formSubmitted]);
+
   const handleChange = (e) => {
-    console.log(e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormSubmitted(true);
+
+    let valid = true;
+    const newErrors = {};
+    let firstInvalidField = null;
+
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key] && key !== "checked") {
+        newErrors[key] = "This field is required";
+        valid = false;
+        if (!firstInvalidField) {
+          firstInvalidField = key;
+        }
+      }
+      if (key === "phone" && formData[key].length !== 10) {
+        newErrors[key] = "Phone number must be 10 digits";
+        valid = false;
+        if (!firstInvalidField) {
+          firstInvalidField = key;
+        }
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (!valid) {
+      document.getElementById(firstInvalidField).focus();
+      return;
+    }
+
     try {
-      console.log(formData);
       const response = await axios.post(
         "http://localhost:5001/auth/add-communication-data",
         formData,
@@ -58,12 +94,12 @@ const CommForm = ({ singleUser, setSingleUser }) => {
           },
         }
       );
-      console.log(response);
       setSingleUser(response.data.data);
     } catch (e) {
       console.log(e);
     }
   };
+
   const openCloudWidget = (value) => {
     window.cloudinary
       .createUploadWidget(
@@ -101,264 +137,122 @@ const CommForm = ({ singleUser, setSingleUser }) => {
   };
 
   return (
-    <>
-      <div className='right-div'>
-        <form>
-          <div
-            className='comm-div'
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <h2 style={{ textAlign: "center" }}>Communication Details</h2>
-            <div className='comm-inp-div'>
-              <div className='comm-inp'>
+    <div className='right-div'>
+      <form onSubmit={handleSubmit}>
+        <div
+          className='comm-div'
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h2 style={{ textAlign: "center" }}>Communication Details</h2>
+          <div className='comm-inp-div'>
+            {[
+              { name: 'phone', type: 'number', placeholder: 'Phone Number', min: '1000000000', max: '9999999999' },
+              { name: 'address', type: 'text', placeholder: 'Address' },
+              { name: 'city', type: 'text', placeholder: 'City' },
+              { name: 'state', type: 'text', placeholder: 'State' },
+              { name: 'pincode', type: 'number', placeholder: 'Pincode' },
+              { name: 'district', type: 'text', placeholder: 'District' },
+              { name: 'country', type: 'text', placeholder: 'Country' }
+            ].map(field => (
+              <div key={field.name} className='comm-inp'>
                 <input
-                  name='phone'
-                  type='number'
-                  className='form-control'
-                  placeholder='Phone Number'
-                  id='phone'
-                  min='1000000000'
-                  max='9999999999'
-                  value={formData.phone}
+                  name={field.name}
+                  type={field.type}
+                  className={`form-control ${errors[field.name] ? 'is-invalid' : ''}`}
+                  placeholder={field.placeholder}
+                  id={field.name}
+                  min={field.min}
+                  max={field.max}
+                  value={formData[field.name]}
                   onChange={handleChange}
                   required
                 />
+                {errors[field.name] && (
+                  <div className="invalid-feedback">{errors[field.name]}</div>
+                )}
               </div>
-              <div className='comm-inp'>
-                <input
-                  name='address'
-                  type='text'
-                  className='form-control'
-                  placeholder='Address'
-                  id='address'
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='comm-inp'>
-                <input
-                  name='city'
-                  type='text'
-                  className='form-control'
-                  placeholder='City'
-                  id='city'
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='comm-inp'>
-                <input
-                  name='state'
-                  type='text'
-                  className='form-control'
-                  placeholder='State'
-                  id='state'
-                  value={formData.state}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className='comm-inp'>
-                <input
-                  name='pincode'
-                  type='number'
-                  className='form-control'
-                  placeholder='Pincode'
-                  id='pincode'
-                  value={formData.pincode}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='comm-inp'>
-                <input
-                  name='district'
-                  type='text'
-                  className='form-control'
-                  placeholder='District'
-                  id='district'
-                  value={formData.district}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='comm-inp'>
-                <input
-                  name='country'
-                  type='text'
-                  className='form-control'
-                  placeholder='Country'
-                  id='country'
-                  value={formData.country}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
+            ))}
           </div>
-          <div className='refund-div'>
-            <h2 style={{ textAlign: "center" }}>
-              Details for Caution <br /> Money Refund
-            </h2>
+        </div>
+        <div className='refund-div'>
+          <h2 style={{ textAlign: "center" }}>
+            Details for Caution <br /> Money Refund
+          </h2>
 
-            <div className='refund-inp-div'>
-              <div className='refund-inp'>
+          <div className='refund-inp-div'>
+            {[
+              { name: 'account_holder_name', type: 'text', placeholder: 'Account Holder Name' },
+              { name: 'account_number', type: 'text', placeholder: 'Account Number' },
+              { name: 'bank_name', type: 'text', placeholder: 'Bank Name' },
+              { name: 'branch_name', type: 'text', placeholder: 'Bank Branch' },
+              { name: 'bank_address', type: 'text', placeholder: 'Bank Address' },
+              { name: 'ifsc_code', type: 'text', placeholder: 'IFSC Code' }
+            ].map(field => (
+              <div key={field.name} className='refund-inp'>
                 <input
-                  name='account_holder_name'
-                  type='text'
-                  className='form-control'
-                  placeholder='Account Holder Name'
-                  id='AccHolderName'
-                  value={formData.account_holder_name}
+                  name={field.name}
+                  type={field.type}
+                  className={`form-control ${errors[field.name] ? 'is-invalid' : ''}`}
+                  placeholder={field.placeholder}
+                  id={field.name}
+                  value={formData[field.name]}
                   onChange={handleChange}
                   required
                 />
+                {errors[field.name] && (
+                  <div className="invalid-feedback">{errors[field.name]}</div>
+                )}
               </div>
-              <div className='refund-inp'>
-                <input
-                  name='account_number'
-                  type='text'
-                  className='form-control'
-                  placeholder='Account Number'
-                  id='AccNum'
-                  value={formData.account_number}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='refund-inp'>
-                <input
-                  name='bank_name'
-                  type='text'
-                  className='form-control'
-                  placeholder='Bank Name'
-                  id='bankName'
-                  value={formData.bank_name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='refund-inp'>
-                <input
-                  name='branch_name'
-                  type='text'
-                  className='form-control'
-                  placeholder='Bank Branch'
-                  id='bankBranch'
-                  value={formData.branch_name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+            ))}
 
-              <div className='refund-inp'>
-                <input
-                  name='bank_address'
-                  type='text'
-                  className='form-control'
-                  placeholder='Bank Address'
-                  id='bankAddress'
-                  value={formData.bank_address}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='refund-inp'>
-                <input
-                  name='ifsc_code'
-                  type='text'
-                  className='form-control'
-                  placeholder='IFSC Code'
-                  id='ifsc_code'
-                  value={formData.ifsc_code}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className='refund-inp input-group'>
-                <label className='input-group-text' htmlFor='aadhaar-front'>
-                  <strong> Aadhar Front Picture</strong>
+            {[
+              { name: 'aadhar_front_picture', label: 'Aadhar Front Picture' },
+              { name: 'aadhar_back_picture', label: 'Aadhar Back Picture' },
+              { name: 'cancel_check', label: 'Canceled Cheque Picture' }
+            ].map(field => (
+              <div key={field.name} className='refund-inp input-group'>
+                <label className='input-group-text' htmlFor={field.name}>
+                  <strong>{field.label}</strong>
                 </label>
                 <input
-                  className='form-control'
-                  id='aadhaar-front'
-                  placeholder='Aadhaar Front Picture'
+                  className={`form-control ${errors[field.name] ? 'is-invalid' : ''}`}
+                  id={field.name}
+                  placeholder={field.label}
                   required
                   readOnly
-                  value={formData.aadhar_front_picture}
+                  value={formData[field.name]}
                 />
                 <button
                   className='btn btn-outline-secondary'
                   type='button'
-                  onClick={() => openCloudWidget("aadhar_front_picture")}
+                  onClick={() => openCloudWidget(field.name)}
                 >
                   Select Image
                 </button>
+                {errors[field.name] && (
+                  <div className="invalid-feedback">{errors[field.name]}</div>
+                )}
               </div>
-              <div className='refund-inp input-group'>
-                <label className='input-group-text' htmlFor='aadhaar-back'>
-                  <strong> Aadhar Back Picture</strong>
-                </label>
-                <input
-                  className='form-control'
-                  id='aadhaar-back'
-                  placeholder='Aadhaar Back Picture'
-                  required
-                  value={formData.aadhar_back_picture}
-                  readOnly
-                />
-                <button
-                  className='btn btn-outline-secondary'
-                  type='button'
-                  onClick={() => openCloudWidget("aadhar_back_picture")}
-                >
-                  Select Image
-                </button>
-              </div>
-              <div className='refund-inp input-group'>
-                <label className='input-group-text' htmlFor='canceled-cheque'>
-                  <strong>Canceled Cheque Picture</strong>
-                </label>
-                <input
-                  className='form-control'
-                  id='canceled-cheque'
-                  value={formData.cancel_check}
-                  placeholder='Cancelled Cheque Picture'
-                  required
-                  readOnly
-                />
-                <button
-                  className='btn btn-outline-secondary'
-                  type='button'
-                  onClick={() => openCloudWidget("cancel_check")}
-                >
-                  Select Image
-                </button>
-              </div>
-            </div>
-
-            <div className='save-btn'>
-              <button
-                className='btn btn-outline-dark'
-                disabled={!showBtn}
-                onClick={handleSubmit}
-              >
-                Save Details
-              </button>
-            </div>
+            ))}
           </div>
-        </form>
-      </div>
-    </>
+
+          <div className='save-btn'>
+            <button
+              className='btn btn-outline-dark'
+              disabled={!showBtn}
+              type="submit"
+            >
+              Save Details
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
