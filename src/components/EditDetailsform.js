@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../style/form.css";
 import vector from "../assets/medium-wave.png";
 import {
   FormGroup,
@@ -20,6 +21,7 @@ const EditDetailsform = ({
   setSingleUser,
 }) => {
   const { token, setToken, isuserloggedin, setIsuserloggedin } = useAuth();
+  const [imgField, setImgField] = useState("");
   const [showBtn, setShowBtn] = useState(false);
   const [formData, setFormData] = useState({
     country: singleUser.country,
@@ -98,24 +100,34 @@ const EditDetailsform = ({
         },
         (error, result) => {
           if (!error && result && result.event === "success") {
-            if (value === "aadhar_front_picture") {
-              setFormData({
-                ...formData,
-                aadhar_front_picture: result.info.secure_url,
-              });
-            } else if (value === "aadhar_back_picture") {
-              setFormData({
-                ...formData,
-                aadhar_back_picture: result.info.secure_url,
-              });
-            } else if (value === "cancel_check") {
-              setFormData({
-                ...formData,
-                cancel_check: result.info.secure_url,
-              });
+            if (
+              result.info.secure_url.endsWith("jpg") ||
+              result.info.secure_url.endsWith("jpeg") ||
+              result.info.secure_url.endsWith("png")
+            ) {
+              setImgField("");
+              if (value === "aadhar_front_picture") {
+                setFormData({
+                  ...formData,
+                  aadhar_front_picture: result.info.secure_url,
+                });
+              } else if (value === "aadhar_back_picture") {
+                setFormData({
+                  ...formData,
+                  aadhar_back_picture: result.info.secure_url,
+                });
+              } else if (value === "cancel_check") {
+                setFormData({
+                  ...formData,
+                  cancel_check: result.info.secure_url,
+                });
+              }
+              console.log(formData);
+              // setFieldValue("photo", result.info.secure_url);
+            } else {
+              alert("Only jpg,jpeg and png formats excepted");
+              setImgField(value);
             }
-            console.log(formData);
-            // setFieldValue("photo", result.info.secure_url);
           }
         }
       )
@@ -341,11 +353,18 @@ const EditDetailsform = ({
                     />
                   </div>
                   <div className='refund-inp input-group'>
+                    <div className='abs-red-txt'>
+                      Only jpg, jpeg and png excepted
+                    </div>
                     <label className='input-group-text' for='aadhaar-front'>
                       <strong> Aadhar Front Picture</strong>
                     </label>
                     <input
-                      className='form-control'
+                      className={`form-control ${
+                        imgField == "aadhar_front_picture"
+                          ? "error-upload"
+                          : null
+                      }`}
                       id='aadhaar-front'
                       value={formData.aadhar_front_picture}
                       placeholder='Aadhaar Front Picture'
@@ -361,6 +380,9 @@ const EditDetailsform = ({
                     </button>
                   </div>
                   <div className='refund-inp input-group'>
+                    <div className='abs-red-txt'>
+                      Only jpg, jpeg and png excepted
+                    </div>
                     <label className='input-group-text' for='aadhaar-back'>
                       <strong> Aadhar Back Picture</strong>
                     </label>
@@ -381,6 +403,9 @@ const EditDetailsform = ({
                     </button>
                   </div>
                   <div className='refund-inp input-group'>
+                    <div className='abs-red-txt'>
+                      Only jpg, jpeg and png excepted
+                    </div>
                     <label className='input-group-text' for='canceled-cheque'>
                       <strong>Canceled Cheque Picture</strong>
                     </label>
