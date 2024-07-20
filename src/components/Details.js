@@ -7,6 +7,7 @@ import Alerts from "./Alert";
 import { useAlert } from "../context/AlertMessageContext";
 const PAYU_MERCHANT_KEY = "kqfd6O";
 const PAYU_SALT_KEY = "n0Qpybgx";
+
 const Details = ({ singleUser }) => {
   const [companions, setCompanions] = useState("");
   const [open, setOpen] = useState(false);
@@ -64,6 +65,16 @@ const Details = ({ singleUser }) => {
     productinfo: pd_in.productinfo,
     firstname: pd_in.firstname,
   };
+
+  const handleSubmit = () => {
+    if (attending === "inPerson") {
+      console.log(attending);
+      console.log(companions);
+    } else {
+      console.log(attending);
+      console.log(0);
+    }
+  }
 
   // const handlePaymentClick = () => {
   //   if (attending === "inPerson") {
@@ -277,31 +288,31 @@ const Details = ({ singleUser }) => {
 
         {!paid
           ? inPerson && (
-              <>
-                <div className='dash-left-companions-div'>
-                  <p className='dash-companions'>
-                    <strong>Choose no. of companions attending with you</strong>
-                  </p>
-                  <select
-                    name='companions'
-                    id='companions'
-                    value={companions}
-                    className='form-select companions-select'
-                    onChange={(e) => setCompanions(e.target.value)}
-                  >
-                    <option value='' disabled defaultValue>
-                      Select
-                    </option>
-                    <option value='0'>0</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                  </select>
-                </div>
+            <>
+              <div className='dash-left-companions-div'>
+                <p className='dash-companions'>
+                  <strong>Choose no. of companions attending with you</strong>
+                </p>
+                <select
+                  name='companions'
+                  id='companions'
+                  value={companions}
+                  className='form-select companions-select'
+                  onChange={(e) => setCompanions(e.target.value)}
+                >
+                  <option value='' disabled defaultValue>
+                    Select
+                  </option>
+                  <option value='0'>0</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                </select>
+              </div>
 
-                <br />
-                <br />
-              </>
-            )
+              <br />
+              <br />
+            </>
+          )
           : null}
         {!paid ? (
           <>
@@ -412,6 +423,22 @@ const Details = ({ singleUser }) => {
               >
                 CONFIRM & PAY
               </button> */}
+              <button
+                className='btn btn-dark'
+                disabled={
+                  (attending == "inPerson" &&
+                    companions &&
+                    selectTerms) ||
+                    (attending == "courier" && selectTerms)
+                    ? false
+                    : true
+                }
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+              <br />
+              <br />
               {/* <h4 style={{ color: "red" }}>
                 Sorry You seem to have missed out the deadline
               </h4> */}
