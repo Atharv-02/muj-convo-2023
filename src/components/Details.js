@@ -14,7 +14,7 @@ const Details = ({ singleUser }) => {
   const [attending, setAttending] = useState();
   const [selectTerms, setSelectTerms] = useState(false);
   const [inPerson, setInPerson] = useState(true);
-  const [paid, setPaid] = useState(singleUser.is_paid);
+  const [paid, setPaid] = useState(singleUser.companions ? true : false);
   const { message, setMessage } = useAlert();
   const handleChange = (e) => {
     e.target.value === "inPerson" ? setInPerson(true) : setInPerson(false);
@@ -66,14 +66,43 @@ const Details = ({ singleUser }) => {
     firstname: pd_in.firstname,
   };
 
-  const handleSubmit = () => {
-    if (attending === "inPerson") {
-      console.log(attending);
-      console.log(companions);
-    } else {
-      console.log(attending);
-      console.log(0);
+  const handleSubmit = async () => {
+
+
+    try {
+
+      let response;
+      if (attending === "inPerson") {
+        response = await axios.put(`http://localhost:5001/student/update-registration-status`, {
+          reg_no: singleUser.reg_no,
+          companions: companions,
+          attending: attending
+        })
+        console.log(response);
+      } else {
+        response = await axios.put(`http://localhost:5001/student/update-registration-status`, {
+          reg_no: singleUser.reg_no,
+          companions: companions,
+          attending: attending
+        })
+        console.log(response);
+      }
+      if (response.data.message == 'Student registration successful') {
+        setMessage("Please check your mailbox for registration confirmation");
+        setOpen(true);
+        setPaid(true);
+      } else {
+        setMessage("Registration Failed");
+        setOpen(true);
+      }
+      // console.log(response.data);
+
+
+    } catch (error) {
+      console.log(error);
     }
+
+
   }
 
   // const handlePaymentClick = () => {
