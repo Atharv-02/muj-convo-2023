@@ -10,6 +10,7 @@ const PAYU_SALT_KEY = "n0Qpybgx";
 
 const Details = ({ singleUser }) => {
   const [companions, setCompanions] = useState("");
+  const [abled, setAbled] = useState(true);
   const [open, setOpen] = useState(false);
   const [attending, setAttending] = useState();
   const [selectTerms, setSelectTerms] = useState(false);
@@ -68,6 +69,8 @@ const Details = ({ singleUser }) => {
 
   const handleSubmit = async () => {
 
+    setAbled(false)
+
 
     try {
 
@@ -96,6 +99,7 @@ const Details = ({ singleUser }) => {
         setOpen(true);
       }
       // console.log(response.data);
+      setAbled(true)
 
 
     } catch (error) {
@@ -456,9 +460,13 @@ const Details = ({ singleUser }) => {
                 className='btn btn-dark'
                 disabled={
                   (attending == "inPerson" &&
-                    companions &&
+                    singleUser.phone &&
+                    companions && abled &&
                     selectTerms) ||
-                    (attending == "courier" && selectTerms)
+                    (attending == "courier" &&
+                      singleUser.phone &&
+                      selectTerms &&
+                      abled)
                     ? false
                     : true
                 }
@@ -477,7 +485,7 @@ const Details = ({ singleUser }) => {
           <div style={{ textAlign: "center", margin: "20px 0" }}>
             <h4>
               CONGRATULATIONS! <br /> You have successfully registerd for <br />
-              MUJ 10th Convocation .
+              MUJ 11th Convocation .
             </h4>
           </div>
         )}
