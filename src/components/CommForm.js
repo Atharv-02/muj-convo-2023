@@ -112,24 +112,32 @@ const CommForm = ({ singleUser, setSingleUser }) => {
         },
         (error, result) => {
           if (!error && result && result.event === "success") {
-            if (value === "aadhar_front_picture") {
-              setFormData({
-                ...formData,
-                aadhar_front_picture: result.info.secure_url,
-              });
-            } else if (value === "aadhar_back_picture") {
-              setFormData({
-                ...formData,
-                aadhar_back_picture: result.info.secure_url,
-              });
-            } else if (value === "cancel_check") {
-              setFormData({
-                ...formData,
-                cancel_check: result.info.secure_url,
-              });
+            if (
+              result.info.secure_url.endsWith("jpg") ||
+              result.info.secure_url.endsWith("jpeg") ||
+              result.info.secure_url.endsWith("png")
+            ) {
+              if (value === "aadhar_front_picture") {
+                setFormData({
+                  ...formData,
+                  aadhar_front_picture: result.info.secure_url,
+                });
+              } else if (value === "aadhar_back_picture") {
+                setFormData({
+                  ...formData,
+                  aadhar_back_picture: result.info.secure_url,
+                });
+              } else if (value === "cancel_check") {
+                setFormData({
+                  ...formData,
+                  cancel_check: result.info.secure_url,
+                });
+              }
+              console.log(formData);
+              // setFieldValue("photo", result.info.secure_url);
+            } else {
+              alert("Only jpg,jpeg and png formats excepted");
             }
-            console.log(formData);
-            // setFieldValue("photo", result.info.secure_url);
           }
         }
       )
@@ -151,19 +159,27 @@ const CommForm = ({ singleUser, setSingleUser }) => {
           <h2 style={{ textAlign: "center" }}>Communication Details</h2>
           <div className='comm-inp-div'>
             {[
-              { name: 'phone', type: 'number', placeholder: 'Phone Number', min: '1000000000', max: '9999999999' },
-              { name: 'address', type: 'text', placeholder: 'Address' },
-              { name: 'city', type: 'text', placeholder: 'City' },
-              { name: 'state', type: 'text', placeholder: 'State' },
-              { name: 'pincode', type: 'number', placeholder: 'Pincode' },
-              { name: 'district', type: 'text', placeholder: 'District' },
-              { name: 'country', type: 'text', placeholder: 'Country' }
-            ].map(field => (
+              {
+                name: "phone",
+                type: "number",
+                placeholder: "Phone Number",
+                min: "1000000000",
+                max: "9999999999",
+              },
+              { name: "address", type: "text", placeholder: "Address" },
+              { name: "city", type: "text", placeholder: "City" },
+              { name: "state", type: "text", placeholder: "State" },
+              { name: "pincode", type: "number", placeholder: "Pincode" },
+              { name: "district", type: "text", placeholder: "District" },
+              { name: "country", type: "text", placeholder: "Country" },
+            ].map((field) => (
               <div key={field.name} className='comm-inp'>
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${errors[field.name] ? 'is-invalid' : ''}`}
+                  className={`form-control ${
+                    errors[field.name] ? "is-invalid" : ""
+                  }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   min={field.min}
@@ -173,7 +189,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                   required
                 />
                 {errors[field.name] && (
-                  <div className="invalid-feedback">{errors[field.name]}</div>
+                  <div className='invalid-feedback'>{errors[field.name]}</div>
                 )}
               </div>
             ))}
@@ -186,18 +202,32 @@ const CommForm = ({ singleUser, setSingleUser }) => {
 
           <div className='refund-inp-div'>
             {[
-              { name: 'account_holder_name', type: 'text', placeholder: 'Account Holder Name' },
-              { name: 'account_number', type: 'text', placeholder: 'Account Number' },
-              { name: 'bank_name', type: 'text', placeholder: 'Bank Name' },
-              { name: 'branch_name', type: 'text', placeholder: 'Bank Branch' },
-              { name: 'bank_address', type: 'text', placeholder: 'Bank Address' },
-              { name: 'ifsc_code', type: 'text', placeholder: 'IFSC Code' }
-            ].map(field => (
+              {
+                name: "account_holder_name",
+                type: "text",
+                placeholder: "Account Holder Name",
+              },
+              {
+                name: "account_number",
+                type: "text",
+                placeholder: "Account Number",
+              },
+              { name: "bank_name", type: "text", placeholder: "Bank Name" },
+              { name: "branch_name", type: "text", placeholder: "Bank Branch" },
+              {
+                name: "bank_address",
+                type: "text",
+                placeholder: "Bank Address",
+              },
+              { name: "ifsc_code", type: "text", placeholder: "IFSC Code" },
+            ].map((field) => (
               <div key={field.name} className='refund-inp'>
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${errors[field.name] ? 'is-invalid' : ''}`}
+                  className={`form-control ${
+                    errors[field.name] ? "is-invalid" : ""
+                  }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   value={formData[field.name]}
@@ -205,22 +235,27 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                   required
                 />
                 {errors[field.name] && (
-                  <div className="invalid-feedback">{errors[field.name]}</div>
+                  <div className='invalid-feedback'>{errors[field.name]}</div>
                 )}
               </div>
             ))}
 
             {[
-              { name: 'aadhar_front_picture', label: 'Aadhar Front Picture' },
-              { name: 'aadhar_back_picture', label: 'Aadhar Back Picture' },
-              { name: 'cancel_check', label: 'Canceled Cheque Picture' }
-            ].map(field => (
+              { name: "aadhar_front_picture", label: "Aadhar Front Picture" },
+              { name: "aadhar_back_picture", label: "Aadhar Back Picture" },
+              { name: "cancel_check", label: "Canceled Cheque Picture" },
+            ].map((field) => (
               <div key={field.name} className='refund-inp input-group'>
+                <div className='abs-red-txt'>
+                  Only jpg, jpeg and png excepted
+                </div>
                 <label className='input-group-text' htmlFor={field.name}>
                   <strong>{field.label}</strong>
                 </label>
                 <input
-                  className={`form-control ${errors[field.name] ? 'is-invalid' : ''}`}
+                  className={`form-control ${
+                    errors[field.name] ? "is-invalid" : ""
+                  }`}
                   id={field.name}
                   placeholder={field.label}
                   required
@@ -235,7 +270,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                   Select Image
                 </button>
                 {errors[field.name] && (
-                  <div className="invalid-feedback">{errors[field.name]}</div>
+                  <div className='invalid-feedback'>{errors[field.name]}</div>
                 )}
               </div>
             ))}
@@ -245,7 +280,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
             <button
               className='btn btn-outline-dark'
               disabled={!showBtn}
-              type="submit"
+              type='submit'
             >
               Save Details
             </button>
