@@ -87,7 +87,7 @@ const Login = () => {
     }
     try {
       const result = await axios.post(
-        "http://localhost:5001/auth/login",
+        "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/login",
         params
       );
       console.log(result);
@@ -113,13 +113,13 @@ const Login = () => {
   };
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-    console.log("HI");
+    // console.log("HI");
     try {
-      const result = await axios.post("http://localhost:5001/auth/register", {
+      const result = await axios.post("https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/register", {
         role: "student",
         reg_no: newRegNo,
       });
-      console.log(result);
+      // console.log(result);
       setRegister(false);
       setOpen(true);
       setVariant("success");

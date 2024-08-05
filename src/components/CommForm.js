@@ -86,7 +86,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/auth/add-communication-data",
+        "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/add-communication-data",
         formData,
         {
           headers: {
@@ -177,9 +177,8 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${
-                    errors[field.name] ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                    }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   min={field.min}
@@ -225,9 +224,8 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${
-                    errors[field.name] ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                    }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   value={formData[field.name]}
@@ -253,9 +251,8 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                   <strong>{field.label}</strong>
                 </label>
                 <input
-                  className={`form-control ${
-                    errors[field.name] ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                    }`}
                   id={field.name}
                   placeholder={field.label}
                   required

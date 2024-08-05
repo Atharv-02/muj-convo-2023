@@ -76,14 +76,14 @@ const Details = ({ singleUser }) => {
 
       let response;
       if (attending === "inPerson") {
-        response = await axios.put(`http://localhost:5001/student/update-registration-status`, {
+        response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
           reg_no: singleUser.reg_no,
           companions: companions,
           attending: attending
         })
         console.log(response);
       } else {
-        response = await axios.put(`http://localhost:5001/student/update-registration-status`, {
+        response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
           reg_no: singleUser.reg_no,
           companions: companions,
           attending: attending
@@ -120,8 +120,8 @@ const Details = ({ singleUser }) => {
   // const handleClick_out = async () => {
   //   try {
   //     const res = await axios.post(
-  //       // "http://localhost:5001/student/payment/payumoney",
-  //       "http://localhost:5001/student/payment/payumoney",
+  //       // "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/payment/payumoney",
+  //       "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/payment/payumoney",
   //       {
   //         ...paymentData_out,
   //       }
@@ -137,8 +137,8 @@ const Details = ({ singleUser }) => {
   // const handleClick_in = async () => {
   //   try {
   //     const res = await axios.post(
-  //       // "http://localhost:5001/student/payment/payumoney",
-  //       "http://localhost:5001/student/payment/payumoney",
+  //       // "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/payment/payumoney",
+  //       "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/payment/payumoney",
   //       {
   //         ...paymentData_in,
   //       }
@@ -162,8 +162,8 @@ const Details = ({ singleUser }) => {
   //         // your payment response Code goes here
 
   //         const res = await axios.post(
-  //           "http://localhost:5001/student/paymentResponse",
-  //           // "http://localhost:5001/student/paymentResponse",
+  //           "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/paymentResponse",
+  //           // "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/paymentResponse",
   //           body
   //         );
   //         console.log(res);
@@ -175,8 +175,8 @@ const Details = ({ singleUser }) => {
   //           try {
   //             console.log(pd.txnid);
   //             const res100 = await axios.post(
-  //               "http://localhost:5001/student/getPaymentStatus",
-  //               // "http://localhost:5001/student/getPaymentStatus",
+  //               "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/getPaymentStatus",
+  //               // "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/getPaymentStatus",
   //               { mId: pd.txnid }
   //             );
   //             console.log(res100);
@@ -196,7 +196,7 @@ const Details = ({ singleUser }) => {
   //             ) {
   //               if (attending == "inPerson") {
   //                 const data1 = await axios.put(
-  //                   `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
+  //                   `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
   //                   {
   //                     reg_no: singleUser.reg_no,
   //                     paymentId: response.response.payuMoneyId,
@@ -206,7 +206,7 @@ const Details = ({ singleUser }) => {
   //                 );
   //               } else {
   //                 const data1 = await axios.put(
-  //                   `http://localhost:5001/student/update-student-payment-status/${singleUser.reg_no}`,
+  //                   `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-student-payment-status/${singleUser.reg_no}`,
   //                   {
   //                     reg_no: singleUser.reg_no,
   //                     paymentId: response.response.payuMoneyId,
@@ -339,6 +339,27 @@ const Details = ({ singleUser }) => {
                   <option value='0'>0</option>
                   <option value='1'>1</option>
                   <option value='2'>2</option>
+                </select>
+              </div>
+
+              <br />
+              <br />
+              <div className='dash-left-companions-div'>
+                <p className='dash-companions'>
+                  <strong>Choose the day when you want to attend</strong>
+                </p>
+                <select
+                  name='day'
+                  id='day'
+                  // value={}
+                  className='form-select companions-select'
+                // onChange={}
+                >
+                  <option value='' disabled defaultValue>
+                    Select
+                  </option>
+                  <option value='0'>19th October 2024</option>
+                  <option value='1'>20th October 2024</option>
                 </select>
               </div>
 

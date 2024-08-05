@@ -22,8 +22,8 @@ const Dash = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        // "http://localhost:5001/auth/getUser",
-        "http://localhost:5001/auth/getUser",
+        // "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/getUser",
+        "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/getUser",
         {
           headers: {
             Authorization: `Bearer ${token}`,

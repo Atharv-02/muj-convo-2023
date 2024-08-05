@@ -73,7 +73,7 @@ const EditDetailsform = ({
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:5001/auth/add-communication-data`,
+        `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/add-communication-data`,
         formData,
         {
           headers: {
@@ -360,11 +360,10 @@ const EditDetailsform = ({
                       <strong> Aadhar Front Picture</strong>
                     </label>
                     <input
-                      className={`form-control ${
-                        imgField == "aadhar_front_picture"
+                      className={`form-control ${imgField == "aadhar_front_picture"
                           ? "error-upload"
                           : null
-                      }`}
+                        }`}
                       id='aadhaar-front'
                       value={formData.aadhar_front_picture}
                       placeholder='Aadhaar Front Picture'

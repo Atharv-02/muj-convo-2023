@@ -16,7 +16,7 @@ const DepTable = ({
     try {
       setLoading(true);
       const response2 = await axios.get(
-        `http://localhost:5001/due/get-student-dept-dues/${student.reg_no}`,
+        `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/due/get-student-dept-dues/${student.reg_no}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -34,7 +34,7 @@ const DepTable = ({
   const clearDue = async (id) => {
     try {
       // const result = await axios.put(
-      //   `http://localhost:5001/due/clear-student-due/${id}`,
+      //   `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/due/clear-student-due/${id}`,
       //   {
       //     headers: {
       //       Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ const DepTable = ({
       let config = {
         method: "put",
         maxBodyLength: Infinity,
-        url: `http://localhost:5001/due/clear-student-due/${id}`,
+        url: `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/due/clear-student-due/${id}`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
