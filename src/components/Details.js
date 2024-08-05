@@ -10,6 +10,7 @@ const PAYU_SALT_KEY = "n0Qpybgx";
 
 const Details = ({ singleUser }) => {
   const [companions, setCompanions] = useState("");
+  const [date, setDate] = useState("");
   const [abled, setAbled] = useState(true);
   const [open, setOpen] = useState(false);
   const [attending, setAttending] = useState();
@@ -349,11 +350,11 @@ const Details = ({ singleUser }) => {
                   <strong>Choose the day when you want to attend</strong>
                 </p>
                 <select
-                  name='day'
-                  id='day'
-                  // value={}
+                  name='date'
+                  id='date'
+                  value={date}
                   className='form-select companions-select'
-                // onChange={}
+                  onChange={(e) => setDate(e.target.value)}
                 >
                   <option value='' disabled defaultValue>
                     Select
@@ -482,7 +483,7 @@ const Details = ({ singleUser }) => {
                 disabled={
                   (attending == "inPerson" &&
                     singleUser.phone &&
-                    companions && abled &&
+                    companions && date && abled &&
                     selectTerms) ||
                     (attending == "courier" &&
                       singleUser.phone &&
@@ -506,7 +507,7 @@ const Details = ({ singleUser }) => {
           <div style={{ textAlign: "center", margin: "20px 0" }}>
             <h4>
               CONGRATULATIONS! <br /> You have successfully registerd for <br />
-              MUJ 11th Convocation .
+              MUJ 11th Convocation.
             </h4>
           </div>
         )}
