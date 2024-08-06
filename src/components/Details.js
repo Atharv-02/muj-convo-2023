@@ -83,7 +83,7 @@ const Details = ({ singleUser }) => {
           attending: attending,
           date: date
         })
-        console.log(response);
+        // console.log(response);
       } else {
         response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
           reg_no: singleUser.reg_no,
@@ -91,7 +91,7 @@ const Details = ({ singleUser }) => {
           attending: attending,
           date: 'NA'
         })
-        console.log(response);
+        // console.log(response);
       }
       if (response.data.message == 'Student registration successful') {
         setMessage("Please check your mailbox for registration confirmation");
@@ -102,12 +102,14 @@ const Details = ({ singleUser }) => {
         setOpen(true);
       }
       // console.log(response.data);
-      setAbled(true)
+
 
 
     } catch (error) {
       console.log(error);
     }
+
+    setAbled(true)
 
 
   }
@@ -361,8 +363,8 @@ const Details = ({ singleUser }) => {
                   <option value='' disabled defaultValue>
                     Select
                   </option>
-                  <option value='0'>19th October 2024</option>
-                  <option value='1'>20th October 2024</option>
+                  <option value='19th October'>19th October 2024</option>
+                  <option value='20th October'>20th October 2024</option>
                 </select>
               </div>
 
