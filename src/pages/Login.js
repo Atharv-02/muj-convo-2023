@@ -115,10 +115,13 @@ const Login = () => {
     e.preventDefault();
     // console.log("HI");
     try {
-      const result = await axios.post("https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/register", {
-        role: "student",
-        reg_no: newRegNo,
-      });
+      const result = await axios.post(
+        "https://us-central1-muj-convocation-2024.cloudfunctions.net/app/auth/register",
+        {
+          role: "student",
+          reg_no: newRegNo,
+        }
+      );
       // console.log(result);
       setRegister(false);
       setOpen(true);
@@ -151,7 +154,7 @@ const Login = () => {
         <div className='carousel-login'>
           <Carousel
             responsive={responsive}
-            showDots
+            showDots={false}
             arrows={false}
             autoPlay
             autoPlaySpeed={3000}
@@ -274,7 +277,13 @@ const Login = () => {
                     </button>
                   </div>
                 </form>
-                <p className='login-p' onClick={() => setRegister(true)}>
+                <p
+                  className='login-p'
+                  onClick={() => {
+                    setRegister(true);
+                    setNewRegNo("");
+                  }}
+                >
                   Don’t have an account?
                   <span> Register Now</span>
                 </p>
@@ -301,7 +310,13 @@ const Login = () => {
                     </button>
                   </div>
                 </form>
-                <p className='login-p' onClick={() => setRegister(false)}>
+                <p
+                  className='login-p'
+                  onClick={() => {
+                    setRegister(false);
+                    setRegNo("");
+                  }}
+                >
                   Already have an account?
                   <span> Login Now</span>
                 </p>
