@@ -164,10 +164,8 @@
   height: 10%;
 }
 
-.LOGONEW{
-  width: 80%;
+.LOGONEW {
+  /* width: 80%; */
   height: auto;
-  margin: 10% 5% 10% 12%;
-  
+  /* margin: 10% 5% 10% 12%; */
 }
-

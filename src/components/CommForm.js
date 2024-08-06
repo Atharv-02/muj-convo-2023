@@ -112,6 +112,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
         },
         (error, result) => {
           if (!error && result && result.event === "success") {
+            console.log(result.event);
             if (
               result.info.secure_url.endsWith("jpg") ||
               result.info.secure_url.endsWith("jpeg") ||
@@ -138,6 +139,10 @@ const CommForm = ({ singleUser, setSingleUser }) => {
             } else {
               alert("Only jpg,jpeg and png formats excepted");
             }
+          } else if (result.status == "Invalid image file") {
+            alert("Please provide proper images in supported file types");
+          } else {
+            console.log(result);
           }
         }
       )
@@ -177,8 +182,9 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
-                    }`}
+                  className={`form-control ${
+                    errors[field.name] ? "is-invalid" : ""
+                  }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   min={field.min}
@@ -224,8 +230,9 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
-                    }`}
+                  className={`form-control ${
+                    errors[field.name] ? "is-invalid" : ""
+                  }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   value={formData[field.name]}
@@ -251,8 +258,9 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                   <strong>{field.label}</strong>
                 </label>
                 <input
-                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
-                    }`}
+                  className={`form-control ${
+                    errors[field.name] ? "is-invalid" : ""
+                  }`}
                   id={field.name}
                   placeholder={field.label}
                   required

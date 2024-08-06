@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import randomize from "randomatic";
 import LOGO from "../assets/LOGO.png";
+import LOGO_NEW from "../assets/Logo for convo portal without bg.png";
 import Alerts from "./Alert";
 import { useAlert } from "../context/AlertMessageContext";
 const PAYU_MERCHANT_KEY = "kqfd6O";
@@ -69,14 +70,12 @@ const Details = ({ singleUser }) => {
   };
 
   const handleSubmit = async () => {
-
-    setAbled(false)
-
+    setAbled(false);
 
     try {
-
       let response;
       if (attending === "inPerson") {
+<<<<<<< Updated upstream
         response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
           reg_no: singleUser.reg_no,
           companions: companions,
@@ -92,8 +91,29 @@ const Details = ({ singleUser }) => {
           date: 'NA'
         })
         // console.log(response);
+=======
+        response = await axios.put(
+          `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`,
+          {
+            reg_no: singleUser.reg_no,
+            companions: companions,
+            attending: attending,
+          }
+        );
+        console.log(response);
+      } else {
+        response = await axios.put(
+          `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`,
+          {
+            reg_no: singleUser.reg_no,
+            companions: companions,
+            attending: attending,
+          }
+        );
+        console.log(response);
+>>>>>>> Stashed changes
       }
-      if (response.data.message == 'Student registration successful') {
+      if (response.data.message == "Student registration successful") {
         setMessage("Please check your mailbox for registration confirmation");
         setOpen(true);
         setPaid(true);
@@ -102,6 +122,7 @@ const Details = ({ singleUser }) => {
         setOpen(true);
       }
       // console.log(response.data);
+<<<<<<< Updated upstream
 
 
 
@@ -113,6 +134,13 @@ const Details = ({ singleUser }) => {
 
 
   }
+=======
+      setAbled(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+>>>>>>> Stashed changes
 
   // const handlePaymentClick = () => {
   //   if (attending === "inPerson") {
@@ -321,32 +349,33 @@ const Details = ({ singleUser }) => {
           >
             The 11th Convocation of MUJ is being held on <em>19th and 20th October 2024</em>.
           </strong> */}
-          <img src={LOGO} alt='' className='LOGONEW' />
+          <img src={LOGO_NEW} alt='' className='LOGONEW' />
         </div>
 
         {!paid
           ? inPerson && (
-            <>
-              <div className='dash-left-companions-div'>
-                <p className='dash-companions'>
-                  <strong>Choose no. of companions attending with you</strong>
-                </p>
-                <select
-                  name='companions'
-                  id='companions'
-                  value={companions}
-                  className='form-select companions-select'
-                  onChange={(e) => setCompanions(e.target.value)}
-                >
-                  <option value='' disabled defaultValue>
-                    Select
-                  </option>
-                  <option value='0'>0</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                </select>
-              </div>
+              <>
+                <div className='dash-left-companions-div'>
+                  <p className='dash-companions'>
+                    <strong>Choose no. of companions attending with you</strong>
+                  </p>
+                  <select
+                    name='companions'
+                    id='companions'
+                    value={companions}
+                    className='form-select companions-select'
+                    onChange={(e) => setCompanions(e.target.value)}
+                  >
+                    <option value='' disabled defaultValue>
+                      Select
+                    </option>
+                    <option value='0'>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                  </select>
+                </div>
 
+<<<<<<< Updated upstream
               <br />
               <br />
               <div className='dash-left-companions-div'>
@@ -367,11 +396,33 @@ const Details = ({ singleUser }) => {
                   <option value='20th October'>20th October 2024</option>
                 </select>
               </div>
+=======
+                <br />
+                <br />
+                <div className='dash-left-companions-div'>
+                  <p className='dash-companions'>
+                    <strong>Choose the day when you want to attend</strong>
+                  </p>
+                  <select
+                    name='date'
+                    id='date'
+                    value={date}
+                    className='form-select companions-select'
+                    onChange={(e) => setDate(e.target.value)}
+                  >
+                    <option value='' disabled defaultValue>
+                      Select
+                    </option>
+                    <option value='0'>19th October 2024</option>
+                    <option value='1'>20th October 2024</option>
+                  </select>
+                </div>
+>>>>>>> Stashed changes
 
-              <br />
-              <br />
-            </>
-          )
+                <br />
+                <br />
+              </>
+            )
           : null}
         {!paid ? (
           <>
@@ -487,12 +538,14 @@ const Details = ({ singleUser }) => {
                 disabled={
                   (attending == "inPerson" &&
                     singleUser.phone &&
-                    companions && date && abled &&
+                    companions &&
+                    date &&
+                    abled &&
                     selectTerms) ||
-                    (attending == "courier" &&
-                      singleUser.phone &&
-                      selectTerms &&
-                      abled)
+                  (attending == "courier" &&
+                    singleUser.phone &&
+                    selectTerms &&
+                    abled)
                     ? false
                     : true
                 }

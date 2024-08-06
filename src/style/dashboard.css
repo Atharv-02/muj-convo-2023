@@ -298,6 +298,8 @@
 }
 
 .LOGONEW {
-  max-width: 50%;
-  margin: 10px 180px;
+  width: 100%;
+  /* margin: 10px 180px; */
+  height: 100%;
+  margin: 0 auto;
 }
