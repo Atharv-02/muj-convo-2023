@@ -73,15 +73,15 @@ const ContactDetails = () => {
             </Accordion.Header>
             <Accordion.Body>
               <strong>
-                Mr. Satish Adala, GHS <br />
+                Mr. Sunil Kumawat <br />
               </strong>
-              Mob: 6301683285
+              Mob: 9782087687
               <br />
               <BiMailSend />
               <span>
                 Email:{" "}
                 <a href='' style={{ color: "red" }}>
-                  satish.adala@qmail.quesscorp.com
+                  sunil.kumawat@qmail.quesscorp.com
                 </a>
               </span>
             </Accordion.Body>
