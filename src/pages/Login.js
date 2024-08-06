@@ -40,6 +40,9 @@ import { useLoading } from "../context/SideContext";
 import { Alert } from "react-bootstrap";
 import { useAlert } from "../context/AlertMessageContext";
 import Alerts from "../components/Alert";
+
+import Spinner from "react-bootstrap/Spinner";
+
 const Login = () => {
   const { message, setMessage } = useAlert();
   const [open, setOpen] = useState(false);
@@ -53,7 +56,7 @@ const Login = () => {
   const [register, setRegister] = useState(false);
   const [alert, setAlert] = useState();
   const [showAlert, setShowAlert] = useState(false);
-
+  // const [loading, setLoading] = useState(false);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -79,6 +82,7 @@ const Login = () => {
   // const { loading, setLoading } = useLoading();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     let params;
     if (roles == "student") {
       params = { role: roles, reg_no: regNo, password: password };
@@ -103,6 +107,7 @@ const Login = () => {
       setToken(result.data.token);
       setIsuserloggedin(true);
       setRole(roles);
+
       navigate("/");
     } catch (e) {
       setMessage(e.response.data.error);
@@ -110,9 +115,11 @@ const Login = () => {
       setOpen(true);
       console.log(e);
     }
+    setLoading(false);
   };
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     // console.log("HI");
     try {
       const result = await axios.post(
@@ -134,6 +141,7 @@ const Login = () => {
       setMessage(error.response.data.error);
       console.log(error);
     }
+    setLoading(false);
   };
   useEffect(() => {
     localStorage.clear();
@@ -267,15 +275,31 @@ const Login = () => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <div className='container sub-btn-container'>
-                    <button
-                      className='btn-all login-btn'
-                      type='submit'
-                      onClick={handleSubmit}
+                  {loading ? (
+                    <div
+                      className='container sub-btn-container'
+                      style={{ textAlign: "center", margin: "1.5rem auto" }}
                     >
-                      Submit
-                    </button>
-                  </div>
+                      <Spinner
+                        animation='border'
+                        role='status'
+                        style={{
+                          margin: "1.5rem auto",
+                          font: "1.5rem",
+                        }}
+                      ></Spinner>
+                    </div>
+                  ) : (
+                    <div className='container sub-btn-container'>
+                      <button
+                        className='btn-all login-btn'
+                        type='submit'
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  )}
                 </form>
                 <p
                   className='login-p'
@@ -300,15 +324,31 @@ const Login = () => {
                     />
                   </div>
 
-                  <div className='container sub-btn-container'>
-                    <button
-                      className='btn-all login-btn'
-                      type='submit'
-                      onClick={handleRegisterSubmit}
+                  {loading ? (
+                    <div
+                      className='container sub-btn-container'
+                      style={{ textAlign: "center", margin: "1.5rem auto" }}
                     >
-                      Submit
-                    </button>
-                  </div>
+                      <Spinner
+                        animation='border'
+                        role='status'
+                        style={{
+                          margin: "1.5rem auto",
+                          font: "1.5rem",
+                        }}
+                      ></Spinner>
+                    </div>
+                  ) : (
+                    <div className='container sub-btn-container'>
+                      <button
+                        className='btn-all login-btn'
+                        type='submit'
+                        onClick={handleRegisterSubmit}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  )}
                 </form>
                 <p
                   className='login-p'
