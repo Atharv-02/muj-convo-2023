@@ -69,7 +69,8 @@ const Details = ({ singleUser }) => {
     firstname: pd_in.firstname,
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setAbled(false);
 
     try {
@@ -100,7 +101,7 @@ const Details = ({ singleUser }) => {
       if (response.data.message == "Student registration successful") {
         setMessage("Please check your mailbox for registration confirmation");
         setOpen(true);
-        setPaid(true);
+        setPaid(companions !== "NA" ? true : false);
       } else {
         setMessage("Registration Failed");
         setOpen(true);
