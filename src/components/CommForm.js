@@ -167,7 +167,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
               {
                 name: "phone",
                 type: "number",
-                placeholder: "Phone Number",
+                placeholder: "Phone Number - 10 digits",
                 min: "1000000000",
                 max: "9999999999",
               },
