@@ -80,14 +80,16 @@ const Details = ({ singleUser }) => {
         response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
           reg_no: singleUser.reg_no,
           companions: companions,
-          attending: attending
+          attending: attending,
+          date: date
         })
         console.log(response);
       } else {
         response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
           reg_no: singleUser.reg_no,
           companions: companions,
-          attending: attending
+          attending: attending,
+          date: 'NA'
         })
         console.log(response);
       }
