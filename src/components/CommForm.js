@@ -137,7 +137,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
               console.log(formData);
               // setFieldValue("photo", result.info.secure_url);
             } else {
-              alert("Only jpg,jpeg and png formats excepted");
+              alert("Only jpg,jpeg and png formats accepted");
             }
           } else if (result.status == "Invalid image file") {
             alert("Please provide proper images in supported file types");
@@ -252,7 +252,7 @@ const CommForm = ({ singleUser, setSingleUser }) => {
             ].map((field) => (
               <div key={field.name} className='refund-inp input-group'>
                 <div className='abs-red-txt'>
-                  Only jpg, jpeg and png excepted
+                  Only jpg, jpeg and png accepted
                 </div>
                 <label className='input-group-text' htmlFor={field.name}>
                   <strong>{field.label}</strong>

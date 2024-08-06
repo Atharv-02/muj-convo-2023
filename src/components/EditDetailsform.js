@@ -125,7 +125,7 @@ const EditDetailsform = ({
               console.log(formData);
               // setFieldValue("photo", result.info.secure_url);
             } else {
-              alert("Only jpg,jpeg and png formats excepted");
+              alert("Only jpg,jpeg and png formats accepted");
               setImgField(value);
             }
           }
@@ -354,16 +354,17 @@ const EditDetailsform = ({
                   </div>
                   <div className='refund-inp input-group'>
                     <div className='abs-red-txt'>
-                      Only jpg, jpeg and png excepted
+                      Only jpg, jpeg and png accepted
                     </div>
                     <label className='input-group-text' for='aadhaar-front'>
                       <strong> Aadhar Front Picture</strong>
                     </label>
                     <input
-                      className={`form-control ${imgField == "aadhar_front_picture"
+                      className={`form-control ${
+                        imgField == "aadhar_front_picture"
                           ? "error-upload"
                           : null
-                        }`}
+                      }`}
                       id='aadhaar-front'
                       value={formData.aadhar_front_picture}
                       placeholder='Aadhaar Front Picture'
@@ -380,7 +381,7 @@ const EditDetailsform = ({
                   </div>
                   <div className='refund-inp input-group'>
                     <div className='abs-red-txt'>
-                      Only jpg, jpeg and png excepted
+                      Only jpg, jpeg and png accepted
                     </div>
                     <label className='input-group-text' for='aadhaar-back'>
                       <strong> Aadhar Back Picture</strong>
@@ -403,7 +404,7 @@ const EditDetailsform = ({
                   </div>
                   <div className='refund-inp input-group'>
                     <div className='abs-red-txt'>
-                      Only jpg, jpeg and png excepted
+                      Only jpg, jpeg and png accepted
                     </div>
                     <label className='input-group-text' for='canceled-cheque'>
                       <strong>Canceled Cheque Picture</strong>
