@@ -1,10 +1,11 @@
 import React from "react";
 import LOGO from "../assets/LOGO.png";
+import LOGO_NEW from "../assets/Logo for convo portal without bg.png";
 
 const DepDetails = ({ student, setStudent }) => {
   return (
     <div className='detailsPage'>
-      <img src={LOGO} alt='' className='LOGONEW' />
+      <img src={LOGO_NEW} alt='' className='LOGONEW' />
 
       <div>
         <h5>Student Details</h5>
