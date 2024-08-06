@@ -508,13 +508,25 @@ const Details = ({ singleUser }) => {
               </h4> */}
             </div>
           </>
+        ) : singleUser.companions == "NA" && !singleUser.is_paid ? (
+          <>
+            <div style={{ textAlign: "center", margin: "20px 0.75rem" }}>
+              <h4>
+                PAYMENT PENDING! <br /> Your payment for the 11th convocation is
+                still pending. Please check your mailbox
+              </h4>
+            </div>
+          </>
         ) : (
-          <div style={{ textAlign: "center", margin: "20px 0" }}>
-            <h4>
-              CONGRATULATIONS! <br /> You have successfully registerd for <br />
-              MUJ 11th Convocation.
-            </h4>
-          </div>
+          <>
+            <div style={{ textAlign: "center", margin: "20px 0.75rem" }}>
+              <h4>
+                CONGRATULATIONS! <br /> You have successfully registerd for{" "}
+                <br />
+                MUJ 11th Convocation.
+              </h4>
+            </div>
+          </>
         )}
       </div>
     </div>
