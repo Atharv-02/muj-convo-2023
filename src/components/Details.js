@@ -75,32 +75,16 @@ const Details = ({ singleUser }) => {
     try {
       let response;
       if (attending === "inPerson") {
-<<<<<<< Updated upstream
-        response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
-          reg_no: singleUser.reg_no,
-          companions: companions,
-          attending: attending,
-          date: date
-        })
-        // console.log(response);
-      } else {
-        response = await axios.put(`https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`, {
-          reg_no: singleUser.reg_no,
-          companions: companions,
-          attending: attending,
-          date: 'NA'
-        })
-        // console.log(response);
-=======
         response = await axios.put(
           `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`,
           {
             reg_no: singleUser.reg_no,
             companions: companions,
             attending: attending,
+            date: date,
           }
         );
-        console.log(response);
+        // console.log(response);
       } else {
         response = await axios.put(
           `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`,
@@ -108,10 +92,10 @@ const Details = ({ singleUser }) => {
             reg_no: singleUser.reg_no,
             companions: companions,
             attending: attending,
+            date: "NA",
           }
         );
-        console.log(response);
->>>>>>> Stashed changes
+        // console.log(response);
       }
       if (response.data.message == "Student registration successful") {
         setMessage("Please check your mailbox for registration confirmation");
@@ -122,25 +106,12 @@ const Details = ({ singleUser }) => {
         setOpen(true);
       }
       // console.log(response.data);
-<<<<<<< Updated upstream
-
-
-
     } catch (error) {
       console.log(error);
     }
 
-    setAbled(true)
-
-
-  }
-=======
-      setAbled(true);
-    } catch (error) {
-      console.log(error);
-    }
+    setAbled(true);
   };
->>>>>>> Stashed changes
 
   // const handlePaymentClick = () => {
   //   if (attending === "inPerson") {
@@ -375,28 +346,6 @@ const Details = ({ singleUser }) => {
                   </select>
                 </div>
 
-<<<<<<< Updated upstream
-              <br />
-              <br />
-              <div className='dash-left-companions-div'>
-                <p className='dash-companions'>
-                  <strong>Choose the day when you want to attend</strong>
-                </p>
-                <select
-                  name='date'
-                  id='date'
-                  value={date}
-                  className='form-select companions-select'
-                  onChange={(e) => setDate(e.target.value)}
-                >
-                  <option value='' disabled defaultValue>
-                    Select
-                  </option>
-                  <option value='19th October'>19th October 2024</option>
-                  <option value='20th October'>20th October 2024</option>
-                </select>
-              </div>
-=======
                 <br />
                 <br />
                 <div className='dash-left-companions-div'>
@@ -413,11 +362,10 @@ const Details = ({ singleUser }) => {
                     <option value='' disabled defaultValue>
                       Select
                     </option>
-                    <option value='0'>19th October 2024</option>
-                    <option value='1'>20th October 2024</option>
+                    <option value='19th October'>19th October 2024</option>
+                    <option value='20th October'>20th October 2024</option>
                   </select>
                 </div>
->>>>>>> Stashed changes
 
                 <br />
                 <br />
