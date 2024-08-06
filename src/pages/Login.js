@@ -133,7 +133,7 @@ const Login = () => {
       setRegister(false);
       setOpen(true);
       setVariant("success");
-      setMessage("Registered Successfully");
+      setMessage("Registered Successfully! Check email for login credentials");
       setNewRegNo("");
     } catch (error) {
       setOpen(true);
