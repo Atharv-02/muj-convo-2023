@@ -10,7 +10,9 @@ const PAYU_MERCHANT_KEY = "kqfd6O";
 const PAYU_SALT_KEY = "n0Qpybgx";
 
 const Details = ({ singleUser }) => {
-  const [companions, setCompanions] = useState("");
+  const [companions, setCompanions] = useState(
+    singleUser.companions ? singleUser.companions : null
+  );
   const [date, setDate] = useState("");
   const [abled, setAbled] = useState(true);
   const [open, setOpen] = useState(false);
