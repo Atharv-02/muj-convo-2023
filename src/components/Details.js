@@ -512,7 +512,6 @@ const Details = ({ singleUser }) => {
           </>
         ) : companions == "NA" && !singleUser.is_paid ? (
           <>
-            {console.log(companions)}
             <div style={{ textAlign: "center", margin: "20px 0.75rem" }}>
               <h4>
                 PAYMENT PENDING! <br /> Your payment for the 11th convocation is
@@ -522,7 +521,6 @@ const Details = ({ singleUser }) => {
           </>
         ) : (
           <>
-            {console.log(companions)}
             <div style={{ textAlign: "center", margin: "20px 0.75rem" }}>
               <h4>
                 CONGRATULATIONS! <br /> You have successfully registerd for{" "}
