@@ -50,8 +50,8 @@ const Login = () => {
   const navigate = useNavigate();
   const [roles, setRoles] = useState("student");
   const [email, setEmail] = useState("");
-  const [regNo, setRegNo] = useState();
-  const [newRegNo, setNewRegNo] = useState();
+  const [regNo, setRegNo] = useState("");
+  const [newRegNo, setNewRegNo] = useState("");
   const [password, setPassword] = useState();
   const [register, setRegister] = useState(false);
   const [alert, setAlert] = useState();
@@ -253,7 +253,7 @@ const Login = () => {
                   <div className='container'>
                     {roles == "student" ? (
                       <input
-                        type='number'
+                        type='text'
                         placeholder='Registration No'
                         value={regNo}
                         onChange={(e) => setRegNo(e.target.value)}
@@ -317,7 +317,7 @@ const Login = () => {
                 <form>
                   <div className='container'>
                     <input
-                      type='number'
+                      type='text'
                       placeholder='Registration No'
                       value={newRegNo}
                       onChange={(e) => setNewRegNo(e.target.value)}
