@@ -102,6 +102,7 @@ const Details = ({ singleUser }) => {
         setMessage("Please check your mailbox for registration confirmation");
         setOpen(true);
         setPaid(companions !== "NA" ? true : false);
+        setCompanions("NA");
       } else {
         setMessage("Registration Failed");
         setOpen(true);
@@ -509,8 +510,9 @@ const Details = ({ singleUser }) => {
               </h4> */}
             </div>
           </>
-        ) : singleUser.companions == "NA" && !singleUser.is_paid ? (
+        ) : companions == "NA" && !singleUser.is_paid ? (
           <>
+            {console.log(companions)}
             <div style={{ textAlign: "center", margin: "20px 0.75rem" }}>
               <h4>
                 PAYMENT PENDING! <br /> Your payment for the 11th convocation is
@@ -520,6 +522,7 @@ const Details = ({ singleUser }) => {
           </>
         ) : (
           <>
+            {console.log(companions)}
             <div style={{ textAlign: "center", margin: "20px 0.75rem" }}>
               <h4>
                 CONGRATULATIONS! <br /> You have successfully registerd for{" "}
