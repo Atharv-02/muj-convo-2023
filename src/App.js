@@ -22,8 +22,7 @@ function App() {
   }, []);
   return (
     <>
-      WEBSITE IS DOWN!!! PLEASE VISIT US TOMORROW
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path='/login' element={<Login />} />
@@ -47,7 +46,7 @@ function App() {
           <Route path='/faq' element={<FAQPage />} />
           <Route path='/alumni-reg' element={<AlumniReg />} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 }
