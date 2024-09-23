@@ -373,7 +373,6 @@ const Details = ({ singleUser }) => {
                     <option value='' disabled defaultValue>
                       Select
                     </option>
-                    <option value='19th October'>19th October 2024</option>
                     <option value='20th October'>20th October 2024</option>
                   </select>
                 </div>
