@@ -176,7 +176,7 @@ const ContactDetails = () => {
               <span>
                 Email:{" "}
                 <a href='mailto:it.support@jaipur.manipal.edu'>
-                  vaishali.yadav@jaipur.manipal.edu
+                  manipalconvocation@gmail.com
                 </a>
               </span>
             </Accordion.Body>
