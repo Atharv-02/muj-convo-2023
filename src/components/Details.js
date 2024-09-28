@@ -80,6 +80,11 @@ const Details = ({ singleUser }) => {
       let response;
 
       if (attending === "inPerson") {
+        if (date == "19th October") {
+          setMessage("You cannot register for this day anymore, please select some other date");
+          setOpen(true);
+          return;
+        }
         response = await axios.put(
           `https://us-central1-muj-convocation-2024.cloudfunctions.net/app/student/update-registration-status`,
           {
