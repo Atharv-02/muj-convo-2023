@@ -341,51 +341,51 @@ const Details = ({ singleUser }) => {
 
         {!paid
           ? inPerson && (
-              <>
-                <div className='dash-left-companions-div'>
-                  <p className='dash-companions'>
-                    <strong>Choose no. of companions attending with you</strong>
-                  </p>
-                  <select
-                    name='companions'
-                    id='companions'
-                    value={companions}
-                    className='form-select companions-select'
-                    onChange={(e) => setCompanions(e.target.value)}
-                  >
-                    <option value='' disabled defaultValue>
-                      Select
-                    </option>
-                    <option value='0'>0</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                  </select>
-                </div>
+            <>
+              <div className='dash-left-companions-div'>
+                <p className='dash-companions'>
+                  <strong>Choose no. of companions attending with you</strong>
+                </p>
+                <select
+                  name='companions'
+                  id='companions'
+                  value={companions}
+                  className='form-select companions-select'
+                  onChange={(e) => setCompanions(e.target.value)}
+                >
+                  <option value='' disabled defaultValue>
+                    Select
+                  </option>
+                  <option value='0'>0</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                </select>
+              </div>
 
-                <br />
-                <br />
-                <div className='dash-left-companions-div'>
-                  <p className='dash-companions'>
-                    <strong>Choose the day when you want to attend</strong>
-                  </p>
-                  <select
-                    name='date'
-                    id='date'
-                    value={date}
-                    className='form-select companions-select'
-                    onChange={(e) => setDate(e.target.value)}
-                  >
-                    <option value='' disabled defaultValue>
-                      Select
-                    </option>
-                    <option value='20th October'>20th October 2024</option>
-                  </select>
-                </div>
+              <br />
+              <br />
+              <div className='dash-left-companions-div'>
+                <p className='dash-companions'>
+                  <strong>Choose the day when you want to attend</strong>
+                </p>
+                <select
+                  name='date'
+                  id='date'
+                  value={date}
+                  className='form-select companions-select'
+                  onChange={(e) => setDate(e.target.value)}
+                >
+                  <option value='' disabled defaultValue>
+                    Select
+                  </option>
+                  <option value='20th October'>20th October 2024</option>
+                </select>
+              </div>
 
-                <br />
-                <br />
-              </>
-            )
+              <br />
+              <br />
+            </>
+          )
           : null}
         {!paid ? (
           <>
@@ -505,10 +505,10 @@ const Details = ({ singleUser }) => {
                     date &&
                     abled &&
                     selectTerms) ||
-                  (attending == "courier" &&
-                    singleUser.phone &&
-                    selectTerms &&
-                    abled)
+                    (attending == "courier" &&
+                      singleUser.phone &&
+                      selectTerms &&
+                      abled)
                     ? false
                     : true
                 }
