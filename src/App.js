@@ -22,31 +22,32 @@ function App() {
   }, []);
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route
-            path='/'
-            element={
-              <Protected>
-                <Dash />
-              </Protected>
-            }
-          />
-          <Route
-            path='/feedback'
-            element={
-              <Protected>
-                <Feedback />
-              </Protected>
-            }
-          />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/faq' element={<FAQPage />} />
-          <Route path='/alumni-reg' element={<AlumniReg />} />
-        </Routes>
-      </BrowserRouter>
+    Website is down
+      // <BrowserRouter>
+      //   <Navbar />
+      //   <Routes>
+      //     <Route path='/login' element={<Login />} />
+      //     <Route
+      //       path='/'
+      //       element={
+      //         <Protected>
+      //           <Dash />
+      //         </Protected>
+      //       }
+      //     />
+      //     <Route
+      //       path='/feedback'
+      //       element={
+      //         <Protected>
+      //           <Feedback />
+      //         </Protected>
+      //       }
+      //     />
+      //     <Route path='/contact' element={<Contact />} />
+      //     <Route path='/faq' element={<FAQPage />} />
+      //     <Route path='/alumni-reg' element={<AlumniReg />} />
+      //   </Routes>
+      // </BrowserRouter>
     </>
   );
 }
