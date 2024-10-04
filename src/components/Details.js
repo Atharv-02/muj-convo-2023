@@ -342,7 +342,7 @@ const Details = ({ singleUser }) => {
         {!paid
           ? inPerson && (
             <>
-              <div className='dash-left-companions-div'>
+              {/* <div className='dash-left-companions-div'>
                 <p className='dash-companions'>
                   <strong>Choose no. of companions attending with you</strong>
                 </p>
@@ -383,15 +383,15 @@ const Details = ({ singleUser }) => {
               </div>
 
               <br />
-              <br />
+              <br /> */}
             </>
           )
           : null}
         {!paid ? (
           <>
-            <div className='dash-attendDiv'>
-              <p>
-                <strong>
+            {/* <div className='dash-attendDiv'>
+              <p> */}
+            {/* <strong>
                   Will you be attending the convocation In-Person?{" "}
                 </strong>
               </p>
@@ -402,8 +402,8 @@ const Details = ({ singleUser }) => {
                   alignItems: "center",
                   margin: "5px 0",
                 }}
-              >
-                <input
+              > */}
+            {/* <input
                   className='form-check-input'
                   type='radio'
                   name='attend'
@@ -420,11 +420,11 @@ const Details = ({ singleUser }) => {
                 <label className='form-check-label' htmlFor='inPerson'>
                   I will collect degree certificate in Person.
                 </label>
-              </div>
-              {/* <input type="radio" name="inPersonopt" id="inPerson" value='inPerson'/>
+              </div> */}
+            {/* <input type="radio" name="inPersonopt" id="inPerson" value='inPerson'/>
         <label htmlFor="inPerson"> I will collect degree certificate in Person.</label> */}
 
-              <div
+            {/* <div
                 className='form-check'
                 style={{
                   display: "flex",
@@ -452,8 +452,8 @@ const Details = ({ singleUser }) => {
               </div>
             </div>
             <br />
-            <br />
-            <div
+            <br /> */}
+            {/* <div
               className='form-check dash-infoCheckDiv'
               style={{ display: "flex", alignItems: "center" }}
             >
@@ -478,7 +478,7 @@ const Details = ({ singleUser }) => {
               </label>
             </div>
             <br />
-            <br />
+            <br /> */}
 
             <div>
               {/* <button
@@ -496,7 +496,7 @@ const Details = ({ singleUser }) => {
               >
                 CONFIRM & PAY
               </button> */}
-              <button
+              {/* <button
                 className='btn btn-dark'
                 disabled={
                   (attending == "inPerson" &&
@@ -515,12 +515,12 @@ const Details = ({ singleUser }) => {
                 onClick={handleSubmit}
               >
                 Submit
-              </button>
+              </button> */}
+              <h4 style={{ color: "red", textAlign: "center" }}>
+                Sorry You seem to have missed out the deadline, Registrations are closed.
+              </h4>
               <br />
               <br />
-              {/* <h4 style={{ color: "red" }}>
-                Sorry You seem to have missed out the deadline
-              </h4> */}
             </div>
           </>
         ) : midState ? (

@@ -231,9 +231,9 @@ const Login = () => {
 
         <div className='login-txt'>
           <div className='all-txt'>
-            <h1 style={{ color: "green", fontSize: "2rem" }}>
+            <h1 style={{ color: "red", fontSize: "2.2rem" }}>
               {/* todo color change and font bigger */}
-              Registrations are now Open
+              Registrations are now Closed
             </h1>
             <p>Your passwords will be sent on the official e-mail id. </p>
             {!register ? (
@@ -301,7 +301,7 @@ const Login = () => {
                     </div>
                   )}
                 </form>
-                <p
+                {/* <p
                   className='login-p'
                   onClick={() => {
                     setRegister(true);
@@ -310,7 +310,7 @@ const Login = () => {
                 >
                   Don’t have an account?
                   <span> Register Now</span>
-                </p>
+                </p> */}
               </>
             ) : (
               <>
