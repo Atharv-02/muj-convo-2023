@@ -301,7 +301,7 @@ const Login = () => {
                     </div>
                   )}
                 </form>
-                {/* <p
+                <p
                   className='login-p'
                   onClick={() => {
                     setRegister(true);
@@ -310,7 +310,7 @@ const Login = () => {
                 >
                   Don’t have an account?
                   <span> Register Now</span>
-                </p> */}
+                </p>
               </>
             ) : (
               <>

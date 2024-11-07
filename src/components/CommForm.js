@@ -182,9 +182,8 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${
-                    errors[field.name] ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                    }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   min={field.min}
@@ -230,9 +229,8 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                 <input
                   name={field.name}
                   type={field.type}
-                  className={`form-control ${
-                    errors[field.name] ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                    }`}
                   placeholder={field.placeholder}
                   id={field.name}
                   value={formData[field.name]}
@@ -258,9 +256,8 @@ const CommForm = ({ singleUser, setSingleUser }) => {
                   <strong>{field.label}</strong>
                 </label>
                 <input
-                  className={`form-control ${
-                    errors[field.name] ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                    }`}
                   id={field.name}
                   placeholder={field.label}
                   required

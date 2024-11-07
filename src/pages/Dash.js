@@ -4,15 +4,16 @@ import DepDash from "../components/DepDash";
 import { useAuth } from "../context/AuthContext";
 import { useLoading } from "../context/SideContext";
 import Spinner from "react-bootstrap/Spinner";
-
-
 import axios from "axios";
 import Alerts from "../components/Alert";
 import { useAlert } from "../context/AlertMessageContext";
+import DashStudentNew from "../components/DashStudentNew";
+
+
 const Dash = () => {
   const { message, setMessage } = useAlert();
-  const [singleUser, setSingleUser] = useState([]);
   const [open, setOpen] = useState(true);
+  const [singleUser, setSingleUser] = useState([]);
   const [showMessage, setShowMessage] = useState(message);
   const { token, setToken, isuserloggedin, setIsuserloggedin, role } =
     useAuth();
@@ -61,7 +62,12 @@ const Dash = () => {
     );
   } else if (role == "student") {
     return (
-      <DashStudent
+      // <DashStudent
+      //   singleUser={singleUser}
+      //   setSingleUser={setSingleUser}
+      //   getUsers={getUsers}
+      // />
+      <DashStudentNew
         singleUser={singleUser}
         setSingleUser={setSingleUser}
         getUsers={getUsers}
