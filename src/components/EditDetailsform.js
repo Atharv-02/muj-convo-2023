@@ -360,11 +360,10 @@ const EditDetailsform = ({
                       <strong> Aadhar Front Picture</strong>
                     </label>
                     <input
-                      className={`form-control ${
-                        imgField == "aadhar_front_picture"
-                          ? "error-upload"
-                          : null
-                      }`}
+                      className={`form-control ${imgField == "aadhar_front_picture"
+                        ? "error-upload"
+                        : null
+                        }`}
                       id='aadhaar-front'
                       value={formData.aadhar_front_picture}
                       placeholder='Aadhaar Front Picture'

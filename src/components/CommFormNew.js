@@ -95,6 +95,10 @@ const CommFormNew = ({ singleUser, setSingleUser }) => {
                 }
             );
             setSingleUser(response.data.data);
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         } catch (e) {
             console.log(e);
         }
@@ -151,144 +155,146 @@ const CommFormNew = ({ singleUser, setSingleUser }) => {
 
     return (
         <div className='right-div'>
-            {singleUser.aadhar_back_picture ? "You have submitted the details for Caution Money Refund." : <form onSubmit={handleSubmit}>
-                <div
-                    className='comm-div'
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <h2 style={{ textAlign: "center" }}>Communication Details</h2>
-                    <div className='comm-inp-div'>
-                        {[
-                            {
-                                name: "phone",
-                                type: "number",
-                                placeholder: "Phone Number - 10 digits",
-                                min: "1000000000",
-                                max: "9999999999",
-                            },
-                            { name: "address", type: "text", placeholder: "Address" },
-                            { name: "city", type: "text", placeholder: "City" },
-                            { name: "state", type: "text", placeholder: "State" },
-                            { name: "pincode", type: "number", placeholder: "Pincode" },
-                            { name: "district", type: "text", placeholder: "District" },
-                            { name: "country", type: "text", placeholder: "Country" },
-                        ].map((field) => (
-                            <div key={field.name} className='comm-inp'>
-                                <input
-                                    name={field.name}
-                                    type={field.type}
-                                    className={`form-control ${errors[field.name] ? "is-invalid" : ""
-                                        }`}
-                                    placeholder={field.placeholder}
-                                    id={field.name}
-                                    min={field.min}
-                                    max={field.max}
-                                    value={formData[field.name]}
-                                    onChange={handleChange}
-                                    required
-                                />
-                                {errors[field.name] && (
-                                    <div className='invalid-feedback'>{errors[field.name]}</div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className='refund-div'>
-                    <h2 style={{ textAlign: "center" }}>
-                        Details for Caution <br /> Money Refund
-                    </h2>
-
-                    <div className='refund-inp-div'>
-                        {[
-                            {
-                                name: "account_holder_name",
-                                type: "text",
-                                placeholder: "Account Holder Name",
-                            },
-                            {
-                                name: "account_number",
-                                type: "text",
-                                placeholder: "Account Number",
-                            },
-                            { name: "bank_name", type: "text", placeholder: "Bank Name" },
-                            { name: "branch_name", type: "text", placeholder: "Bank Branch" },
-                            {
-                                name: "bank_address",
-                                type: "text",
-                                placeholder: "Bank Address",
-                            },
-                            { name: "ifsc_code", type: "text", placeholder: "IFSC Code" },
-                        ].map((field) => (
-                            <div key={field.name} className='refund-inp'>
-                                <input
-                                    name={field.name}
-                                    type={field.type}
-                                    className={`form-control ${errors[field.name] ? "is-invalid" : ""
-                                        }`}
-                                    placeholder={field.placeholder}
-                                    id={field.name}
-                                    value={formData[field.name]}
-                                    onChange={handleChange}
-                                    required
-                                />
-                                {errors[field.name] && (
-                                    <div className='invalid-feedback'>{errors[field.name]}</div>
-                                )}
-                            </div>
-                        ))}
-
-                        {[
-                            { name: "aadhar_front_picture", label: "Aadhar Front Picture" },
-                            { name: "aadhar_back_picture", label: "Aadhar Back Picture" },
-                            { name: "cancel_check", label: "Canceled Cheque Picture" },
-                        ].map((field) => (
-                            <div key={field.name} className='refund-inp input-group'>
-                                <div className='abs-red-txt'>
-                                    Only jpg, jpeg and png accepted
+            {singleUser.aadhar_back_picture ?
+                "You have submitted the details for Caution Money Refund."
+                : <form onSubmit={handleSubmit}>
+                    <div
+                        className='comm-div'
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <h2 style={{ textAlign: "center" }}>Communication Details</h2>
+                        <div className='comm-inp-div'>
+                            {[
+                                {
+                                    name: "phone",
+                                    type: "number",
+                                    placeholder: "Phone Number - 10 digits",
+                                    min: "1000000000",
+                                    max: "9999999999",
+                                },
+                                { name: "address", type: "text", placeholder: "Address" },
+                                { name: "city", type: "text", placeholder: "City" },
+                                { name: "state", type: "text", placeholder: "State" },
+                                { name: "pincode", type: "number", placeholder: "Pincode" },
+                                { name: "district", type: "text", placeholder: "District" },
+                                { name: "country", type: "text", placeholder: "Country" },
+                            ].map((field) => (
+                                <div key={field.name} className='comm-inp'>
+                                    <input
+                                        name={field.name}
+                                        type={field.type}
+                                        className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                                            }`}
+                                        placeholder={field.placeholder}
+                                        id={field.name}
+                                        min={field.min}
+                                        max={field.max}
+                                        value={formData[field.name]}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    {errors[field.name] && (
+                                        <div className='invalid-feedback'>{errors[field.name]}</div>
+                                    )}
                                 </div>
-                                <label className='input-group-text' htmlFor={field.name}>
-                                    <strong>{field.label}</strong>
-                                </label>
-                                <input
-                                    className={`form-control ${errors[field.name] ? "is-invalid" : ""
-                                        }`}
-                                    id={field.name}
-                                    placeholder={field.label}
-                                    required
-                                    readOnly
-                                    value={formData[field.name]}
-                                />
-                                <button
-                                    className='btn btn-outline-secondary'
-                                    type='button'
-                                    onClick={() => openCloudWidget(field.name)}
-                                >
-                                    Select Image
-                                </button>
-                                {errors[field.name] && (
-                                    <div className='invalid-feedback'>{errors[field.name]}</div>
-                                )}
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
+                    <div className='refund-div'>
+                        <h2 style={{ textAlign: "center" }}>
+                            Details for Caution <br /> Money Refund
+                        </h2>
 
-                    <div className='save-btn'>
-                        <button
-                            className='btn btn-outline-dark'
-                            disabled={!showBtn}
-                            type='submit'
-                        >
-                            Submit
-                        </button>
+                        <div className='refund-inp-div'>
+                            {[
+                                {
+                                    name: "account_holder_name",
+                                    type: "text",
+                                    placeholder: "Account Holder Name",
+                                },
+                                {
+                                    name: "account_number",
+                                    type: "text",
+                                    placeholder: "Account Number",
+                                },
+                                { name: "bank_name", type: "text", placeholder: "Bank Name" },
+                                { name: "branch_name", type: "text", placeholder: "Bank Branch" },
+                                {
+                                    name: "bank_address",
+                                    type: "text",
+                                    placeholder: "Bank Address",
+                                },
+                                { name: "ifsc_code", type: "text", placeholder: "IFSC Code" },
+                            ].map((field) => (
+                                <div key={field.name} className='refund-inp'>
+                                    <input
+                                        name={field.name}
+                                        type={field.type}
+                                        className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                                            }`}
+                                        placeholder={field.placeholder}
+                                        id={field.name}
+                                        value={formData[field.name]}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    {errors[field.name] && (
+                                        <div className='invalid-feedback'>{errors[field.name]}</div>
+                                    )}
+                                </div>
+                            ))}
+
+                            {[
+                                { name: "aadhar_front_picture", label: "Aadhar Front Picture" },
+                                { name: "aadhar_back_picture", label: "Aadhar Back Picture" },
+                                { name: "cancel_check", label: "Canceled Cheque Picture" },
+                            ].map((field) => (
+                                <div key={field.name} className='refund-inp input-group'>
+                                    <div className='abs-red-txt'>
+                                        Only jpg, jpeg and png accepted
+                                    </div>
+                                    <label className='input-group-text' htmlFor={field.name}>
+                                        <strong>{field.label}</strong>
+                                    </label>
+                                    <input
+                                        className={`form-control ${errors[field.name] ? "is-invalid" : ""
+                                            }`}
+                                        id={field.name}
+                                        placeholder={field.label}
+                                        required
+                                        readOnly
+                                        value={formData[field.name]}
+                                    />
+                                    <button
+                                        className='btn btn-outline-secondary'
+                                        type='button'
+                                        onClick={() => openCloudWidget(field.name)}
+                                    >
+                                        Select Image
+                                    </button>
+                                    {errors[field.name] && (
+                                        <div className='invalid-feedback'>{errors[field.name]}</div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className='save-btn'>
+                            <button
+                                className='btn btn-outline-dark'
+                                disabled={!showBtn}
+                                type='submit'
+                            >
+                                Submit
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>}
+                </form>}
         </div>
     );
 };

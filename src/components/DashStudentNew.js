@@ -19,11 +19,17 @@ const DashStudentNew = ({ singleUser, setSingleUser, getUsers }) => {
                                 <DetailsNew
                                     singleUser={singleUser}
                                 />
-                                {singleUser.bank_address ? "Thank you for submitting details" :
+                                {singleUser.bank_address ?
+                                    <span className="dash-submitted">
+                                        You have submitted the details for Caution Money Refund.
+                                    </span>
+
+                                    :
                                     <CommFormNew
                                         singleUser={singleUser}
                                         setSingleUser={setSingleUser}
-                                    />}
+                                    />
+                                }
                             </div>
                         </div>
                         <img src={vector} alt='' className='dash-vector' />

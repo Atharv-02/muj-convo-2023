@@ -107,10 +107,12 @@
   padding: 10px;
   margin-left: 20px;
 }
+
 .nav-btn-div {
   display: flex;
   align-items: center;
 }
+
 .nav-btn {
   padding: 10px;
   margin-right: 25px;
@@ -143,6 +145,7 @@
   width: 100%;
   font-size: 1.05rem;
 }
+
 .dash-details-head {
   padding: 10px;
 }
@@ -169,10 +172,12 @@
   justify-content: center;
   width: 90%;
 }
+
 .dash-companions {
   width: 750%;
   margin: 5px;
 }
+
 /* .companions-select{
   width: 25%;
 } */
@@ -203,6 +208,7 @@
   border-radius: 10px;
   margin-left: 30px;
 }
+
 .comm-div {
   display: flex;
   flex-direction: column;
@@ -214,6 +220,7 @@
 .refund-inp {
   margin-top: 35px;
 }
+
 .refund-div {
   display: flex;
   flex-direction: column;
@@ -221,18 +228,21 @@
   align-items: center;
   margin-top: 10%;
 }
+
 .refund-inp-div {
   /* margin-top: px; */
   display: flex;
   flex-direction: column;
   width: 75%;
 }
+
 .comm-inp-div {
   display: flex;
   flex-direction: column;
   /* margin-top: 30px; */
   width: 75%;
 }
+
 .save-btn {
   display: flex;
   justify-content: center;
@@ -262,18 +272,23 @@
   .dash-super {
     width: 90%;
   }
+
   .dash-mainy {
     display: block;
   }
+
   h2 {
     font-size: 1.5rem;
   }
+
   * {
     font-size: 1rem;
   }
+
   .dash-main-left {
     width: 100%;
   }
+
   .dash-left-div {
     width: 100%;
     margin: 0;
@@ -283,14 +298,17 @@
     display: none;
     width: 0;
   }
+
   .dash-layer {
     width: 100%;
     margin: 0;
     padding: 0;
   }
+
   .dash-right-div {
     margin-top: 40px;
   }
+
   .saved-table-div {
     width: 100%;
     font-size: 1.05rem;
@@ -302,4 +320,20 @@
   /* margin: 10px 180px; */
   height: 100%;
   margin: 0 auto;
+}
+
+
+.dash-submitted {
+  font-size: 1.4rem;
+  width: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: solid 2px rgba(225, 84, 20, 1);
+  border-radius: 10px;
+  margin-left: 30px;
+  height: fit-content;
+
 }
