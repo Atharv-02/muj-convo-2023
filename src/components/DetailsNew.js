@@ -69,9 +69,9 @@ const DetailsNew = ({ singleUser }) => {
                         </tbody>
                     </table>
                 </div>
-                <div>
+                {/* <div>
                     <img src={LOGO_NEW} alt='' className='LOGONEW' />
-                </div>
+                </div> */}
 
 
 

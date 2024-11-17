@@ -231,9 +231,11 @@ const Login = () => {
 
         <div className='login-txt'>
           <div className='all-txt'>
-            <h1 style={{ color: "red", fontSize: "2.2rem" }}>
+            <h1 style={{ color: "green", fontSize: "2.2rem" }}>
               {/* todo color change and font bigger */}
-              Registrations are now Closed
+              {/* Registrations are now Closed */}
+              No Dues Submission is Now Open
+
             </h1>
             <p>Your passwords will be sent on the official e-mail id. </p>
             {!register ? (
