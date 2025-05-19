@@ -166,20 +166,19 @@ const ContactDetails = () => {
               <h6 style={{ fontSize: "1.5rem" }}>For Any Other Queries</h6>
             </Accordion.Header>
             <Accordion.Body>
-              NA
               {/* <strong>
                 Dr. Vaishali Yadav
                 <br />
-              </strong>
-              Mob: 8386069007
-              <br />
+              </strong> */}
+              {/* Mob: 8386069007 */}
+              {/* <br /> */}
               <BiMailSend />
               <span>
                 Email:{" "}
                 <a href='mailto:it.support@jaipur.manipal.edu'>
                   manipalconvocation@gmail.com
                 </a>
-              </span> */}
+              </span>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
