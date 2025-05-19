@@ -231,13 +231,12 @@ const Login = () => {
 
         <div className='login-txt'>
           <div className='all-txt'>
-            <h1 style={{ color: "green", fontSize: "2.2rem" }}>
+            <h1 style={{ color: "red", fontSize: "2.2rem" }}>
               {/* todo color change and font bigger */}
               {/* Registrations are now Closed */}
-              No Dues Submission is Now Open
-
+              Registrations are Now Closed
             </h1>
-            <p>Your passwords will be sent on the official e-mail id. </p>
+            {/* <p>Your passwords will be sent on the official e-mail id. </p> */}
             {!register ? (
               <>
                 <form>
@@ -297,13 +296,14 @@ const Login = () => {
                         className='btn-all login-btn'
                         type='submit'
                         onClick={handleSubmit}
+                        disabled
                       >
                         Submit
                       </button>
                     </div>
                   )}
                 </form>
-                <p
+                {/* <p
                   className='login-p'
                   onClick={() => {
                     setRegister(true);
@@ -312,7 +312,7 @@ const Login = () => {
                 >
                   Don’t have an account?
                   <span> Register Now</span>
-                </p>
+                </p> */}
               </>
             ) : (
               <>

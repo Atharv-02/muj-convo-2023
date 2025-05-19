@@ -166,7 +166,8 @@ const ContactDetails = () => {
               <h6 style={{ fontSize: "1.5rem" }}>For Any Other Queries</h6>
             </Accordion.Header>
             <Accordion.Body>
-              <strong>
+              NA
+              {/* <strong>
                 Dr. Vaishali Yadav
                 <br />
               </strong>
@@ -178,7 +179,7 @@ const ContactDetails = () => {
                 <a href='mailto:it.support@jaipur.manipal.edu'>
                   manipalconvocation@gmail.com
                 </a>
-              </span>
+              </span> */}
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
